@@ -6,6 +6,6 @@
     npm install --save
 
 ## Run the client app with : 
-#   ng serve --open --port 
-#   OR npm run ng serve 
-#   OR npm start
+   ng serve --open --port 
+OR npm run ng serve 
+OR npm start
