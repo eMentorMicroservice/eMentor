@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ErrorService } from './common/error.service';
 import { GlobalService } from './global.service';
 import { Login } from '../models/login.model';
-import { LOGIN_STATUS, LOCAL_STORAGE_VARIABLE, ADMIN_CONST } from '../appComponent/app.constants';
+import { LOGIN_STATUS, LOCAL_STORAGE_VARIABLE, ADMIN_CONST } from '../app.constants';
 
 @Injectable({
   providedIn: 'root'

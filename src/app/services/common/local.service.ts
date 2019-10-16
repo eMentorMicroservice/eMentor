@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LOCAL_STORAGE_VARIABLE } from '../../appComponent/app.constants';
+import { LOCAL_STORAGE_VARIABLE } from '../../app.constants';
 
 export class LocalService {
   static getItem(key: string) {

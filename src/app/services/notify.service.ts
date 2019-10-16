@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { SERVER_ERROR_MESSAGES } from '../appComponent/app.constants';
+import { SERVER_ERROR_MESSAGES } from '../app.constants';
 import { NotifyType } from '../models/enums';
 @Injectable(
   {

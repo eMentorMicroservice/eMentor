@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 import { shareReplay, timeout, catchError } from 'rxjs/operators';
 import { LocalService } from './local.service';
 import { Observable } from 'rxjs';
-import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../appComponent/app.constants';
+import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
 declare var require: any;
 
 @Injectable()

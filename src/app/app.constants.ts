@@ -1,5 +1,5 @@
-import { environment } from "../../environments/environment";
-import { ServerErrorModel } from "../models/enums";
+import { environment } from "../environments/environment";
+import { ServerErrorModel } from "./models/enums";
 
 export const API_HOST = environment.apiHost;
 export const API_HOST_PRIVATE = environment.apiHost;
