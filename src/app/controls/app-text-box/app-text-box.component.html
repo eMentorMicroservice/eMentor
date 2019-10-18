@@ -1,0 +1,5 @@
+<label class="label" *ngIf="title">{{title}}</label>
+<input type="email" (focus)="removeZero($event, value)" (focusout)="addZero($event, value)" class="form-control"
+    placeholder="{{placeholder}}" [disabled]="disabled" [type]="type" [(ngModel)]="value"
+    (ngModelChange)="updateChanges()" autocomplete="on" [class.parsley-error]="invalid()">
+<ng-content></ng-content>

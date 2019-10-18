@@ -9,7 +9,9 @@ import { NotifyType } from 'src/app/models/enums';
 /**
  * Default error handler
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ErrorService {
 
   constructor(private router: Router,
