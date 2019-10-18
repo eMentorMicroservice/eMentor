@@ -18,3 +18,15 @@ code {
   position: fixed;
   right: 0px;
 }
+
+[invalidmessage]>p {
+  color: #ff5252!important;
+  font-size: .8rem;
+  padding-top: .4rem;
+  margin-bottom: 0;
+  font-weight: 400!important;
+}
+
+[invalidmessage]>p:not(:first-child) {
+  display: none;
+}

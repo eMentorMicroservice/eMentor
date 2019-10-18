@@ -5,8 +5,8 @@ import { BaseService } from './common/base.service';
 import { HttpClient } from '@angular/common/http';
 import { ErrorService } from './common/error.service';
 import { GlobalService } from './global.service';
-import { Login } from '../models/login.model';
 import { LOGIN_STATUS, LOCAL_STORAGE_VARIABLE, ADMIN_CONST } from '../app.constants';
+import { LoginModel } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,11 +25,11 @@ export class AuthService extends BaseService {
   }
 
   static isAdmin(): boolean {
-    const isAdmin = LocalService.getItem(LOCAL_STORAGE_VARIABLE.is_admin)
+    const isAdmin = LocalService.getItem(LOCAL_STORAGE_VARIABLE.is_admin);
     return isAdmin && isAdmin.toString() === ADMIN_CONST;
   }
 
-  login(data: Login) {
+  login(data: LoginModel) {
     return this.post('/Home/Login', data, false);
   }
 
