@@ -1,1 +1,78 @@
-<p>register works!</p>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" style="margin-left: -5%;">eMentor</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create your account now</h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">Register</h6>
+                    <form #form="ngForm" (submit)="register(form)" autocomplete="on">
+
+                        <div class="form-group m-b-20 row">
+                            <div class="col-12">
+                                <app-text-box type="email" title="User Name" name="email" email="true"
+                                    placeholder="Email address go here" [(ngModel)]="model.email" required>
+                                    <div invalidmessage="email">
+                                        <p *invalidType="'required'">Please input your email here!!!</p>
+                                        <p *invalidType="'email'">Email invalid!!!</p>
+                                    </div>
+                                </app-text-box>
+                            </div>
+                        </div>
+
+                        <div class="form-group row m-b-20">
+                            <div class="col-12">
+                                <app-text-box type="password" title="Password" name="passCode" placeholder="*********"
+                                    [(ngModel)]="model.password" password="true" validateEqual="confPassword" reverse="true" required>
+                                    <div invalidmessage="passCode">
+                                        <p *invalidType="'required'">Please input your password here!!!</p>
+                                        <p *invalidType="'password'">Password invalid!!!</p>
+                                    </div>
+                                </app-text-box>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row m-b-20">
+                            <div class="col-12">
+                                <app-text-box type="password" title="Confirm password" name="confPassword" placeholder="*********"
+                                    [(ngModel)]="model.confirmPassword" password="true" validateEqual="passCode" reverse="false" required>
+                                    <div invalidmessage="confPassword">
+                                        <p *invalidType="'required'">Please input your password here!!!</p>
+                                        <p *invalidType="'password'">Password invalid!!!</p>
+                                        <p *invalidType="'validateEqual'">Password does not match!!!</p>
+                                    </div>
+                                </app-text-box>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row text-center m-t-10">
+                            <div class="col-12">
+                                <button class="btn btn-block btn-custom waves-effect waves-light">Register</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="py-5 bg-dark footer">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; eCouching Website 2019</p>
+    </div>
+</footer>
