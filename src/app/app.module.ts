@@ -13,6 +13,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { AppTextBoxComponent } from './controls/app-text-box/app-text-box.component';
 import { InvalidmessageDirective } from './directives/invalid-message.directive';
 import { InvalidTypeDirective } from './directives/invalid-type.directive';
+import { EqualValidator } from './directives/equal.derective';
+import { MaxValidator } from './directives/max.directive';
+import { MinValidator } from './directives/min.directive';
+import { PasswordValidator } from './directives/password.derective';
+import { PhoneValidator } from './directives/phone.derective';
+import { MinDateValidator } from './directives/mindate.derective';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,15 @@ import { InvalidTypeDirective } from './directives/invalid-type.directive';
     AppTextBoxComponent,
     //directives
     InvalidmessageDirective,
-    InvalidTypeDirective
+    InvalidTypeDirective,
+    //validators
+    EqualValidator,
+    MaxValidator,
+    MinValidator,
+    PasswordValidator,
+    PhoneValidator,
+    MinDateValidator
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,6 +49,7 @@ import { InvalidTypeDirective } from './directives/invalid-type.directive';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent, pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent, pathMatch: 'full' },
     ])
   ],
   providers: [],
