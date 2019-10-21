@@ -39,6 +39,7 @@ export const FORMAT_DATE_CONSTANT = {
 }
 
 export const API_ENDPOINT = {
+  registerAccount: '/user/register',
 }
 
 export const ADMIN_CONST = '1';

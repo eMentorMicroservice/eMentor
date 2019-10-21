@@ -9,15 +9,27 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container mb-4">
 
     <div class="row">
         <div class="col-xs-6 col-md-6 col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Create your account now</h5>
-                    <h6 class="card-subtitle mb-2 text-muted text-center">Register</h6>
-                    <form #form="ngForm" (submit)="register(form)" autocomplete="on">
+                    <h4 class="card-title text-center">CREATE YOUR ACCOUNT NOW</h4>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">Sign Up</h6>
+                    <div class="signup-line"></div>
+                    <form #form="ngForm" (submit)="register(form)" autocomplete="abcxyz">
+
+                        <div class="form-group m-b-20 row">
+                            <div class="col-12">
+                                <app-text-box type="text" title="Full Name" name="fullName" placeholder="Your name go here"
+                                    [(ngModel)]="model.fullName" required>
+                                    <div invalidmessage="fullName">
+                                        <p *invalidType="'required'">Please input your full name here!!!</p>
+                                    </div>
+                                </app-text-box>
+                            </div>
+                        </div>
 
                         <div class="form-group m-b-20 row">
                             <div class="col-12">
@@ -60,11 +72,15 @@
 
                         <div class="form-group row text-center m-t-10">
                             <div class="col-12">
-                                <button class="btn btn-block btn-custom waves-effect waves-light">Register</button>
+                                <button class="btn btn-block btn-custom waves-effect waves-light">SIGN UP</button>
                             </div>
                         </div>
 
                     </form>
+                    <div class="signup-line">
+                        <div>Already have an account?</div>
+                        <button type="button" class="btn signin-btn" routerLink="/login">Sign in</button>
+                    </div>
                 </div>
             </div>
         </div>

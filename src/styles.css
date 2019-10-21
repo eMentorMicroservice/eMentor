@@ -30,3 +30,19 @@ code {
 [invalidmessage]>p:not(:first-child) {
   display: none;
 }
+
+.signup-line{
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #dfe3e9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.signin-btn{
+    border: 2px solid #5cb85c;
+    color: #449d44;
+    border-radius: 3px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
