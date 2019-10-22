@@ -16,6 +16,6 @@ export class UserService extends BaseService {
         super(http, errorHandler, globalService);
     }
     registerAccount(model: RegisterModel) {
-        return this.postFormData(API_ENDPOINT.registerAccount, model, false);
+        return this.post(API_ENDPOINT.registerAccount, model, false);
     }
 }

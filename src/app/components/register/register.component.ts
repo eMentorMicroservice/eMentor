@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     }
     this.userService.registerAccount(this.model).subscribe(data => {
         // tslint:disable-next-line:no-unused-expression
-        this.router.navigate['/'];
+      this.router.navigate(['/login']);
       }
     );
   }

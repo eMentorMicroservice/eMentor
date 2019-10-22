@@ -33,7 +33,7 @@
 
                         <div class="form-group m-b-20 row">
                             <div class="col-12">
-                                <app-text-box type="email" title="User Name" name="email" email="true"
+                                <app-text-box type="email" title="Email Address" name="email" email="true"
                                     placeholder="Email address go here" [(ngModel)]="model.email" required>
                                     <div invalidmessage="email">
                                         <p *invalidType="'required'">Please input your email here!!!</p>
@@ -61,7 +61,7 @@
                                 <app-text-box type="password" title="Confirm password" name="confPassword" placeholder="*********"
                                     [(ngModel)]="model.confirmPassword" password="true" validateEqual="passCode" reverse="false" required>
                                     <div invalidmessage="confPassword">
-                                        <p *invalidType="'required'">Please input your password here!!!</p>
+                                        <p *invalidType="'required'">Please confirm your password here!!!</p>
                                         <p *invalidType="'password'">Password invalid!!!</p>
                                         <p *invalidType="'validateEqual'">Password does not match!!!</p>
                                     </div>
@@ -83,6 +83,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6">
+            <img src="assets/images/subg.jpg" alt="images" >
         </div>
     </div>
 </div>
