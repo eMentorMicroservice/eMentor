@@ -3,10 +3,18 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CaptureVideoService {
+export class CaptureService {
 
   constructor() { }
-  capture(): Promise<MediaStream>{
+
+  video(): Promise<MediaStream> {
+    return navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true
+    });
+  }
+
+  screen(): Promise<MediaStream>{
     let nav = <any>navigator;
     if (nav.getDisplayMedia) {
       return nav.getDisplayMedia({video: true});
