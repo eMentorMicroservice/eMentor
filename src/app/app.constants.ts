@@ -11,7 +11,8 @@ export const LOCAL_STORAGE_VARIABLE = {
   is_logged_in: 'is_logged_in',
   user_avt: 'user_avatar',
   user_name: 'user_name',
-  user_id: 'user_id'
+  user_id: 'user_id',
+  user_role: 'user_role'
 };
 
 export const SERVER_ERROR_MESSAGES: ServerErrorModel[] = [

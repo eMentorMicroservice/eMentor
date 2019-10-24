@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
           LocalService.setAccessToken(data.token);
           LocalService.setLogStatus(true);
           LocalService.setItem(LOCAL_STORAGE_VARIABLE.is_admin, data.role);
+          LocalService.setItem(LOCAL_STORAGE_VARIABLE.user_role, data.role);
           LocalService.setUserAvt(data.avatar);
           LocalService.setUserName(data.fullName);
           LocalService.setUserId(data.userId);
