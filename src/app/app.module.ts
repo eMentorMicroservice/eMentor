@@ -19,7 +19,6 @@ import { MinValidator } from './directives/min.directive';
 import { PasswordValidator } from './directives/password.derective';
 import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
-
 @NgModule({
   declarations: [
     //components
@@ -38,7 +37,6 @@ import { MinDateValidator } from './directives/mindate.derective';
     PasswordValidator,
     PhoneValidator,
     MinDateValidator
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

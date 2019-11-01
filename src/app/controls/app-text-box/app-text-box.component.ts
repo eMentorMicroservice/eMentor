@@ -62,16 +62,16 @@ export class AppTextBoxComponent implements ControlValueAccessor {
   }
 
   removeZero(e, value: any) {
-    if (this.type === "number") {
-      if (value == 0) {
+    if (this.type === 'number') {
+      if (value === 0) {
         this.value = '';
       }
     }
   }
 
   addZero(e, value: any) {
-    if (this.type === "number") {
-      if (value == '') {
+    if (this.type === 'number') {
+      if (value === '') {
         this.value = 0;
       }
     }

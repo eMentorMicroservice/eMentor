@@ -34,7 +34,8 @@
                         <div class="form-group m-b-20 row">
                             <div class="col-12">
                                 <app-text-box type="email" title="Email Address" name="email" email="true"
-                                    placeholder="Email address go here" [(ngModel)]="model.email" required>
+                                    placeholder="Email address go here" [(ngModel)]="model.email"
+                                    required>
                                     <div invalidmessage="email">
                                         <p *invalidType="'required'">Please input your email here!!!</p>
                                         <p *invalidType="'email'">Email invalid!!!</p>
@@ -46,7 +47,8 @@
                         <div class="form-group row m-b-20">
                             <div class="col-12">
                                 <app-text-box type="password" title="Password" name="passCode" placeholder="*********"
-                                    [(ngModel)]="model.password" password="true" validateEqual="confPassword" reverse="true" required>
+                                    [(ngModel)]="model.password" password="true" validateEqual="confPassword" 
+                                    reverse="true" required>
                                     <div invalidmessage="passCode">
                                         <p *invalidType="'required'">Please input your password here!!!</p>
                                         <p *invalidType="'password'">Password invalid!!!</p>
@@ -59,7 +61,8 @@
                         <div class="form-group row m-b-20">
                             <div class="col-12">
                                 <app-text-box type="password" title="Confirm password" name="confPassword" placeholder="*********"
-                                    [(ngModel)]="model.confirmPassword" password="true" validateEqual="passCode" reverse="false" required>
+                                    [(ngModel)]="model.confirmPassword" password="true" validateEqual="passCode"
+                                    class="required-icon" reverse="false" required>
                                     <div invalidmessage="confPassword">
                                         <p *invalidType="'required'">Please confirm your password here!!!</p>
                                         <p *invalidType="'password'">Password invalid!!!</p>

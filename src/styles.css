@@ -46,3 +46,9 @@ code {
     padding: 6px 10px;
     cursor: pointer;
 }
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
