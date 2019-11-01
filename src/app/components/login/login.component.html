@@ -33,7 +33,7 @@
                         <div class="form-group m-b-20 row">
                             <div class="col-12">
                                 <app-text-box type="email" title="Email address" name="email" email="true"
-                                    placeholder="Email address go here" [(ngModel)]="model.email" required>
+                                    placeholder="Email address go here" [(ngModel)]="model.email" required="true">
                                     <div invalidmessage="email">
                                         <p *invalidType="'required'">Please input your email here!!!</p>
                                         <p *invalidType="'email'">Email invalid!!!</p>
@@ -45,7 +45,7 @@
                         <div class="form-group row m-b-20">
                             <div class="col-12">
                                 <app-text-box type="password" title="Password" name="passCode" placeholder="*********"
-                                    [(ngModel)]="model.passCode" password="true" required>
+                                    [(ngModel)]="model.passCode" password="true" required="true">
                                     <div invalidmessage="passCode">
                                         <p *invalidType="'required'">Please input your password here!!!</p>
                                         <p *invalidType="'password'">Password invalid!!!</p>

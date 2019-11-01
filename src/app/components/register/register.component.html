@@ -23,7 +23,7 @@
                         <div class="form-group m-b-20 row">
                             <div class="col-12">
                                 <app-text-box type="text" title="Full Name" name="fullName" placeholder="Your name go here"
-                                    [(ngModel)]="model.fullName" required>
+                                    [(ngModel)]="model.fullName" required="true">
                                     <div invalidmessage="fullName">
                                         <p *invalidType="'required'">Please input your full name here!!!</p>
                                     </div>
@@ -35,7 +35,7 @@
                             <div class="col-12">
                                 <app-text-box type="email" title="Email Address" name="email" email="true"
                                     placeholder="Email address go here" [(ngModel)]="model.email"
-                                    required>
+                                    required="true">
                                     <div invalidmessage="email">
                                         <p *invalidType="'required'">Please input your email here!!!</p>
                                         <p *invalidType="'email'">Email invalid!!!</p>
@@ -48,7 +48,7 @@
                             <div class="col-12">
                                 <app-text-box type="password" title="Password" name="passCode" placeholder="*********"
                                     [(ngModel)]="model.password" password="true" validateEqual="confPassword" 
-                                    reverse="true" required>
+                                    reverse="true" required="true">
                                     <div invalidmessage="passCode">
                                         <p *invalidType="'required'">Please input your password here!!!</p>
                                         <p *invalidType="'password'">Password invalid!!!</p>
@@ -62,7 +62,7 @@
                             <div class="col-12">
                                 <app-text-box type="password" title="Confirm password" name="confPassword" placeholder="*********"
                                     [(ngModel)]="model.confirmPassword" password="true" validateEqual="passCode"
-                                    class="required-icon" reverse="false" required>
+                                    class="required-icon" reverse="false" required="true">
                                     <div invalidmessage="confPassword">
                                         <p *invalidType="'required'">Please confirm your password here!!!</p>
                                         <p *invalidType="'password'">Password invalid!!!</p>

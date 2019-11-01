@@ -1,7 +1,7 @@
-<div *ngIf="!required" class="required">
+<div *ngIf="required" class="required">
     <label class="label" *ngIf="title">{{title}}</label>
 </div>
-<div *ngIf="required">
+<div *ngIf="!required">
     <label class="label" *ngIf="title">{{title}}</label>
 </div>
 <input type="email" (focus)="removeZero($event, value)" (focusout)="addZero($event, value)" class="form-control"
