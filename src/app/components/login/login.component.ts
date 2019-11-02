@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
   model = new LoginModel();
-
+  backgroundImage = 'assets/images/coach-menntor.jpg';
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           LocalService.setUserAvt(data.avatar);
           LocalService.setUserName(data.fullName);
           LocalService.setUserId(data.userId);
-          this.router.navigate(['']);
+          this.router.navigate(['/home']);
         }
       },
         error => {

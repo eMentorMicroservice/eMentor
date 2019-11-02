@@ -1,80 +1,67 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="index.html" style="margin-left: -5%;">eMentor</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="register">Sign Up Now!!!<span class="ml-2 mdi mdi-18px mdi-account-multiple-plus"></span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <div class="container">
-
     <div class="row">
-        <div class="col-xs-6 col-md-6 col-lg-6">
-            <img src="assets/images/coach-menntor.jpg" alt="images">
-        </div>
-        <div class="col-xs-6 col-md-6 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title text-center">GRANT ACCESS TO EMENTOR SYSTEM</h4>
-                    <h6 class="card-subtitle mb-2 text-muted text-center">Sign In</h6>
-                    <div class="signup-line"></div>
-                    <form #form="ngForm" (submit)="login(form)" autocomplete="on">
+        <div class="account-pages">
 
-                        <div class="form-group m-b-20 row">
-                            <div class="col-12">
-                                <app-text-box type="email" title="Email address" name="email" email="true"
-                                    placeholder="Email address go here" [(ngModel)]="model.email" required="true">
-                                    <div invalidmessage="email">
-                                        <p *invalidType="'required'">Please input your email here!!!</p>
-                                        <p *invalidType="'email'">Email invalid!!!</p>
+            <!-- Begin page -->
+            <div class="accountbg" style="left:0;"
+                [ngStyle]="{'background-image': 'url(' + backgroundImage + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center'}">
+            </div>
+
+            <div class="wrapper-page account-page-full" style="top:0;">
+
+                <div class="card">
+                    <div class="card-block">
+                        <div class="account-box">
+                            <div class="card-box p-5">
+                                <h4 class="card-title text-center">GRANT ACCESS TO EMENTOR SYSTEM</h4>
+                                <div class="signup-line"></div>
+                                <form #form="ngForm" (submit)="login(form)" autocomplete="on">
+                                    <div class="form-group m-b-20 row">
+                                        <div class="col-12">
+                                            <app-text-box type="email" title="Email address" name="email" email="true"
+                                                placeholder="Email address go here" [(ngModel)]="model.email"
+                                                required="true">
+                                                <div invalidmessage="email">
+                                                    <p *invalidType="'required'">Please input your email here!!!</p>
+                                                    <p *invalidType="'email'">Email invalid!!!</p>
+                                                </div>
+                                            </app-text-box>
+                                        </div>
                                     </div>
-                                </app-text-box>
-                            </div>
-                        </div>
-
-                        <div class="form-group row m-b-20">
-                            <div class="col-12">
-                                <app-text-box type="password" title="Password" name="passCode" placeholder="*********"
-                                    [(ngModel)]="model.passCode" password="true" required="true">
-                                    <div invalidmessage="passCode">
-                                        <p *invalidType="'required'">Please input your password here!!!</p>
-                                        <p *invalidType="'password'">Password invalid!!!</p>
+                                    <div class="form-group row m-b-20">
+                                        <div class="col-12">
+                                            <app-text-box type="password" title="Password" name="passCode"
+                                                placeholder="*********" [(ngModel)]="model.passCode" password="true"
+                                                required="true">
+                                                <div invalidmessage="passCode">
+                                                    <p *invalidType="'required'">Please input your password here!!!</p>
+                                                    <p *invalidType="'password'">Password invalid!!!</p>
+                                                </div>
+                                            </app-text-box>
+                                            <a class="text-muted float-right"><small>Forgot your
+                                                    password???</small></a>
+                                        </div>
                                     </div>
-                                </app-text-box>
-                                <a routerLink="/forgot-password" class="text-muted float-right"><small>Forgot your password???</small></a>
+                                    <div class="form-group row text-center m-t-10">
+                                        <div class="col-12">
+                                            <button class="btn btn-block btn-custom waves-effect waves-light">SIGN
+                                                IN</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="signup-line">
+                                    <div>Don't have an account?</div>
+                                    <button type="button" class="btn signin-btn" routerLink="/register">Sign up</button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group row text-center m-t-10">
-                            <div class="col-12">
-                                <button class="btn btn-block btn-custom waves-effect waves-light">SIGN IN</button>
-                            </div>
-                        </div>
-
-                    </form>
-
-                    <div class="signup-line">
-                        <div>Don't have an account?</div>
-                        <button type="button" class="btn signin-btn" routerLink="/register">Sign up</button>
                     </div>
+                </div>
+                <div class="m-t-40 text-center">
+                    <p class="account-copyright">eCouching Website © 2019</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<footer class="py-5 bg-dark footer">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; eCouching Website 2019</p>
-    </div>
-</footer>

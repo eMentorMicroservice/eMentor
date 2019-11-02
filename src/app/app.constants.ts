@@ -1,5 +1,5 @@
-import { environment } from "../environments/environment";
-import { ServerErrorModel } from "./models/enums";
+import { environment } from '../environments/environment';
+import { ServerErrorModel } from './models/enums';
 
 export const API_HOST = environment.apiHost;
 export const API_HOST_PRIVATE = environment.apiHost;
@@ -17,8 +17,8 @@ export const LOCAL_STORAGE_VARIABLE = {
 
 export const SERVER_ERROR_MESSAGES: ServerErrorModel[] = [
   {
-    Key: "server_error",
-    Value: "Lỗi hệ thống"
+    Key: 'server_error',
+    Value: 'Lỗi hệ thống'
   }
 ];
 
@@ -37,10 +37,11 @@ export const FORMAT_DATE_CONSTANT = {
   short_date_format: 'dd/MM/yyyy',
   short_date_standard: 'yyyy-MM-dd'
 
-}
+};
 
 export const API_ENDPOINT = {
   registerAccount: '/user/register',
-}
+  getAllCourses: '/course/getcourses'
+};
 
 export const ADMIN_CONST = '1';

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   model = new RegisterModel();
+  backgroundImage = 'assets/images/subg.jpg';
   constructor(
     private userService: UserService,
     private router: Router
@@ -26,7 +27,7 @@ export class RegisterComponent implements OnInit {
     }
     this.userService.registerAccount(this.model).subscribe(data => {
         // tslint:disable-next-line:no-unused-expression
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
       }
     );
   }
