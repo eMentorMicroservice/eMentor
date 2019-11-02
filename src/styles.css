@@ -18,3 +18,37 @@ code {
   position: fixed;
   right: 0px;
 }
+
+[invalidmessage]>p {
+  color: #ff5252!important;
+  font-size: .8rem;
+  padding-top: .4rem;
+  margin-bottom: 0;
+  font-weight: 400!important;
+}
+
+[invalidmessage]>p:not(:first-child) {
+  display: none;
+}
+
+.signup-line{
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #dfe3e9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.signin-btn{
+    border: 2px solid #5cb85c;
+    color: #449d44;
+    border-radius: 3px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}

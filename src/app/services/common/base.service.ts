@@ -74,15 +74,15 @@ export class BaseService {
     return request;
   }
 
-  download(url: string, fileName: string, param: {} | any) {
-    this.getBlob(url, param)
-      .subscribe(blob => {
-        var FileSaver = require('file-saver');
-        FileSaver.saveAs(blob, fileName);
-      }, error => {
-        console.log("download errror")
-      })
-  }
+  // download(url: string, fileName: string, param: {} | any) {
+  //   this.getBlob(url, param)
+  //     .subscribe(blob => {
+  //       var FileSaver = require('file-saver');
+  //       FileSaver.saveAs(blob, fileName);
+  //     }, error => {
+  //       console.log("download errror")
+  //     })
+  // }
 
   getBlob(url: string, param: {} | any): Observable<Object | any> {
     const fullUrl = this.createAPIURL(url);

@@ -54,7 +54,7 @@ export class LocalService {
     LocalService.setItem(LOCAL_STORAGE_VARIABLE.is_admin, isAdmin);
   }
 
-
+  
   static setUserName(name: string) {
     LocalService.setItem(LOCAL_STORAGE_VARIABLE.user_name, name);
   }

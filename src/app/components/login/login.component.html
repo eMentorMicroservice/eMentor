@@ -1,1 +1,67 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row">
+        <div class="account-pages">
+
+            <!-- Begin page -->
+            <div class="accountbg" style="left:0;"
+                [ngStyle]="{'background-image': 'url(' + backgroundImage + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center'}">
+            </div>
+
+            <div class="wrapper-page account-page-full" style="top:0;">
+
+                <div class="card">
+                    <div class="card-block">
+                        <div class="account-box">
+                            <div class="card-box p-5">
+                                <h4 class="card-title text-center">GRANT ACCESS TO EMENTOR SYSTEM</h4>
+                                <div class="signup-line"></div>
+                                <form #form="ngForm" (submit)="login(form)" autocomplete="on">
+                                    <div class="form-group m-b-20 row">
+                                        <div class="col-12">
+                                            <app-text-box type="email" title="Email address" name="email" email="true"
+                                                placeholder="Email address go here" [(ngModel)]="model.email"
+                                                required="true">
+                                                <div invalidmessage="email">
+                                                    <p *invalidType="'required'">Please input your email here!!!</p>
+                                                    <p *invalidType="'email'">Email invalid!!!</p>
+                                                </div>
+                                            </app-text-box>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row m-b-20">
+                                        <div class="col-12">
+                                            <app-text-box type="password" title="Password" name="passCode"
+                                                placeholder="*********" [(ngModel)]="model.passCode" password="true"
+                                                required="true">
+                                                <div invalidmessage="passCode">
+                                                    <p *invalidType="'required'">Please input your password here!!!</p>
+                                                    <p *invalidType="'password'">Password invalid!!!</p>
+                                                </div>
+                                            </app-text-box>
+                                            <a class="text-muted float-right"><small>Forgot your
+                                                    password???</small></a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row text-center m-t-10">
+                                        <div class="col-12">
+                                            <button class="btn btn-block btn-custom waves-effect waves-light">SIGN
+                                                IN</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="signup-line">
+                                    <div>Don't have an account?</div>
+                                    <button type="button" class="btn signin-btn" routerLink="/register">Sign up</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="m-t-40 text-center">
+                    <p class="account-copyright">eCouching Website © 2019</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
