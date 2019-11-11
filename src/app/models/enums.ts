@@ -1,6 +1,7 @@
 enum UserRole {
-    Employee = 1,
-    Admin = 2
+    Student = 1,
+    Teacher,
+    Admin
 }
 enum Gender {
     Male = 1,

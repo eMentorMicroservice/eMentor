@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/services/course.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-dashboard-student',
+  templateUrl: './dashboard-student.component.html',
 })
-export class HomeComponent implements  OnInit {
+export class DashboardStudentComponent implements  OnInit {
   courses: any;
   constructor(
     private courseService: CourseService

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AppTextBoxComponent } from './controls/app-text-box/app-text-box.component';
 import { InvalidmessageDirective } from './directives/invalid-message.directive';
@@ -19,14 +18,18 @@ import { MinValidator } from './directives/min.directive';
 import { PasswordValidator } from './directives/password.derective';
 import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
+import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
+import { DashboardStudentComponent } from './components/dashboard-student/dashboard-studentcomponent';
+
 @NgModule({
   declarations: [
     //components
     AppComponent,
-    HomeComponent,
+    DashboardStudentComponent,
     RegisterComponent,
     LoginComponent,
     AppTextBoxComponent,
+    DashboardTeacherComponent,
     //directives
     InvalidmessageDirective,
     InvalidTypeDirective,
@@ -46,7 +49,8 @@ import { MinDateValidator } from './directives/mindate.derective';
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, pathMatch: 'full' },
+      { path: 'home-student', component: DashboardStudentComponent, pathMatch: 'full' },
+      { path: 'home-teacher', component: DashboardTeacherComponent, pathMatch: 'full' },
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },
     ])
   ],

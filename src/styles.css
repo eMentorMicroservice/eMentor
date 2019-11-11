@@ -52,3 +52,9 @@ code {
     content: ' *';
     display:inline;
 }
+
+@media (min-width: 1200px) {
+.container {
+    max-width: 1420px;
+}
+}

@@ -526,7 +526,7 @@ body.enlarged.bg-transparent {
   padding: 19px 30px 20px;
   position: absolute;
   color: #98a6ad;
-  width: 86%;
+  width: 97%;
 }
 
 /* Notification */
@@ -840,7 +840,6 @@ body {
   padding-bottom: 60px;
   overflow-x: hidden;
   font-size: 14px;
-  background-color: #f3f6f8;
   font-family: "Roboto", sans-serif;
 }
 
@@ -5190,6 +5189,7 @@ Tickets
 
 .project-box {
   position: relative;
+  min-height: 400px;
 }
 
 .project-box .badge {
