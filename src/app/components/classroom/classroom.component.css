@@ -1,4 +1,3 @@
-#targetVideo {
-    width: 640px;
-    height: 480px;
+video {
+  width: 480px;
 }

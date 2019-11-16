@@ -9,8 +9,12 @@ export class CaptureService {
 
   video(): Promise<MediaStream> {
     return navigator.mediaDevices.getUserMedia({
-      audio: true,
       video: true
+    });
+  }
+  audio(): Promise<MediaStream> {
+    return navigator.mediaDevices.getUserMedia({
+      audio: true
     });
   }
 
