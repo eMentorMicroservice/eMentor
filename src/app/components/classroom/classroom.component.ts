@@ -32,6 +32,7 @@ export class ClassroomComponent implements OnInit {
   testS: Number;
   localStream: MediaStream;
   remoteStream: MediaStream;
+  pcPeers = {};
 
 
   currentUser: number;
@@ -98,7 +99,7 @@ export class ClassroomComponent implements OnInit {
         
       ]
     });
-
+    this.pcPeers[userId] = pc;
     this.localStream.getTracks().forEach(track => {
       pc.addTrack(track);
     })
@@ -135,7 +136,11 @@ export class ClassroomComponent implements OnInit {
 
   exchange(data) {
     let pc: RTCPeerConnection;
-    pc = this.createPC(data.from, false);
+    if (!this.pcPeers[data.from]) {
+      pc = this.createPC(data.from, false);
+    } else {
+      pc = this.pcPeers[data.from];
+    }
     if (data.sdp) {
       let sdp = JSON.parse(data.sdp);
       pc
@@ -177,6 +182,7 @@ export class ClassroomComponent implements OnInit {
     this.capture.video().then(stream => {
       
       this.localStream = stream;
+      this.localVideo.srcObject = this.localStream;
     })
   }
 
