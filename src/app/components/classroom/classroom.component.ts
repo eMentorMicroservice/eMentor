@@ -52,6 +52,7 @@ export class ClassroomComponent implements OnInit {
     this.currentUser = Math.floor(Math.random() * 100);
     this.capture.video().then(stream => {
       this.localStream = stream;
+      this.localVideo.srcObject = stream;
       this.remoteStream = new MediaStream();
       this.startConnection();
     })
