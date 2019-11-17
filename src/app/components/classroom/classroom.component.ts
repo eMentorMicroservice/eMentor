@@ -33,6 +33,8 @@ export class ClassroomComponent implements OnInit {
   localStream: MediaStream;
   remoteStream: MediaStream;
 
+
+  currentUser: number;
   
 
 
@@ -46,60 +48,124 @@ export class ClassroomComponent implements OnInit {
   ngOnInit() {
     this.remoteVideo = <HTMLVideoElement>document.querySelector('#remote-video');
     this.localVideo = <HTMLVideoElement>document.querySelector('#local-video');
+    this.currentUser = Math.floor(Math.random() * 100);
+    this.capture.video().then(stream => {
+      this.localStream = stream;
+      this.remoteStream = new MediaStream();
+      this.startConnection();
+    })
   }
 
   startConnection() {
     this.channel = this.cableService.cable('ws://localhost:3000/cable').channel('ClassroomChannel', {room_id: 1});
-    this.subscription = this.channel.received().subscribe(message => {
-      this.testOP = message;
-      this.testS = message.test;
+    console.log('current user', this.currentUser)
+    this.channel.connected().subscribe(() => {
+      this.broadcastData({
+        type: JOIN_ROOM,
+        from: this.currentUser
+      })
     })
+    this.channel.received().subscribe(data => {
+      console.log("recevice", data);
+      if (data.from === this.currentUser) return;
+      switch (data.type) {
+        case JOIN_ROOM:
+          return this.createPC(data.from, true);
+        case EXCHANGE:
+          if (data.to !== this.currentUser) return;
+          return this.exchange(data);
+        default:
+          return;
+      }
+    })
+    
   }
 
-  broadcastData = data => {
-    this.http.post('http://localhost:3000/classroom', data, {
+  broadcastData = (data: Object) => {
+    let room = {room_id: 1};
+    let localData = Object.assign(room, data);
+    this.http.post('http://localhost:3000/classroom', JSON.stringify(localData), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
-    })
+    }).subscribe();
   }
 
   createPC = (userId, isOffer) => {
-    const ice = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
-    let pc = new RTCPeerConnection(ice);
+    let pc = new RTCPeerConnection({
+      iceServers: [
+        {urls :'stun:stun1.l.google.com:19302'},
+        
+      ]
+    });
+
     this.localStream.getTracks().forEach(track => {
       pc.addTrack(track);
     })
-    pc.createOffer().then(offer => {
-      pc.setLocalDescription(offer);
-      this.broadcastData({
-        sdp: JSON.stringify(pc.localDescription)
+
+    isOffer && 
+      pc.createOffer().then(offer => {
+        pc.setLocalDescription(offer).then(() => {
+          console.log('offer', offer)
+          this.broadcastData({
+            type: EXCHANGE,
+            from: this.currentUser,
+            to: userId,
+            sdp: JSON.stringify(pc.localDescription)
+          })
+        });
       })
-    })
     pc.onicecandidate = event => {
       event.candidate &&
         this.broadcastData({
           type: EXCHANGE,
+          from: this.currentUser,
           to: userId,
           candidate: JSON.stringify(event.candidate)
         });
     }
     pc.ontrack = event => {
-      this.remoteStream.addTrack(event.track)
+      this.remoteStream.addTrack(event.track);
+      this.remoteVideo.srcObject = this.remoteStream;
+      console.log('ontrack');
     }
 
     return pc;
   }
 
-  
+  exchange(data) {
+    let pc: RTCPeerConnection;
+    pc = this.createPC(data.from, false);
+    if (data.sdp) {
+      let sdp = JSON.parse(data.sdp);
+      pc
+        .setRemoteDescription(new RTCSessionDescription(sdp))
+        .then(() => {
+          if (sdp.type === "offer") {
+            console.log('remote', pc.remoteDescription)
+            pc.createAnswer().then(answer => {
+              pc.setLocalDescription(answer).then(() => {
+                this.broadcastData({
+                  type: EXCHANGE,
+                  from: this.currentUser,
+                  to: data.from,
+                  sdp: JSON.stringify(pc.localDescription)
+                });
+              });
+            });
+          }
+        })
+    }
+    if (data.candidate) {
+      pc
+        .addIceCandidate(new RTCIceCandidate(JSON.parse(data.candidate)))
+        .then(() => console.log("ice cadidate added"))
+    }
+  }
 
   sendMessage() {
-    var con = JSON.parse('{"room_id": "1", "message": "1"}');
-    this.http.post('http://localhost:3000/classroom', con, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    }).subscribe(res => {
+    var con = JSON.stringify({"room_id": "1", "message": "1"});
+    this.http.post('http://localhost:3000/classroom', con).subscribe(res => {
       this.channel.received().subscribe(message => {
         this.testOP = message;
         this.testS += message
@@ -109,14 +175,10 @@ export class ClassroomComponent implements OnInit {
 
   setup() {
     this.capture.video().then(stream => {
-      this.video = <HTMLVideoElement>document.querySelector('#local-video');
-      this.video.srcObject = stream;
-      this.tracks = stream.getTracks();
+      
       this.localStream = stream;
     })
   }
-
-  
 
   stopVideo() {
     this.tracks.forEach(track => {
