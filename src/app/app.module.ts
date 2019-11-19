@@ -22,6 +22,7 @@ import { PasswordValidator } from './directives/password.derective';
 import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
 import { ActionCableService } from 'angular2-actioncable';
+import {CanvasWhiteboardModule} from 'ng2-canvas-whiteboard';
 @NgModule({
   declarations: [
     //components
@@ -47,6 +48,7 @@ import { ActionCableService } from 'angular2-actioncable';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    CanvasWhiteboardModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: 'classroom', component: ClassroomComponent, pathMatch: 'full' },

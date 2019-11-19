@@ -5,8 +5,7 @@ import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
 import { LocalService } from 'src/app/services/common/local.service';
 import { Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { shareReplay, timeout, catchError } from 'rxjs/operators';
-import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
+import {CanvasWhiteboardComponent, CanvasWhiteboardOptions} from 'ng2-canvas-whiteboard';
 import { ErrorService } from 'src/app/services/common/error.service';
 import "webrtc-adapter";
 
@@ -16,6 +15,7 @@ const REMOVE_USER = "REMOVE_USER";
 @Component({
   selector: 'app-classroom',
   templateUrl: './classroom.component.html',
+  viewProviders: [CanvasWhiteboardComponent],
   styleUrls: ['./classroom.component.css']
 })
 export class ClassroomComponent implements OnInit {
@@ -36,8 +36,24 @@ export class ClassroomComponent implements OnInit {
 
 
   currentUser: number;
-  
-
+  canvasOptions: CanvasWhiteboardOptions = {
+    drawButtonEnabled: true,
+    drawButtonClass: "drawButtonClass",
+    drawButtonText: "Draw",
+    clearButtonEnabled: true,
+    clearButtonClass: "clearButtonClass",
+    clearButtonText: "Clear",
+    undoButtonText: "Undo",
+    undoButtonEnabled: true,
+    redoButtonText: "Redo",
+    redoButtonEnabled: true,
+    colorPickerEnabled: true,
+    saveDataButtonEnabled: true,
+    saveDataButtonText: "Save",
+    lineWidth: 5,
+    strokeColor: "rgb(0,0,0)",
+    shouldDownloadDrawing: true
+  };
 
   constructor(
     private capture: CaptureService,

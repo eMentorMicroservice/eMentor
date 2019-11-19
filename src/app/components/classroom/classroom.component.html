@@ -1,7 +1,13 @@
 <div class="row">
   <div class="col-8">
     <div id="white-board">
-      
+      <canvas-whiteboard #canvasWhiteboard
+                   [options]="canvasOptions"
+                   (onBatchUpdate)="onCanvasDraw($event)"
+                   (onClear)="onCanvasClear()"
+                   (onUndo)="onCanvasUndo($event)"
+                   (onRedo)="onCanvasRedo($event)">
+      </canvas-whiteboard>
     </div>
   </div>
   <div class="col-4">

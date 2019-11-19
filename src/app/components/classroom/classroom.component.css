@@ -13,3 +13,8 @@
 .video-container {
   position: relative;
 }
+
+canvas-whiteboard {
+  height: 500px;
+  display: block;
+}
