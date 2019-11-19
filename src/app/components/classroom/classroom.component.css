@@ -1,3 +1,15 @@
-video {
-  width: 480px;
+#remote-video {
+  width: 100%;
+  background: black;
+}
+
+#local-video {
+  width: 40%;
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+}
+
+.video-container {
+  position: relative;
 }
