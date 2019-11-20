@@ -1,0 +1,13 @@
+.logo-padlef{
+    padding-left:5%;
+  }
+  
+  .pointer{
+    cursor: pointer;
+  }
+  .slimscroll {
+    min-height: 0px;
+    max-height: 350px;
+    height: auto !important;
+  }
+  

@@ -20,6 +20,8 @@ import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
 import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-studentcomponent';
+import { ImagePipe } from './pipes/image.pipe';
+import { AppNumberPipe } from './pipes/number.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,9 @@ import { DashboardStudentComponent } from './components/dashboard-student/dashbo
     //directives
     InvalidmessageDirective,
     InvalidTypeDirective,
+    //pipes
+    ImagePipe,
+    AppNumberPipe,
     //validators
     EqualValidator,
     MaxValidator,
