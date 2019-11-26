@@ -9,6 +9,7 @@ import { shareReplay, timeout, catchError } from 'rxjs/operators';
 import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
 import { ErrorService } from 'src/app/services/common/error.service';
 import "webrtc-adapter";
+import { WhiteboardComponent } from './whiteboard/whiteboard.component';
 
 const JOIN_ROOM = "JOIN_ROOM";
 const EXCHANGE = "EXCHANGE";
@@ -47,17 +48,9 @@ export class ClassroomComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.remoteVideo = <HTMLVideoElement>document.querySelector('#remote-video');
-    this.localVideo = <HTMLVideoElement>document.querySelector('#local-video');
-    this.currentUser = Math.floor(Math.random() * 100);
-    this.capture.video().then(stream => {
-      this.localStream = stream;
-      this.localVideo.srcObject = stream;
-      this.remoteStream = new MediaStream();
-      this.startConnection();
-    })
-  }
 
+  }
+  
   startConnection() {
     this.channel = this.cableService.cable('ws://localhost:3000/cable').channel('ClassroomChannel', {room_id: 1});
     console.log('current user', this.currentUser)
@@ -180,10 +173,14 @@ export class ClassroomComponent implements OnInit {
   }
 
   setup() {
+    this.remoteVideo = <HTMLVideoElement>document.querySelector('#remote-video');
+    this.localVideo = <HTMLVideoElement>document.querySelector('#local-video');
+    this.currentUser = Math.floor(Math.random() * 100);
     this.capture.video().then(stream => {
-      
       this.localStream = stream;
-      this.localVideo.srcObject = this.localStream;
+      this.localVideo.srcObject = stream;
+      this.remoteStream = new MediaStream();
+      this.startConnection();
     })
   }
 

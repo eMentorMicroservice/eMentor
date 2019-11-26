@@ -22,6 +22,9 @@ import { PasswordValidator } from './directives/password.derective';
 import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
 import { ActionCableService } from 'angular2-actioncable';
+import { WhiteboardComponent } from './components/classroom/whiteboard/whiteboard.component';
+import { ShapeService } from './services/shape.service';
+import { TextNodeService } from './services/text-node.service';
 @NgModule({
   declarations: [
     //components
@@ -40,7 +43,8 @@ import { ActionCableService } from 'angular2-actioncable';
     MinValidator,
     PasswordValidator,
     PhoneValidator,
-    MinDateValidator
+    MinDateValidator,
+    WhiteboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,0 +1,15 @@
+<div class="row">
+  <button
+      (click)='setSelection("circle"); addShape("circle")'>Circle</button>
+  <button 
+      (click)='setSelection("rectangle"); addShape("rectangle")'>Rectangle</button>
+  <button 
+      (click)='setSelection("line"); addShape("line"); erase = false'>Line</button>
+  <button 
+      (click)='setSelection("text"); addShape("text")'>Text</button>
+  <button 
+      (click)='clearSelection(); setSelection("undo"); undo()'>Undo</button>
+  <button 
+      (click)='clearSelection(); setSelection("erase"); erase = true'>Erase</button>
+</div>
+<div id="container"></div>
