@@ -17,6 +17,7 @@ code {
 .navbar-expand-lg .navbar-nav {
   position: fixed;
   right: 0px;
+  padding-right: 10px;
 }
 
 [invalidmessage]>p {
