@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/services/course.service';
+import { CourseModel } from 'src/app/models/course.model';
 
 @Component({
   selector: 'app-dashboard-student',
   templateUrl: './dashboard-student.component.html',
 })
 export class DashboardStudentComponent implements  OnInit {
-  courses: any;
+  courses: CourseModel[] = [];
   constructor(
     private courseService: CourseService
   ) { }
@@ -16,7 +17,6 @@ export class DashboardStudentComponent implements  OnInit {
   getAllCourses() {
     this.courseService.getAllCourses().subscribe(data => {
       this.courses = data;
-      console.log(data);
     });
   }
 }

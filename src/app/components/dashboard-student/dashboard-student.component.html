@@ -69,8 +69,7 @@
 </header>
 <div class="mt-5">
     <div *ngIf="courses" class="row">
-        <div  *ngFor="let course of courses">
-                <div class="col-xl-4">
+                <div *ngFor="let course of courses" class="col-xl-4">
                         <div class="card-box project-box">
                             <div class="dropdown float-right">
                                 <a href="#" class="dropdown-toggle card-drop arrow-none" data-toggle="dropdown" aria-expanded="false">
@@ -81,15 +80,12 @@
                                     <a class="dropdown-item" (click)="regisCourse(course.Id)">Attend Course</a>
                                 </div>
                             </div>
-                            <p class="text-muted text-uppercase mb-0 font-13">{{course.user.name}}</p>
-                            <h4 class="mt-0 mb-3"><a href="" class="text-dark">New Admin Design</a></h4>
-                            <p class="text-muted font-13">Lorem Ipsum is simply dummy text of the printing and
-                                typesetting industry. When an unknown printer took a galley of type and
-                                scrambled it...<a href="#" class="font-600 text-muted">view more</a>
+                            <p class="text-muted text-uppercase mb-0 font-13">Instructor: {{course.owner.fullName}}</p>
+                            <h4 class="mt-0 mb-3"><a href="" class="text-dark">{{course.name}}</a></h4>
+                            <p class="text-muted font-13">Description: {{course.description}}
                             </p>
                         </div>
                     </div>
-        </div>
     </div>
 </div>
 <footer class="py-5 bg-dark footer">
