@@ -1,9 +1,10 @@
-import { environment } from '../environments/environment';
+import { environment, environmentRuby } from '../environments/environment';
 import { ServerErrorModel } from './models/enums';
 
 export const API_HOST = environment.apiHost;
 export const API_HOST_PRIVATE = environment.apiHost;
 export const API_URL_PREFIX = environment.apiPrefix;
+export const RUBYAPIHOST = environmentRuby.apiHost;
 
 export const LOCAL_STORAGE_VARIABLE = {
   is_admin: 'is_admin',
