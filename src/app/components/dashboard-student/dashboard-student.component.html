@@ -10,18 +10,18 @@
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
-                        <img src="/assets/images/no-image.jpg" alt="image" class="rounded-circle"> <span class="ml-1">Trực<i
+                        <img src="/assets/images/no-image.jpg" alt="image" class="rounded-circle"> <span class="ml-1">Hello!!! {{userName}}<i
                                 class="mdi mdi-chevron-down"></i> </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
                         <div class="dropdown-item noti-title">
                             <h6 class="text-overflow m-0">Hello !</h6>
                         </div>
-                        <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink='/user-profile'>
-                            <i class="fi-head"></i> <span>Profile</span>
+                        <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink='/view-profile'>
+                            <i class="fi-head"></i> <span>View Profile</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink="/change-password">
-                            <i class="fi-lock"></i> <span>Change password</span>
+                            <i class="fi-lock"></i> <span>Change Password</span>
                         </a>
                         <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="logOut()">
                             <i class="fi-power"></i> <span>Logout</span>
@@ -90,6 +90,6 @@
 </div>
 <footer class="py-5 bg-dark footer">
   <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; eCouching Website 2019</p>
+    <p class="m-0 text-center text-white">eMentor Website © 2019</p>
   </div>
 </footer>

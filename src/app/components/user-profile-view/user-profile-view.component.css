@@ -1,0 +1,21 @@
+.btn-edit-profile {
+    position: absolute;
+    right: 0px;
+    border-radius: 1rem;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: darkred;
+}
+
+.mdi {  
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.group-profile-item{
+    font-size: 1.2rem;
+    margin-top: 5px;
+}

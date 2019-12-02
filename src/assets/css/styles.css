@@ -53,6 +53,7 @@ File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+
 /* =============
   Menu
 ============= */
@@ -842,6 +843,7 @@ body {
   overflow-x: hidden;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
+  background-color: #d1e0e0;
 }
 
 html {

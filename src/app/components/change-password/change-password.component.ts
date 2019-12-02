@@ -32,7 +32,6 @@ export class ChangePasswordComponent implements OnInit {
         this.notifyService.success('Your password has been changed successfully !!!');
         setTimeout(() => {
           const userRole = LocalService.getItem(LOCAL_STORAGE_VARIABLE.user_role);
-          console.log(userRole);
           if (userRole === UserRole.Student.toString()) {
           this.router.navigate(['/home-student']);
           } else {

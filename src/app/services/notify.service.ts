@@ -47,19 +47,19 @@ export class NotificationService {
 
 
   error(content: string) {
-    this.toastr.error(content, 'Lỗi!!', this.alertSetup);
+    this.toastr.error(content, 'Error!!', this.alertSetup);
   }
 
   success(content: string) {
-    this.toastr.success(content, 'Thành Công!!', this.alertSetup);
+    this.toastr.success(content, 'Success!!', this.alertSetup);
   }
 
   info(content: string) {
-    this.toastr.info(content, 'Thông Tin', this.alertSetup);
+    this.toastr.info(content, 'Info!!', this.alertSetup);
   }
 
   warning(content: string) {
-    this.toastr.warning(content, 'Cảnh Báo', this.alertSetup);
+    this.toastr.warning(content, 'Warning', this.alertSetup);
   }
 
   serverError(data: any) {

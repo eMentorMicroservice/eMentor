@@ -52,22 +52,20 @@
           <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="false" aria-expanded="false">
-              <img src="/assets/images/no-image.jpg" alt="user" class="rounded-circle"> <span class="ml-1"> truc <i
+              <img src="/assets/images/no-image.jpg" alt="user" class="rounded-circle"> <span class="ml-1"> Hello!!! {{userName}} <i
                   class="mdi mdi-chevron-down"></i> </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
-              <div class="dropdown-item noti-title">
-                <h6 class="text-overflow m-0">Hello !</h6>
-              </div>
-              <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink='/user-profile'>
-                <i class="fi-head"></i> <span>Profile setting</span>
-              </a>
-              <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink="/change-password">
-                <i class="fi-lock"></i> <span>Change password</span>
-              </a>
-              <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="logOut()">
-                <i class="fi-power"></i> <span>Log out</span>
-              </a>
+
+                <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink='/view-profile'>
+                    <i class="fi-head"></i> <span>View Profile</span>
+                </a>
+                <a href="javascript:void(0);" class="dropdown-item notify-item" routerLink="/change-password">
+                    <i class="fi-lock"></i> <span>Change Password</span>
+                </a>
+                <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="logOut()">
+                    <i class="fi-power"></i> <span>Logout</span>
+                </a>
             </div>
           </li>
         </ul>
@@ -118,7 +116,7 @@
       </div>
     </div>
     <footer class="footer">
-      2019 © Ementor
+      eMentor Website © 2019
     </footer>
   </div>
 </div>

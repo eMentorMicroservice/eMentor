@@ -23,22 +23,22 @@ import { DashboardStudentComponent } from './components/dashboard-student/dashbo
 import { ImagePipe } from './pipes/image.pipe';
 import { AppNumberPipe } from './pipes/number.pipe';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
+import { UserProfileViewComponent } from './components/user-profile-view/user-profile-view.component';
 
 @NgModule({
   declarations: [
-    //components
-    AppComponent,
-    DashboardStudentComponent,
-    RegisterComponent,
-    LoginComponent,
-    AppTextBoxComponent,
-    DashboardTeacherComponent,
+    // tslint:disable-next-line: comment-format
     //directives
     InvalidmessageDirective,
     InvalidTypeDirective,
+
+    // tslint:disable-next-line: comment-format
     //pipes
     ImagePipe,
     AppNumberPipe,
+
+    // tslint:disable-next-line: comment-format
     //validators
     EqualValidator,
     MaxValidator,
@@ -46,7 +46,18 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     PasswordValidator,
     PhoneValidator,
     MinDateValidator,
-    ChangePasswordComponent
+
+    // tslint:disable-next-line: comment-format
+    //components
+    AppComponent,
+    DashboardStudentComponent,
+    RegisterComponent,
+    LoginComponent,
+    AppTextBoxComponent,
+    DashboardTeacherComponent,
+    ChangePasswordComponent,
+    UserProfileUpdateComponent,
+    UserProfileViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -60,6 +71,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
       { path: 'home-student', component: DashboardStudentComponent, pathMatch: 'full' },
       { path: 'home-teacher', component: DashboardTeacherComponent, pathMatch: 'full' },
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },
+      { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
+      { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],
