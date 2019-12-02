@@ -16,10 +16,7 @@ export const LOCAL_STORAGE_VARIABLE = {
 };
 
 export const SERVER_ERROR_MESSAGES: ServerErrorModel[] = [
-  {
-    Key: 'server_error',
-    Value: 'Lỗi hệ thống'
-  }
+
 ];
 
 export const LOGIN_STATUS = {
@@ -40,8 +37,9 @@ export const FORMAT_DATE_CONSTANT = {
 };
 
 export const API_ENDPOINT = {
-  registerAccount: '/user/register',
-  getAllCourses: '/course/getcourses'
+  registerAccount: '/User/Register',
+  getAllCourses: '/course/getcourses',
+  changePassword: '/User/ChangePasscode'
 };
 
 export const ADMIN_CONST = '1';

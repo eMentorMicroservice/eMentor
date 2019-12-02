@@ -22,6 +22,7 @@ import { DashboardTeacherComponent } from './components/dashboard-teacher/dashbo
 import { DashboardStudentComponent } from './components/dashboard-student/dashboard-studentcomponent';
 import { ImagePipe } from './pipes/image.pipe';
 import { AppNumberPipe } from './pipes/number.pipe';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AppNumberPipe } from './pipes/number.pipe';
     MinValidator,
     PasswordValidator,
     PhoneValidator,
-    MinDateValidator
+    MinDateValidator,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -54,6 +56,7 @@ import { AppNumberPipe } from './pipes/number.pipe';
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: LoginComponent, pathMatch: 'full' },
+      { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full' },
       { path: 'home-student', component: DashboardStudentComponent, pathMatch: 'full' },
       { path: 'home-teacher', component: DashboardTeacherComponent, pathMatch: 'full' },
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },
