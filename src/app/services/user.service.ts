@@ -5,6 +5,7 @@ import { GlobalService } from './global.service';
 import { HttpClient } from '@angular/common/http';
 import { RegisterModel } from '../models/register.model';
 import { API_ENDPOINT } from '../app.constants';
+import { ChangePasscode } from '../models/changepasscode.model';
 
 @Injectable({
     providedIn: 'root'
@@ -17,5 +18,8 @@ export class UserService extends BaseService {
     }
     registerAccount(model: RegisterModel) {
         return this.post(API_ENDPOINT.registerAccount, model, false);
+    }
+    changePasscode(data: ChangePasscode) {
+        return this.post(API_ENDPOINT.changePassword, data);
     }
 }
