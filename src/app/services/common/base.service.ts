@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 import { shareReplay, timeout, catchError } from 'rxjs/operators';
 import { LocalService } from './local.service';
 import { Observable } from 'rxjs';
-import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
+import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT, RUBYAPIHOST } from '../../app.constants';
 declare var require: any;
 
 @Injectable()
@@ -21,14 +21,18 @@ export class BaseService {
   static formdataHeader = {
     'enctype': 'multipart/form-data'
   };
+
   private caches = {};
   protected apiHost = API_HOST;
   protected apiUrlPrefix = API_URL_PREFIX;
-
+  protected apiHostRuby = RUBYAPIHOST;
   protected headers: HttpHeaders;
 
   public createAPIURL(path: string): string {
     return this.apiHost + this.apiUrlPrefix + path;
+  }
+  public createAPIURLRUBY(path: string): string {
+    return this.apiHostRuby + path;
   }
 
   constructor(protected http: HttpClient,
@@ -37,7 +41,7 @@ export class BaseService {
     this.headers = new HttpHeaders(BaseService.defaultHeader);
   }
 
-  public get(url: string, params?: HttpParams | any, loader = true, cache = false): Observable<Object | any> {
+  public get(url: string, params?: HttpParams | any, loader = true, cache = false, isRuby = false): Observable<Object | any> {
     this.loadToken();
 
     if (cache && this.caches[url]) {
@@ -47,7 +51,12 @@ export class BaseService {
       return this.caches[url];
     }
 
-    const fullUrl = this.createAPIURL(url);
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
     let request: Observable<Object>;
     if (loader) {
       this.globalService.loading();
@@ -84,8 +93,13 @@ export class BaseService {
   //     })
   // }
 
-  getBlob(url: string, param: {} | any): Observable<Object | any> {
-    const fullUrl = this.createAPIURL(url);
+  getBlob(url: string, param: {} | any, isRuby = false): Observable<Object | any> {
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
     this.globalService.loading();
     let option: {};
 
@@ -108,9 +122,14 @@ export class BaseService {
 
 
 
-  public post(url: string, params?: HttpParams | any, loader = true): Observable<Object | any> {
+  public post(url: string, params?: HttpParams | any, loader = true, isRuby = false): Observable<Object | any> {
     this.loadToken();
-    const fullUrl = this.createAPIURL(url);
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
     if (loader) {
       this.globalService.loading();
       return this.http.post(fullUrl, params, { headers: this.headers })
@@ -128,10 +147,15 @@ export class BaseService {
     }
   }
 
-  public put(url: string, params?: HttpParams | any, loader = true): Observable<Object | any> {
+  public put(url: string, params?: HttpParams | any, loader = true, isRuby = false): Observable<Object | any> {
     this.loadToken();
 
-    const fullUrl = this.createAPIURL(url);
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
     if (loader) {
       this.globalService.loading();
       return this.http.put(fullUrl, params, { headers: this.headers })
@@ -149,10 +173,15 @@ export class BaseService {
     }
   }
 
-  public remove(url: string, params?: HttpParams | any, loader = true): Observable<Object | any> {
+  public remove(url: string, params?: HttpParams | any, loader = true, isRuby = false): Observable<Object | any> {
     this.loadToken();
 
-    const fullUrl = this.createAPIURL(url);
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
     if (loader) {
       this.globalService.loading();
       return this.http.request('delete', fullUrl, { headers: this.headers, body: params })
@@ -170,12 +199,17 @@ export class BaseService {
     }
   }
 
-  protected putFormData(url: string, params?: HttpParams | any, loader = true): Observable<Object | any> {
+  protected putFormData(url: string, params?: HttpParams | any, loader = true, isRuby = false): Observable<Object | any> {
 
     this.loadToken(true);
 
     const body = this.parseFormdata(params);
-    const fullUrl = this.createAPIURL(url);
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
     if (!loader) {
       this.globalService.loading();
       return this.http.put(fullUrl, body, { headers: this.headers })
@@ -193,10 +227,15 @@ export class BaseService {
     }
   }
 
-  public postFormData(url: string, params?: HttpParams | any, loader = true): Observable<Object | any> {
+  public postFormData(url: string, params?: HttpParams | any, loader = true, isRuby=false): Observable<Object | any> {
     this.loadToken(true);
     const body = this.parseFormdata(params);
-    const fullUrl = this.createAPIURL(url);
+    let fullUrl = '';
+    if (!isRuby) {
+      fullUrl = this.createAPIURL(url);
+    } else {
+      fullUrl = this.createAPIURLRUBY(url);
+    }
 
     if (loader) {
       this.globalService.loading();

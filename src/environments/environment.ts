@@ -8,6 +8,11 @@ export const environment = {
   apiPrefix: 'api'
 };
 
+export const environmentRuby = {
+  production: false,
+  apiHost: 'http://localhost:1234/'
+  //apiPrefix: 'api'
+};
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
