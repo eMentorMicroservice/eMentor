@@ -1,9 +1,10 @@
-import { environment } from '../environments/environment';
+import { environment, environmentRuby } from '../environments/environment';
 import { ServerErrorModel } from './models/enums';
 
 export const API_HOST = environment.apiHost;
 export const API_HOST_PRIVATE = environment.apiHost;
 export const API_URL_PREFIX = environment.apiPrefix;
+export const RUBYAPIHOST = environmentRuby.apiHost;
 
 export const LOCAL_STORAGE_VARIABLE = {
   is_admin: 'is_admin',
@@ -16,10 +17,7 @@ export const LOCAL_STORAGE_VARIABLE = {
 };
 
 export const SERVER_ERROR_MESSAGES: ServerErrorModel[] = [
-  {
-    Key: 'server_error',
-    Value: 'Lỗi hệ thống'
-  }
+
 ];
 
 export const LOGIN_STATUS = {
@@ -40,8 +38,9 @@ export const FORMAT_DATE_CONSTANT = {
 };
 
 export const API_ENDPOINT = {
-  registerAccount: '/user/register',
-  getAllCourses: '/course/getcourses'
+  registerAccount: '/User/Register',
+  getAllCourses: '/course/getcourses',
+  changePassword: '/User/ChangePasscode'
 };
 
 export const ADMIN_CONST = '1';

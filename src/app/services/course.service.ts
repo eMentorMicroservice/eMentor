@@ -16,7 +16,7 @@ export class CourseService extends BaseService {
         super(http, errorHandler, globalService);
     }
     registerAccount(model: RegisterModel) {
-        return this.post(API_ENDPOINT.registerAccount, model, false);
+        return this.post(API_ENDPOINT.registerAccount, model, false, true);
     }
     getAllCourses() {
         return this.get(API_ENDPOINT.getAllCourses, null, false);

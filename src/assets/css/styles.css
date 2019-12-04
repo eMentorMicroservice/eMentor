@@ -53,6 +53,7 @@ File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap');
+
 /* =============
   Menu
 ============= */
@@ -169,6 +170,7 @@ File: Main Css File
   padding-bottom: 30px;
   position: fixed;
   top: 0;
+  left: 0;
 }
 
 .side-menu .topbar-left {
@@ -526,7 +528,7 @@ body.enlarged.bg-transparent {
   padding: 19px 30px 20px;
   position: absolute;
   color: #98a6ad;
-  width: 86%;
+  width: 97%;
 }
 
 /* Notification */
@@ -840,8 +842,8 @@ body {
   padding-bottom: 60px;
   overflow-x: hidden;
   font-size: 14px;
-  background-color: #f3f6f8;
   font-family: "Roboto", sans-serif;
+  background-color: #d1e0e0;
 }
 
 html {
@@ -5190,6 +5192,7 @@ Tickets
 
 .project-box {
   position: relative;
+  min-height: 400px;
 }
 
 .project-box .badge {

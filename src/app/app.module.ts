@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ClassroomComponent } from './components/classroom/classroom.component';
 
@@ -22,25 +21,47 @@ import { PasswordValidator } from './directives/password.derective';
 import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
 import { ActionCableService } from 'angular2-actioncable';
+import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
+import { DashboardStudentComponent } from './components/dashboard-student/dashboard-studentcomponent';
+import { ImagePipe } from './pipes/image.pipe';
+import { AppNumberPipe } from './pipes/number.pipe';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
+import { UserProfileViewComponent } from './components/user-profile-view/user-profile-view.component';
+
 @NgModule({
   declarations: [
-    //components
-    AppComponent,
-    HomeComponent,
-    RegisterComponent,
-    LoginComponent,
-    ClassroomComponent,
-    AppTextBoxComponent,
+    // tslint:disable-next-line: comment-format
     //directives
     InvalidmessageDirective,
     InvalidTypeDirective,
+
+    // tslint:disable-next-line: comment-format
+    //pipes
+    ImagePipe,
+    AppNumberPipe,
+
+    // tslint:disable-next-line: comment-format
     //validators
     EqualValidator,
     MaxValidator,
     MinValidator,
     PasswordValidator,
     PhoneValidator,
-    MinDateValidator
+    MinDateValidator,
+
+    // tslint:disable-next-line: comment-format
+    //components
+    AppComponent,
+    ClassroomComponent,
+    DashboardStudentComponent,
+    RegisterComponent,
+    LoginComponent,
+    AppTextBoxComponent,
+    DashboardTeacherComponent,
+    ChangePasswordComponent,
+    UserProfileUpdateComponent,
+    UserProfileViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -51,8 +72,12 @@ import { ActionCableService } from 'angular2-actioncable';
     RouterModule.forRoot([
       { path: 'classroom', component: ClassroomComponent, pathMatch: 'full' },
       { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, pathMatch: 'full' },
+      { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full' },
+      { path: 'home-student', component: DashboardStudentComponent, pathMatch: 'full' },
+      { path: 'home-teacher', component: DashboardTeacherComponent, pathMatch: 'full' },
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },
+      { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
+      { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'}
     ])
   ],
   providers: [ActionCableService],

@@ -13,29 +13,33 @@ export class NotificationService {
   notifySetup: any;
 
   constructor(private toastr: ToastrService) {
-    this.alertSetup = { timeOut: 3000, progressBar: true, progressAnimation: "decreasing", };
-    this.notifySetup = { timeOut: 15000, tapToDismiss: true, progressBar: false, progressAnimation: "decreasing", positionClass: "toast-bottom-right", closeButton: true, extendedTimeOut: 3000 };
+    this.alertSetup = { timeOut: 3000, progressBar: true, progressAnimation: 'decreasing', };
+    // tslint:disable-next-line: max-line-length
+    this.notifySetup = { timeOut: 15000, tapToDismiss: true, progressBar: false, progressAnimation: 'decreasing', positionClass: 'toast-bottom-right', closeButton: true, extendedTimeOut: 3000 };
   }
 
   pushServerToast(content: string, title: string = '', toastContentClicked?: () => void, cancelToast?: () => void) {
-    if (title == '')
-      title = "Thông Báo Mới.";
+    if (title === '') {
+      title = 'New Notify.';
+    }
 
-    var toast = this.toastr.info(content, title, this.notifySetup);
+    const toast = this.toastr.info(content, title, this.notifySetup);
     let isClicked = false;
     toast.onTap
       .subscribe(() => {
         isClicked = true;
-        if (toastContentClicked != null)
+        if (toastContentClicked != null) {
           toastContentClicked.call(this);
+        }
       });
 
     toast
       .onHidden
       .subscribe(() => {
         if (!isClicked) {
-          if (cancelToast != null)
+          if (cancelToast != null) {
             cancelToast.call(this);
+          }
         }
       });
 
@@ -43,19 +47,19 @@ export class NotificationService {
 
 
   error(content: string) {
-    this.toastr.error(content, "Lỗi!!", this.alertSetup);
+    this.toastr.error(content, 'Error!!', this.alertSetup);
   }
 
   success(content: string) {
-    this.toastr.success(content, "Thành Công!!", this.alertSetup);
+    this.toastr.success(content, 'Success!!', this.alertSetup);
   }
 
   info(content: string) {
-    this.toastr.info(content, "Thông Tin", this.alertSetup);
+    this.toastr.info(content, 'Info!!', this.alertSetup);
   }
 
   warning(content: string) {
-    this.toastr.warning(content, "Cảnh Báo", this.alertSetup);
+    this.toastr.warning(content, 'Warning', this.alertSetup);
   }
 
   serverError(data: any) {
@@ -66,11 +70,12 @@ export class NotificationService {
 
     let content;
 
-    let errorModel = SERVER_ERROR_MESSAGES.filter((p: { Key: string; }) => p.Key == message)[0];
-    if (errorModel)
+    const errorModel = SERVER_ERROR_MESSAGES.filter((p: { Key: string; }) => p.Key === message)[0];
+    if (errorModel) {
       content = errorModel.Value;
-    else
+    } else {
       content = message;
+    }
 
     switch (type) {
       case NotifyType.Error:
