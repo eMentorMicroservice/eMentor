@@ -36,7 +36,7 @@ export class ClassroomComponent implements OnInit {
 
 
   currentUser: number;
-  
+  room: number;
 
 
   constructor(
@@ -47,9 +47,10 @@ export class ClassroomComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentUser = LocalService.getUserId()
+    this.getRoom(this.currentUser)
     this.remoteVideo = <HTMLVideoElement>document.querySelector('#remote-video');
     this.localVideo = <HTMLVideoElement>document.querySelector('#local-video');
-    this.currentUser = Math.floor(Math.random() * 100);
     this.capture.video().then(stream => {
       this.localStream = stream;
       this.localVideo.srcObject = stream;
@@ -58,8 +59,20 @@ export class ClassroomComponent implements OnInit {
     })
   }
 
+  getRoom(id: number){
+    this.http.get<any>('http://localhost:3000/rooms/find', 
+      {
+        params: {
+          user_id: id.toString()
+        }
+      }
+    ).subscribe(data => {
+      this.room = Number(data.room_id)
+    })
+  }
+
   startConnection() {
-    this.channel = this.cableService.cable('ws://localhost:3000/cable').channel('ClassroomChannel', {room_id: 1});
+    this.channel = this.cableService.cable('ws://localhost:3000/cable').channel('ClassroomChannel', {room_id: this.room});
     console.log('current user', this.currentUser)
     this.channel.connected().subscribe(() => {
       this.broadcastData({
@@ -67,9 +80,18 @@ export class ClassroomComponent implements OnInit {
         from: this.currentUser
       })
     })
-    this.channel.received().subscribe(data => {
-      console.log("recevice", data);
-      if (data.from === this.currentUser) return;
+    this.channel.received().subscribe(resp => {
+      let data = resp.data
+      if (resp.type == 'INFO') {
+        this.handelStreamInfo(data)
+      }
+      else {
+        this.handelMessage(data)
+      }
+    })
+  }
+  handelStreamInfo = (data: any) => {
+    if (data.from != this.currentUser) {
       switch (data.type) {
         case JOIN_ROOM:
           return this.createPC(data.from, true);
@@ -79,14 +101,16 @@ export class ClassroomComponent implements OnInit {
         default:
           return;
       }
-    })
-    
+    }
+  }
+
+  handelMessage = (data: any) => {
+    console.log(data)
   }
 
   broadcastData = (data: Object) => {
-    let room = {room_id: 1};
-    let localData = Object.assign(room, data);
-    this.http.post('http://localhost:3000/classroom', JSON.stringify(localData), {
+    let localData = {room_id: this.room, type: 'INFO', info: data}
+    this.http.post('http://localhost:3000/rooms/send_info', JSON.stringify(localData), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -167,16 +191,6 @@ export class ClassroomComponent implements OnInit {
         .addIceCandidate(new RTCIceCandidate(JSON.parse(data.candidate)))
         .then(() => console.log("ice cadidate added"))
     }
-  }
-
-  sendMessage() {
-    var con = JSON.stringify({"room_id": "1", "message": "1"});
-    this.http.post('http://localhost:3000/classroom', con).subscribe(res => {
-      this.channel.received().subscribe(message => {
-        this.testOP = message;
-        this.testS += message
-      })
-    })
   }
 
   setup() {
