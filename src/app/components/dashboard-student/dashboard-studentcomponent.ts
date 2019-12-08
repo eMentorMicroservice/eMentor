@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/services/course.service';
 import { CourseModel } from 'src/app/models/course.model';
 import { LocalService } from 'src/app/services/common/local.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-dashboard-student',
@@ -9,13 +11,14 @@ import { LocalService } from 'src/app/services/common/local.service';
 })
 export class DashboardStudentComponent implements  OnInit {
   courses: CourseModel[] = [];
-  userName: string;
   constructor(
-    private courseService: CourseService
+    private courseService: CourseService,
+    private spinner: NgxSpinnerService
   ) { }
   ngOnInit() {
+    this.spinner.show();
     this.getAllCourses();
-    this.userName = LocalService.getUserName();
+    this.spinner.hide();
   }
   getAllCourses() {
     this.courseService.getAllCourses().subscribe(data => {

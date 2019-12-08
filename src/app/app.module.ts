@@ -25,6 +25,10 @@ import { AppNumberPipe } from './pipes/number.pipe';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
 import { UserProfileViewComponent } from './components/user-profile-view/user-profile-view.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AppRoutingModule } from './app.routing.module';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
@@ -57,23 +61,18 @@ import { UserProfileViewComponent } from './components/user-profile-view/user-pr
     DashboardTeacherComponent,
     ChangePasswordComponent,
     UserProfileUpdateComponent,
-    UserProfileViewComponent
+    UserProfileViewComponent,
+    NotFoundComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    NgxSpinnerModule,
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot([
-      { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full' },
-      { path: 'home-student', component: DashboardStudentComponent, pathMatch: 'full' },
-      { path: 'home-teacher', component: DashboardTeacherComponent, pathMatch: 'full' },
-      { path: 'register', component: RegisterComponent, pathMatch: 'full' },
-      { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
-      { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'}
-    ])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

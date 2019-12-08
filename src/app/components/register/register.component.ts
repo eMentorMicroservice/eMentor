@@ -3,6 +3,7 @@ import { RegisterModel } from 'src/app/models/register.model';
 import { UserService } from 'src/app/services/user.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   backgroundImage = 'assets/images/subg.jpg';
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,9 @@ export class RegisterComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.spinner.show();
     this.userService.registerAccount(this.model).subscribe(data => {
+      this.spinner.hide();
         // tslint:disable-next-line:no-unused-expression
       this.router.navigate(['/']);
       }

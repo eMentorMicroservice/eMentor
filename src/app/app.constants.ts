@@ -39,8 +39,9 @@ export const FORMAT_DATE_CONSTANT = {
 
 export const API_ENDPOINT = {
   registerAccount: '/User/Register',
-  getAllCourses: '/course/getcourses',
-  changePassword: '/User/ChangePasscode'
+  getAllCourses: '/Course/GetCourses',
+  changePassword: '/User/ChangePasscode',
+  getUserProfile: '/User/GetUserProfile'
 };
 
 export const ADMIN_CONST = '1';

@@ -7,4 +7,7 @@ export class UserModel {
     rating: number;
     role: number;
     userName: string;
+    address: string;
+    dateOfBirth: Date;
+    linkedSite: string;
 }

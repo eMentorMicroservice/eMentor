@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { LocalService } from 'src/app/services/common/local.service';
 import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
 import { UserRole } from 'src/app/models/enums';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-change-password',
@@ -19,7 +20,8 @@ export class ChangePasswordComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private notifyService: NotificationService) { }
+    private notifyService: NotificationService,
+    private spinner: NgxSpinnerService) { }
   ngOnInit() {
   }
 
@@ -27,20 +29,23 @@ export class ChangePasswordComponent implements OnInit {
     if (myForm.invalid) {
       return;
     }
+    this.spinner.show();
     this.userService.changePasscode(this.model)
       .subscribe(data => {
         this.notifyService.success('Your password has been changed successfully !!!');
         setTimeout(() => {
           const userRole = LocalService.getItem(LOCAL_STORAGE_VARIABLE.user_role);
           if (userRole === UserRole.Student.toString()) {
-          this.router.navigate(['/home-student']);
+          this.router.navigate(['/']);
           } else {
             this.router.navigate(['/home-teacher']);
           }
+          this.spinner.hide();
         }, 1500);
       },
         error => {
           this.model = new ChangePasscode();
+          this.spinner.hide();
         });
   }
 }

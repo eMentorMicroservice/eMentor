@@ -11,6 +11,9 @@ import { ChangePasscode } from '../models/changepasscode.model';
     providedIn: 'root'
 })
 export class UserService extends BaseService {
+  getUserProfile() {
+    return this.get(API_ENDPOINT.getUserProfile, null, false);
+  }
     constructor(protected http: HttpClient,
         protected errorHandler: ErrorService,
         protected globalService: GlobalService) {

@@ -57,7 +57,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "WebApplication2:build"
+            "browserTarget": "WebApplication2:build",
+            "port": 20936
           },
           "configurations": {
             "production": {
