@@ -1,0 +1,6 @@
+<label class="label" *ngIf="title">{{title}}<span *ngIf="required" class="required">*</span></label>
+<div class="input-group">
+  <select class="form-control" [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="updateChanges()">
+    <option *ngFor="let p of dataValue" [value]="p.Value">{{p.Name}}</option>
+  </select>
+</div>

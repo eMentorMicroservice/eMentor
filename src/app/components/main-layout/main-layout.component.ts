@@ -68,7 +68,7 @@ export class MainLayoutComponent extends NavigationService implements OnInit, On
         })
         .filter(route => route.outlet === 'primary')
         .mergeMap(route => route.data)
-        .subscribe(data => this.title = data.title); // outputs my `data`
+        .subscribe(data => this.title = data.title);
 }
 
 logOut() {

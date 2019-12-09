@@ -21,7 +21,7 @@
                 </button>
                 <div class="row mt-3">
                     <div class="col-xs-6 col-lg-6 col-md-6">
-                        <img src=" {{user.avatar | image}}" alt="image" height="300" width="300" class="rounded">
+                        <img src=" {{user.avatar | image}}" alt="image" height="250" width="250" class="rounded">
                     </div>
                     <div class="col-xs-6 col-lg-6 col-md-6">
                             <h4 class="user-name text-uppercase">{{userName}}</h4>
@@ -35,7 +35,7 @@
                             <p class="group-profile-item">
                                 <i *ngIf = "user.email" class="mdi mdi-gmail"></i>{{user.email}}
                                 <br />
-                                <i *ngIf = "user.linkedSite" class="mdi mdi-earth"></i><a href="{{user.linkedSite}}">{{user.linkedSite}}</a>
+                                <i *ngIf = "user.linkedsite" class="mdi mdi-earth"></i><a href="https://{{user.linkedsite}}">{{user.linkedsite}}</a>
                                 <br />
                                 <i *ngIf = "user.dateOfBirth" class="mdi mdi-gift"></i>{{user.dateOfBirth | date: 'mm/DD/yyyy'}}
                             </p>

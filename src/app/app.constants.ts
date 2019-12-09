@@ -41,7 +41,8 @@ export const API_ENDPOINT = {
   registerAccount: '/User/Register',
   getAllCourses: '/Course/GetCourses',
   changePassword: '/User/ChangePasscode',
-  getUserProfile: '/User/GetUserProfile'
+  getUserProfile: '/User/GetUserProfile',
+  editProfile: '/User/EditProfile'
 };
 
 export const ADMIN_CONST = '1';

@@ -29,6 +29,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { AppDatePickerComponent } from './controls/date-picker/date-picker.component';
+import { AppDropdownListComponent } from './controls/dropdown-list/dropdown-list.component';
+import { DatepickerModule, BsDatepickerModule, TimepickerModule, BsModalRef, ModalModule } from 'ngx-bootstrap';
+import { LoginAccessGuard } from './guards/login.guard';
+import { AdminAccessGuard } from './guards/admin.guard.';
+import { ErrorService } from './services/common/error.service';
+import { GlobalService } from './services/global.service';
 
 @NgModule({
   declarations: [
@@ -52,12 +59,18 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
     MinDateValidator,
 
     // tslint:disable-next-line: comment-format
+    //custom components
+    AppTextBoxComponent,
+    AppDatePickerComponent,
+    AppDropdownListComponent,
+
+
+    // tslint:disable-next-line: comment-format
     //components
     AppComponent,
     DashboardStudentComponent,
     RegisterComponent,
     LoginComponent,
-    AppTextBoxComponent,
     DashboardTeacherComponent,
     ChangePasswordComponent,
     UserProfileUpdateComponent,
@@ -72,9 +85,19 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot(),
+    DatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [
+        LoginAccessGuard,
+        AdminAccessGuard,
+        ErrorService,
+        GlobalService,
+        BsModalRef
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,2 +1,130 @@
-<p>worked!!!</p>
+<div class="row grid-margin pad-top-100 justify-content-center align-middle mb-3">
+    <div class="col-6">
+        <div class="card">
+            <form #form="ngForm" (submit)="editProfile(form)" autocomplete="on">
+                <div class="card-body">
+                    <label class="text-uppercase bold-label-lg"> {{userName}} 's Profile </label>
+
+                    <div class="signup-line"></div>
+
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="thumb-xl member-thumb m-b-10">
+                            <img class="rounded-circle img-thumbnail no-border display-avt" width="120" height="120" src="{{ avatar ? avatar : model.avatar | image}}"
+                                alt="image">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="file" class="file-upload-default" (change)="onChange($event)" #imageUpload
+                                hidden>
+                            <div class="input-group">
+                                <input type="text" value="{{imageInfo}}" class="form-control file-upload-info" disabled
+                                    placeholder="Upload your avatar">
+                                <span class="input-group-append">
+                                    <button class="btn btn-info" type="button"
+                                        (click)="imageUpload.click()">Upload</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">User Name</label>
+                                <div class="col-sm-9">
+                                    <app-text-box class="app-text" type="text" name="fullname"
+                                        [(ngModel)]="model.fullname" required="true">
+                                    </app-text-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Email Adress</label>
+                                <div class="col-sm-9">
+                                    <app-text-box class="app-text" type="text" name="emailAddress"
+                                        [(ngModel)]="model.email">
+                                    </app-text-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Date Of Birth</label>
+                                <div class="col-sm-9">
+                                    <app-date-picker name="dateOfBirth" [(ngModel)]="model.dateOfBirth" [bsConfig]="bsConfig" readonly>
+                                    </app-date-picker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Gender</label>
+                                <div class="col-sm-9">
+                                    <app-text-box class="app-text" type="text" name="mobileNumber">
+                                    </app-text-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Linked Website</label>
+                                <div class="col-sm-9">
+                                    <app-text-box class="app-text" type="text" name="linkedsite"
+                                        [(ngModel)]="model.linkedsite">
+                                    </app-text-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Mobile Number</label>
+                                <div class="col-sm-9">
+                                    <app-text-box class="app-text" type="text" name="mobileNumber"
+                                        [(ngModel)]="model.phone">
+                                    </app-text-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Address</label>
+                                <div class="col-sm-9">
+                                    <app-text-box class="app-text" type="text" name="address"
+                                        [(ngModel)]="model.address">
+                                    </app-text-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="signup-line"></div>
+
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <button class="btn btn-success submit-btn mr-2">Confirm</button>
+                        <button class="btn btn-light" routerLink="/view-profile">Cancel</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <ngx-spinner></ngx-spinner>

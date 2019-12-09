@@ -1,0 +1,13 @@
+.loading-container{
+    z-index:9999;
+    position:absolute;
+    width: 100%;
+    height: 2px;
+}
+.progress-loading{
+    background-color: transparent;
+     height: 100%;
+}
+.progress-loading .progress-bar{
+    height: 100%;
+}

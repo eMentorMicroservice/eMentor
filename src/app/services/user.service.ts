@@ -6,11 +6,15 @@ import { HttpClient } from '@angular/common/http';
 import { RegisterModel } from '../models/register.model';
 import { API_ENDPOINT } from '../app.constants';
 import { ChangePasscode } from '../models/changepasscode.model';
+import { UserModel } from '../models/user.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService extends BaseService {
+  editProfile(data: UserModel) {
+    return this.postFormData(API_ENDPOINT.editProfile, data, true);
+  }
   getUserProfile() {
     return this.get(API_ENDPOINT.getUserProfile, null, false);
   }
