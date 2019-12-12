@@ -25,6 +25,7 @@ export class AppDatePickerComponent implements ControlValueAccessor {
   @Input() readonly: boolean;
   onChange: (_: any) => void = (_: any) => { };
     onTouched: () => void = () => { };
+    // tslint:disable-next-line: member-ordering
     @Output() bsValueChange: EventEmitter<any> = new EventEmitter();
 
   constructor(

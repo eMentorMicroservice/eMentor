@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownListComponent } from './dropdown-list.component';
+import { AppDropdownListComponent } from './dropdown-list.component';
 
-describe('DropdownListComponent', () => {
-  let component: DropdownListComponent;
-  let fixture: ComponentFixture<DropdownListComponent>;
+describe('AppDatePickerComponent', () => {
+  let component: AppDropdownListComponent;
+  let fixture: ComponentFixture<AppDropdownListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DropdownListComponent ]
+      declarations: [ AppDropdownListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DropdownListComponent);
+    fixture = TestBed.createComponent(AppDropdownListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

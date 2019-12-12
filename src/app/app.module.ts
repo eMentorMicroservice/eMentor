@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -36,6 +36,7 @@ import { LoginAccessGuard } from './guards/login.guard';
 import { AdminAccessGuard } from './guards/admin.guard.';
 import { ErrorService } from './services/common/error.service';
 import { GlobalService } from './services/global.service';
+import { SearchBoxComponent } from './controls/search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { GlobalService } from './services/global.service';
     AppTextBoxComponent,
     AppDatePickerComponent,
     AppDropdownListComponent,
+    SearchBoxComponent,
 
 
     // tslint:disable-next-line: comment-format
@@ -89,7 +91,8 @@ import { GlobalService } from './services/global.service';
     ModalModule.forRoot(),
     DatepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
         LoginAccessGuard,

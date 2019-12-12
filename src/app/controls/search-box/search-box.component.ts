@@ -12,18 +12,18 @@ import { debounceTime, tap } from 'rxjs/operators';
   }]
 })
 
-export class SearchBoxComponent implements ControlValueAccessor,OnInit {
-  
- 
+export class SearchBoxComponent implements ControlValueAccessor, OnInit {
   value: any;
-  @Input() placeholder = '';  
+  @Input() placeholder = '';
   @Input() delayTimeSpan = 1000;
   @Output() searchTextInvoke = new EventEmitter();
 
   onChange: (_: any) => void = (_: any) => { };
   onTouched: () => void = () => { };
 
+  // tslint:disable-next-line: member-ordering
   searchContent = new FormControl();
+  // tslint:disable-next-line: member-ordering
   searchForm: FormGroup = this.formBuilder.group({
     searchContent: this.searchContent
   });
@@ -35,8 +35,8 @@ export class SearchBoxComponent implements ControlValueAccessor,OnInit {
     this.searchContent.valueChanges.pipe(
       debounceTime(this.delayTimeSpan),
       tap()
-    ).subscribe(res =>{
-      this.searchTextInvoke.emit(res);      
+    ).subscribe(res => {
+      this.searchTextInvoke.emit(res);
     });
   }
 
@@ -60,5 +60,5 @@ export class SearchBoxComponent implements ControlValueAccessor,OnInit {
 
   updateChanges() {
     this.onChange(this.value);
-  } 
+  }
 }
