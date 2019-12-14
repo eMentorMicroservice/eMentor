@@ -42,7 +42,13 @@ export const API_ENDPOINT = {
   getAllCourses: '/Course/GetCourses',
   changePassword: '/User/ChangePasscode',
   getUserProfile: '/User/GetUserProfile',
-  editProfile: '/User/EditProfile'
+  editProfile: '/User/EditProfile',
+  getHardCode: '/Home/GetHardCodes'
+};
+
+export const HardCodeConst = {
+  userRole: 'UserRole',
+  gender: 'Gender'
 };
 
 export const ADMIN_CONST = '1';

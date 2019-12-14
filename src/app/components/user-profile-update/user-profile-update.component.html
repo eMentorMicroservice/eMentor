@@ -69,8 +69,9 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9">
-                                    <app-text-box class="app-text" type="text" name="mobileNumber">
-                                    </app-text-box>
+                                    <app-dropdown-list defaultValue="1" class="app-text" name="gender" [data]="gender"
+                                    [(ngModel)]="model.gender" title="Gender">
+                                    </app-dropdown-list>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalService } from 'src/app/services/common/local.service';
-import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
+import { LOCAL_STORAGE_VARIABLE, HardCodeConst } from 'src/app/app.constants';
 import { UserRole } from 'src/app/models/enums';
 import { UserModel } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -8,6 +8,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { DropdownModel } from 'src/app/models/dropdown.model';
+import { HardcodeService } from 'src/app/services/hardcode.service';
 
 @Component({
   selector: 'app-user-profile-update',
@@ -21,10 +23,12 @@ export class UserProfileUpdateComponent implements OnInit {
   model = new UserModel();
   avatar: any;
   imageInfo = '';
+  gender: DropdownModel[] = [];
   bsConfig: Partial<BsDatepickerConfig>;
   constructor(private userService: UserService,
               private router: Router,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private hardCodeService: HardcodeService) { }
 
   ngOnInit() {
     this.bsConfig = Object.assign({}, {
@@ -33,6 +37,10 @@ export class UserProfileUpdateComponent implements OnInit {
     });
     this.isTeacher = LocalService.getItem(LOCAL_STORAGE_VARIABLE.user_role) === UserRole.Teacher.toString() ? true : false;
     this.userName = LocalService.getUserName();
+    this.hardCodeService.getHardcode(HardCodeConst.gender).subscribe(data => {
+      this.gender = data;
+      console.log(data);
+    });
     this.getUserProfile();
   }
 
@@ -50,8 +58,6 @@ export class UserProfileUpdateComponent implements OnInit {
   getUserProfile() {
     this.userService.getUserProfile().subscribe(data => {
         this.model = data;
-        console.log("data: ", data);
-        console.log("model: ", this.model.linkedsite);
       });
   }
 
