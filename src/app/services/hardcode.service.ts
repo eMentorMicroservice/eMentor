@@ -18,7 +18,7 @@ export class HardcodeService extends BaseService {
 
     }
 
- getHardcode(parent: string): Observable<any> {
-    return this.get(API_ENDPOINT.getHardCode, {parent}, true);
+ getHardcode(hardCodeParent: string): Observable<any> {
+    return this.get(`${API_ENDPOINT.getHardCode}?hardCodeParent=${hardCodeParent}`, null, true);
     }
 }
