@@ -13,4 +13,5 @@ export class UserModel {
     dateOfBirth: Date;
     linkedsite: string;
     uploadedFile: File;
+    follower: number;
 }

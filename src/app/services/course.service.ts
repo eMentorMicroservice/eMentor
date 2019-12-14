@@ -5,11 +5,15 @@ import { GlobalService } from './global.service';
 import { HttpClient } from '@angular/common/http';
 import { RegisterModel } from '../models/register.model';
 import { API_ENDPOINT } from '../app.constants';
+import { UploadCourseModel } from '../models/course.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CourseService extends BaseService {
+  uploadCourse(model: UploadCourseModel) {
+    return this.postFormData(API_ENDPOINT.uploadCourse, model, null, false);
+  }
     constructor(protected http: HttpClient,
         protected errorHandler: ErrorService,
         protected globalService: GlobalService) {

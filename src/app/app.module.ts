@@ -37,6 +37,8 @@ import { AdminAccessGuard } from './guards/admin.guard.';
 import { ErrorService } from './services/common/error.service';
 import { GlobalService } from './services/global.service';
 import { SearchBoxComponent } from './controls/search-box/search-box.component';
+import { UploadCourseComponent } from './components/upload-course/upload-course.component';
+import { UploadCourseViewComponent } from './components/upload-course-view/upload-course-view.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { SearchBoxComponent } from './controls/search-box/search-box.component';
     UserProfileUpdateComponent,
     UserProfileViewComponent,
     NotFoundComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    UploadCourseComponent,
+    UploadCourseViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

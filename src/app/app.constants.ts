@@ -43,12 +43,15 @@ export const API_ENDPOINT = {
   changePassword: '/User/ChangePasscode',
   getUserProfile: '/User/GetUserProfile',
   editProfile: '/User/EditProfile',
-  getHardCode: '/Home/GetHardCodes'
+  getHardCode: '/Home/GetHardCodes',
+  uploadCourse: '/Course/UploadCourse',
+  getCourses: '/Course/GetCourses'
 };
 
 export const HardCodeConst = {
   userRole: 'UserRole',
-  gender: 'Gender'
+  gender: 'Gender',
+  courseCategories: 'CourseCategories'
 };
 
 export const ADMIN_CONST = '1';

@@ -10,6 +10,8 @@ import { UserProfileViewComponent } from './components/user-profile-view/user-pr
 import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
 import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UploadCourseViewComponent } from './components/upload-course-view/upload-course-view.component';
+import { UploadCourseComponent } from './components/upload-course/upload-course.component';
 
 const routes: Routes = [
     {
@@ -18,7 +20,15 @@ const routes: Routes = [
         children: [
             { path: '', component: DashboardStudentComponent},
             { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
-            { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'}
+            { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'},
+            {
+                path: 'view-course',
+                component: UploadCourseViewComponent,
+            },
+            {
+                path: 'upload-course',
+                component: UploadCourseComponent,
+            },
         ]
     },
     {
@@ -28,7 +38,8 @@ const routes: Routes = [
     {
         path: 'home-teacher',
         component: DashboardTeacherComponent,
-        pathMatch: 'full' },
+        pathMatch: 'full',
+    },
     {
         path: 'register',
         component: RegisterComponent,

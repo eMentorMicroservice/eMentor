@@ -6,7 +6,6 @@ import { NavigationService } from '../../services/navigation.service';
 import { LocalService } from '../../services/common/local.service';
 import { GlobalService } from '../../services/global.service';
 import { Subscription } from 'rxjs';
-import { AlertGroups } from 'src/app/models/enums';
 import { UserModel } from 'src/app/models/user.model';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
