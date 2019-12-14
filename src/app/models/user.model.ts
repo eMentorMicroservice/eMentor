@@ -11,7 +11,7 @@ export class UserModel {
     userName: string;
     address: string;
     dateOfBirth: Date;
-    linkedsite: string;
+    linkedSite: string;
     uploadedFile: File;
     follower: number;
 }
