@@ -6,6 +6,7 @@ import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UserRole } from 'src/app/models/enums';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.spinner.show();
     this.authService.login(this.model)
       .subscribe(data => {
         if (data && data.token) {
@@ -39,14 +42,16 @@ export class LoginComponent implements OnInit {
           LocalService.setUserName(data.fullName);
           LocalService.setUserId(data.userId);
           if (data.role === UserRole.Student) {
-            this.router.navigate(['/home-student']);
+            this.router.navigate(['/']);
           } else {
             this.router.navigate(['/home-teacher']);
           }
+          this.spinner.hide();
         }
       },
         error => {
           this.model = new LoginModel();
+          this.spinner.hide();
         });
   }
 }

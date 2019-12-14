@@ -103,12 +103,14 @@ export class BaseService {
     this.globalService.loading();
     let option: {};
 
-    if (param)
+    if (param) {
       option = { headers: this.headers, params: param, responseType: 'blob' as 'json' };
-    else
+    }
+    else {
       option = { headers: this.headers, responseType: 'blob' as 'json' };
+    }
 
-    let res = this.http.get<Blob>(fullUrl, option)
+    const res = this.http.get<Blob>(fullUrl, option)
       .pipe(shareReplay(1),
         timeout(REQUEST_TIMEOUT)
       ).catch(error => {
@@ -227,15 +229,18 @@ export class BaseService {
     }
   }
 
-  public postFormData(url: string, params?: HttpParams | any, loader = true, isRuby=false): Observable<Object | any> {
+  public postFormData(url: string, params?: HttpParams | any, loader = true, isRuby= false): Observable<Object | any> {
     this.loadToken(true);
     const body = this.parseFormdata(params);
+    console.log("params", params);
+    console.log("body:", body);
     let fullUrl = '';
     if (!isRuby) {
       fullUrl = this.createAPIURL(url);
     } else {
       fullUrl = this.createAPIURLRUBY(url);
     }
+    console.log("fullUrl:", fullUrl);
 
     if (loader) {
       this.globalService.loading();
@@ -256,10 +261,10 @@ export class BaseService {
 
     const token = LocalService.getAccessToken();
 
+    // tslint:disable-next-line: triple-equals
     if (token == '' || !token) {
       this.headers = new HttpHeaders(isForm ? BaseService.formdataHeader : BaseService.defaultHeader);
-    }
-    else {
+    } else {
       this.headers = new HttpHeaders({
         ...isForm ? BaseService.formdataHeader : BaseService.defaultHeader,
         ...{ 'Authorization': `Bearer ${token}` }
