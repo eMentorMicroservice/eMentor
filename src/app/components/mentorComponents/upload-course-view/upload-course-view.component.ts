@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseModel } from 'src/app/models/course.model';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-upload-course-view',

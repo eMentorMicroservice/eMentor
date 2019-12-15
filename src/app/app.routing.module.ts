@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginAccessGuard } from './guards/login.guard';
-import { LoginComponent } from './components/login/login.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { DashboardStudentComponent } from './components/dashboard-student/dashboard-studentcomponent';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { MainLayoutComponent } from './components/main-layout/main-layout.component';
-import { UserProfileViewComponent } from './components/user-profile-view/user-profile-view.component';
-import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
-import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
-import { RegisterComponent } from './components/register/register.component';
-import { UploadCourseViewComponent } from './components/upload-course-view/upload-course-view.component';
-import { UploadCourseComponent } from './components/upload-course/upload-course.component';
+import { LoginComponent } from './components/commonComponents/login/login.component';
+import { ChangePasswordComponent } from './components/commonComponents/change-password/change-password.component';
+import { DashboardStudentComponent } from './components/studentComponents/dashboard-student/dashboard-studentcomponent';
+import { NotFoundComponent } from './components/commonComponents/not-found/not-found.component';
+import { MainLayoutComponent } from './components/commonComponents/main-layout/main-layout.component';
+import { UserProfileViewComponent } from './components/studentComponents/user-profile-view/user-profile-view.component';
+import { UserProfileUpdateComponent } from './components/studentComponents/user-profile-update/user-profile-update.component';
+import { DashboardTeacherComponent } from './components/mentorComponents/dashboard-teacher/dashboard-teacher.component';
+import { RegisterComponent } from './components/commonComponents/register/register.component';
+import { UploadCourseViewComponent } from './components/mentorComponents/upload-course-view/upload-course-view.component';
+import { UploadCourseComponent } from './components/mentorComponents/upload-course/upload-course.component';
+import { MentorMainlayoutComponent } from './components/mentorComponents/mentor-mainlayout/mentor-mainlayout.component';
 
 const routes: Routes = [
     {
@@ -21,36 +21,48 @@ const routes: Routes = [
             { path: '', component: DashboardStudentComponent},
             { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
             { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'},
-            {
-                path: 'view-course',
-                component: UploadCourseViewComponent,
-            },
-            {
-                path: 'upload-course',
-                component: UploadCourseComponent,
-            },
         ]
     },
     {
         path: 'login',
         component: LoginComponent,
+        pathMatch: 'full',
     },
     {
-        path: 'home-teacher',
-        component: DashboardTeacherComponent,
-        pathMatch: 'full',
+        path: 'mentor-home',
+        component: MentorMainlayoutComponent,
+        children: [
+            {
+                path: 'mentor-home',
+                component: DashboardTeacherComponent,
+                pathMatch: 'full',
+            },
+            {
+                path: 'view-course',
+                component: UploadCourseViewComponent,
+                pathMatch: 'full',
+            },
+            {
+                path: 'upload-course',
+                component: UploadCourseComponent,
+                pathMatch: 'full',
+            }
+        ]
     },
     {
         path: 'register',
         component: RegisterComponent,
-        pathMatch: 'full' },
+        pathMatch: 'full'
+    },
     {
         path: 'change-password',
-        component: ChangePasswordComponent
+        component: ChangePasswordComponent,
+        pathMatch: 'full',
     },
     {
         path: '404',
-        component: NotFoundComponent
+        component: NotFoundComponent,
+        pathMatch: 'full',
     },
     {
         path: '**',

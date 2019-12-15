@@ -1,21 +1,20 @@
-import { AuthService } from '../../services/auth.service';
+import { Component, OnInit, OnDestroy, AfterViewInit, Inject, forwardRef, ChangeDetectorRef } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { LocalService } from 'src/app/services/common/local.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Component, OnInit, Inject, forwardRef, ChangeDetectorRef, OnDestroy, AfterViewInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
-import { NavigationService } from '../../services/navigation.service';
-import { LocalService } from '../../services/common/local.service';
-import { GlobalService } from '../../services/global.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/mergeMap';
+import { AppComponent } from 'src/app/app.component';
+import { GlobalService } from 'src/app/services/global.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-main-layout',
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.css']
+  selector: 'app-mentor-mainlayout',
+  templateUrl: './mentor-mainlayout.component.html',
+  styleUrls: ['./mentor-mainlayout.component.css']
 })
-export class MainLayoutComponent extends NavigationService implements OnInit, OnDestroy, AfterViewInit {
+export class MentorMainlayoutComponent extends NavigationService implements OnInit, OnDestroy, AfterViewInit {
 
   elementLoading: boolean;
   loaderSubscribe: Subscription;
@@ -41,7 +40,7 @@ export class MainLayoutComponent extends NavigationService implements OnInit, On
     }
 
     if (AuthService.isTeacher()) {
-      this.router.navigate(['home-teacher']);
+      this.router.navigate(['mentor-home']);
     }
     this.userName = LocalService.getUserName();
 
