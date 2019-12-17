@@ -41,11 +41,7 @@ export class LoginComponent implements OnInit {
           LocalService.setUserAvt(data.avatar);
           LocalService.setUserName(data.fullName);
           LocalService.setUserId(data.userId);
-          if (data.role === UserRole.Student) {
-            this.router.navigate(['/']);
-          } else {
-            this.router.navigate(['/mentor-home']);
-          }
+          this.router.navigate(['/']);
           this.spinner.hide();
         }
       },

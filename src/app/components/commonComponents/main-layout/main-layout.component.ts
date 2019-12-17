@@ -1,21 +1,22 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, Inject, forwardRef, ChangeDetectorRef } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { LocalService } from 'src/app/services/common/local.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { NavigationService } from 'src/app/services/navigation.service';
+import { Component, OnInit, Inject, forwardRef, ChangeDetectorRef, OnDestroy, AfterViewInit } from '@angular/core';
+import { AppComponent } from '../../../app.component';
+import { NavigationService } from '../../../services/navigation.service';
+import { LocalService } from '../../../services/common/local.service';
+import { GlobalService } from '../../../services/global.service';
 import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
-import { AppComponent } from 'src/app/app.component';
-import { GlobalService } from 'src/app/services/global.service';
-import { AuthService } from 'src/app/services/auth.service';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
-  selector: 'app-mentor-mainlayout',
-  templateUrl: './mentor-mainlayout.component.html',
-  styleUrls: ['./mentor-mainlayout.component.css']
+  selector: 'app-main-layout',
+  templateUrl: './main-layout.component.html',
+  styleUrls: ['./main-layout.component.css']
 })
-export class MentorMainlayoutComponent extends NavigationService implements OnInit, OnDestroy, AfterViewInit {
-
+export class MainLayoutComponent extends NavigationService implements OnInit, OnDestroy, AfterViewInit {
+  isTeacher: boolean;
   elementLoading: boolean;
   loaderSubscribe: Subscription;
   user = new UserModel();
@@ -34,14 +35,12 @@ export class MentorMainlayoutComponent extends NavigationService implements OnIn
   }
 
   ngOnInit() {
+    this.isTeacher = AuthService.isTeacher();
     if (LocalService.getLogStatus() !== 'true' ) {
       LocalService.logout();
       this.router.navigate(['login']);
     }
 
-    if (AuthService.isTeacher()) {
-      this.router.navigate(['mentor-home']);
-    }
     this.userName = LocalService.getUserName();
 
     this.loaderSubscribe = this.globalService.loader

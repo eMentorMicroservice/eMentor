@@ -16,8 +16,6 @@ import { MinValidator } from './directives/min.directive';
 import { PasswordValidator } from './directives/password.derective';
 import { PhoneValidator } from './directives/phone.derective';
 import { MinDateValidator } from './directives/mindate.derective';
-import { DashboardTeacherComponent } from './components/mentorComponents/dashboard-teacher/dashboard-teacher.component';
-import { DashboardStudentComponent } from './components/studentComponents/dashboard-student/dashboard-studentcomponent';
 import { ImagePipe } from './pipes/image.pipe';
 import { AppNumberPipe } from './pipes/number.pipe';
 import { ChangePasswordComponent } from './components/commonComponents/change-password/change-password.component';
@@ -34,12 +32,12 @@ import { GlobalService } from './services/global.service';
 import { SearchBoxComponent } from './controls/search-box/search-box.component';
 import { UploadCourseComponent } from './components/mentorComponents/upload-course/upload-course.component';
 import { UploadCourseViewComponent } from './components/mentorComponents/upload-course-view/upload-course-view.component';
-import { MentorMainlayoutComponent } from './components/mentorComponents/mentor-mainlayout/mentor-mainlayout.component';
 import { UserProfileUpdateComponent } from './components/commonComponents/user-profile-update/user-profile-update.component';
-import { MainLayoutComponent } from './components/studentComponents/student-mainlayout/main-layout.component';
+import { MainLayoutComponent } from './components/commonComponents/main-layout/main-layout.component';
 import { UserProfileViewComponent } from './components/commonComponents/user-profile-view/user-profile-view.component';
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import { ActionCableService } from 'angular2-actioncable';
+import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -74,10 +72,8 @@ import { ActionCableService } from 'angular2-actioncable';
     //components
     AppComponent,
     ClassroomComponent,
-    DashboardStudentComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardTeacherComponent,
     ChangePasswordComponent,
     UserProfileUpdateComponent,
     UserProfileViewComponent,
@@ -85,14 +81,15 @@ import { ActionCableService } from 'angular2-actioncable';
     MainLayoutComponent,
     UploadCourseComponent,
     UploadCourseViewComponent,
-    MentorMainlayoutComponent
+    DashboardComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     NgxSpinnerModule,
     FormsModule,
-    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
     ModalModule.forRoot(),
