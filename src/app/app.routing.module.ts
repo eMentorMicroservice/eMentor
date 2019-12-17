@@ -4,14 +4,14 @@ import { LoginComponent } from './components/commonComponents/login/login.compon
 import { ChangePasswordComponent } from './components/commonComponents/change-password/change-password.component';
 import { DashboardStudentComponent } from './components/studentComponents/dashboard-student/dashboard-studentcomponent';
 import { NotFoundComponent } from './components/commonComponents/not-found/not-found.component';
-import { MainLayoutComponent } from './components/commonComponents/main-layout/main-layout.component';
-import { UserProfileViewComponent } from './components/studentComponents/user-profile-view/user-profile-view.component';
-import { UserProfileUpdateComponent } from './components/studentComponents/user-profile-update/user-profile-update.component';
-import { DashboardTeacherComponent } from './components/mentorComponents/dashboard-teacher/dashboard-teacher.component';
 import { RegisterComponent } from './components/commonComponents/register/register.component';
 import { UploadCourseViewComponent } from './components/mentorComponents/upload-course-view/upload-course-view.component';
 import { UploadCourseComponent } from './components/mentorComponents/upload-course/upload-course.component';
 import { MentorMainlayoutComponent } from './components/mentorComponents/mentor-mainlayout/mentor-mainlayout.component';
+import { MainLayoutComponent } from './components/studentComponents/student-mainlayout/main-layout.component';
+import { UserProfileViewComponent } from './components/commonComponents/user-profile-view/user-profile-view.component';
+import { UserProfileUpdateComponent } from './components/commonComponents/user-profile-update/user-profile-update.component';
+import { DashboardTeacherComponent } from './components/mentorComponents/dashboard-teacher/dashboard-teacher.component';
 
 const routes: Routes = [
     {

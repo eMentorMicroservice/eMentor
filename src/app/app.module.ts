@@ -21,12 +21,9 @@ import { DashboardStudentComponent } from './components/studentComponents/dashbo
 import { ImagePipe } from './pipes/image.pipe';
 import { AppNumberPipe } from './pipes/number.pipe';
 import { ChangePasswordComponent } from './components/commonComponents/change-password/change-password.component';
-import { UserProfileUpdateComponent } from './components/studentComponents/user-profile-update/user-profile-update.component';
-import { UserProfileViewComponent } from './components/studentComponents/user-profile-view/user-profile-view.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotFoundComponent } from './components/commonComponents/not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
-import { MainLayoutComponent } from './components/commonComponents/main-layout/main-layout.component';
 import { AppDatePickerComponent } from './controls/date-picker/date-picker.component';
 import { AppDropdownListComponent } from './controls/dropdown-list/dropdown-list.component';
 import { DatepickerModule, BsDatepickerModule, TimepickerModule, BsModalRef, ModalModule } from 'ngx-bootstrap';
@@ -38,6 +35,9 @@ import { SearchBoxComponent } from './controls/search-box/search-box.component';
 import { UploadCourseComponent } from './components/mentorComponents/upload-course/upload-course.component';
 import { UploadCourseViewComponent } from './components/mentorComponents/upload-course-view/upload-course-view.component';
 import { MentorMainlayoutComponent } from './components/mentorComponents/mentor-mainlayout/mentor-mainlayout.component';
+import { UserProfileUpdateComponent } from './components/commonComponents/user-profile-update/user-profile-update.component';
+import { MainLayoutComponent } from './components/studentComponents/student-mainlayout/main-layout.component';
+import { UserProfileViewComponent } from './components/commonComponents/user-profile-view/user-profile-view.component';
 
 @NgModule({
   declarations: [
