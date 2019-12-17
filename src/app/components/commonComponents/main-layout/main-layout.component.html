@@ -12,7 +12,7 @@
           <li class="dropdown notification-list">
               <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                   aria-expanded="false">
-                  <img src="/assets/images/no-image.jpg" alt="image" class="rounded-circle"> <span class="ml-1">Hello!!! {{userName}}<i
+                  <img src="{{userAvatar | image}}" alt="image" class="rounded-circle"> <span class="ml-1">Hello!!! {{userName}}<i
                           class="mdi mdi-chevron-down"></i> </span>
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
@@ -54,16 +54,16 @@
       <div class="topbar-left">
         <a class="logo">
           <span>
-            <img src="/assets/images/no-image.jpg" alt="" height="48">
+            <img src="{{userAvatar | image}}" alt="" height="48">
           </span>
           <i>
-            <img src="/assets/images/no-image.jpg" alt="" height="48">
+            <img src="{{userAvatar | image}}" alt="" height="48">
           </i>
         </a>
       </div>
       <div class="user-box">
         <div class="user-img">
-          <img src="/assets/images/no-image.jpg" alt="user-img" title="truc" class="rounded-circle img-fluid">
+          <img src="{{userAvatar | image}}" alt="user-img" title="truc" class="rounded-circle img-fluid">
         </div>
         <h5><a href="#">Truc</a> </h5>
         <p class="text-muted">Teacher</p>
@@ -102,7 +102,7 @@
           <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="false" aria-expanded="false">
-              <img src="/assets/images/no-image.jpg" alt="user" class="rounded-circle"> <span class="ml-1"> Hello!!! {{userName}} <i
+              <img src="{{userAvatar | image}}" alt="user" class="rounded-circle"> <span class="ml-1"> Hello!!! {{userName}} <i
                   class="mdi mdi-chevron-down"></i> </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">

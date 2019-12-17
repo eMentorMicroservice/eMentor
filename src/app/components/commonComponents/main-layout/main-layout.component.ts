@@ -23,6 +23,7 @@ export class MainLayoutComponent extends NavigationService implements OnInit, On
   userName: any;
   active = false;
   title: any;
+  userAvatar: any;
 
 
   constructor(router: Router,
@@ -40,6 +41,8 @@ export class MainLayoutComponent extends NavigationService implements OnInit, On
       LocalService.logout();
       this.router.navigate(['login']);
     }
+
+    this.userAvatar = LocalService.getUserAvt();
 
     this.userName = LocalService.getUserName();
 
