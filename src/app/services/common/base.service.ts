@@ -83,16 +83,6 @@ export class BaseService {
     return request;
   }
 
-  // download(url: string, fileName: string, param: {} | any) {
-  //   this.getBlob(url, param)
-  //     .subscribe(blob => {
-  //       var FileSaver = require('file-saver');
-  //       FileSaver.saveAs(blob, fileName);
-  //     }, error => {
-  //       console.log("download errror")
-  //     })
-  // }
-
   getBlob(url: string, param: {} | any, isRuby = false): Observable<Object | any> {
     let fullUrl = '';
     if (!isRuby) {
@@ -105,8 +95,7 @@ export class BaseService {
 
     if (param) {
       option = { headers: this.headers, params: param, responseType: 'blob' as 'json' };
-    }
-    else {
+    } else {
       option = { headers: this.headers, responseType: 'blob' as 'json' };
     }
 
@@ -232,15 +221,12 @@ export class BaseService {
   public postFormData(url: string, params?: HttpParams | any, loader = true, isRuby= false): Observable<Object | any> {
     this.loadToken(true);
     const body = this.parseFormdata(params);
-    console.log("params", params);
-    console.log("body:", body);
     let fullUrl = '';
     if (!isRuby) {
       fullUrl = this.createAPIURL(url);
     } else {
       fullUrl = this.createAPIURLRUBY(url);
     }
-    console.log("fullUrl:", fullUrl);
 
     if (loader) {
       this.globalService.loading();

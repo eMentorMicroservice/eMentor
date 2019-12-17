@@ -6,6 +6,9 @@ import { UploadCourseModel } from 'src/app/models/course.model';
 import { NgForm } from '@angular/forms';
 import { CourseService } from 'src/app/services/course.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
+import { DatetimeUtils } from 'src/app/utils/dateutil';
 
 @Component({
   selector: 'app-upload-course',
@@ -18,10 +21,13 @@ export class UploadCourseComponent implements OnInit {
   logoImageName = '';
   categories: DropdownModel[];
   model: UploadCourseModel;
+  courseId = 0;
   constructor(
     private hardcodeService: HardcodeService,
     private courseService: CourseService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,7 +38,18 @@ export class UploadCourseComponent implements OnInit {
       .subscribe(data => {
         this.categories = data;
       });
-
+    this.route.params.subscribe(params => {
+      if (!params['id']) {
+        this.model.id = 0;
+        this.title = 'Upload Course';
+      } else {
+        this.title = 'Edit Course';
+        this.courseId = +params['id'];
+        this.courseService.getCourseById(this.courseId).subscribe(data => {
+          this.model = data;
+        });
+      }
+    });
     this.spinner.hide();
   }
 
@@ -48,11 +65,19 @@ export class UploadCourseComponent implements OnInit {
   uploadCourse(form: NgForm) {
     if (form.invalid) { return; }
     this.spinner.show();
-    this.courseService.uploadCourse(this.model).subscribe(data =>
-      {
+    this.model.availableFrom = DatetimeUtils.toShortDateTimeFormat(this.model.availableFrom);
+    this.model.availableTo = DatetimeUtils.toShortDateTimeFormat(this.model.availableTo);
+    if (this.courseId === 0) {
+      this.courseService.uploadCourse(this.model).subscribe(data => {
         if (!data) { return; }
+        this.router.navigate(['/view-course']);
       });
-      this.spinner.hide();
+    } else {
+      this.courseService.editCourse(this.model).subscribe(data => {
+        if (!data) { return; }
+        this.router.navigate(['/view-course']);
+      });
+    }
+    this.spinner.hide();
   }
-
 }

@@ -9,13 +9,13 @@
               <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
                 <div class="form-group row d-flex justify-content-center align-items-center">
   
-                  <div class="thumb-xxl member-thumb m-b-10">
+                  <div class="thumb-xxxl member-thumb m-b-10">
                     <img class="img-cover rounded-circle img-thumbnail no-border"
                          *ngIf="!courseImage"
-                         src="{{model.courseImage | image}}" width="256" height="256" alt="image">
+                         src="{{model.courseImage | image}}" width="128" height="128" alt="image">
                     <img class="img-cover rounded-circle img-thumbnail no-border"
                          *ngIf="courseImage"
-                         [src]="courseImage | image" width="256" height="256" alt="image">
+                         [src]="courseImage | image" width="128" height="128" alt="image">
                   </div>
                 </div>
                 <div class="form-group row d-flex justify-content-center align-items-center">
@@ -24,10 +24,10 @@
                            name="uploadedFile" #logoImageUpload hidden>
                     <div class="input-group">
                       <input type="text" name="logoImageName" value="{{logoImageName}}"
-                             class="form-control file-upload-info img-cover" disabled placeholder="Tải ảnh lên">
+                             class="form-control file-upload-info img-cover" disabled placeholder="Upload course image here">
                       <span class="input-group-append">
                         <button class="btn btn-info" type="button" (click)="logoImageUpload.click()">
-                          Tải Lên
+                          Upload
                         </button>
                       </span>
                     </div>
@@ -49,13 +49,16 @@
                 </div>
   
                 <div class="form-group row">
+                  <label class="col-sm-12" for="availableTime">Available From</label>
                   <div class="col-sm-12">
-                    <app-text-box class="app-text" title="Available Time" type="text" name="availableTime"
-                                  [(ngModel)]="model.availableTime" required="true">
-                      <div invalidmessage="availableTime">
-                        <p *invalidType="'required'">Please choose an available hour!!!</p>
-                      </div>
-                    </app-text-box>
+                    <timepicker [(ngModel)]="model.availableFrom" [showSpinners]="false" [ngModelOptions]="{standalone: true}"></timepicker>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-12" for="availableTime">Available To</label>
+                  <div class="col-sm-12">
+                    <timepicker [(ngModel)]="model.availableTo" [showSpinners]="false" [ngModelOptions]="{standalone: true}"></timepicker>
                   </div>
                 </div>
   
@@ -74,7 +77,7 @@
               <div class="col-md-12">
                 <label for="descripton">Course Description</label>
                 <textarea class="form-group col-md-12 textArea" name="jobDescription"
-                          [(ngModel)]="model.description" rows="15">
+                          [(ngModel)]="model.description" rows="15" style="border-radius: 1rem;">
                     </textarea>
               </div>
             </div>
@@ -85,7 +88,7 @@
   
                 <div class="btn-group" role="group" aria-label="add project button">
   
-                  <button class="btn btn-lg btn-icon waves-effect waves-light btn-danger mr-2" style="overflow:inherit!important" routerLink="/list-project">
+                  <button class="btn btn-lg btn-icon waves-effect waves-light btn-danger mr-2" style="overflow:inherit!important" routerLink="/view-course">
                     <i class="fa fa-remove"></i>   Cancel
                   </button>
   

@@ -26,6 +26,11 @@ const routes: Routes = [
                 pathMatch: 'full',
             },
             {
+                path: 'edit-course/:id',
+                component: UploadCourseComponent,
+                pathMatch: 'full',
+            },
+            {
                 path: 'upload-course',
                 component: UploadCourseComponent,
                 pathMatch: 'full',

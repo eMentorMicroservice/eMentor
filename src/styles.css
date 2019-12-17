@@ -82,3 +82,19 @@ code {
   font-weight: 600;
   font-size: 2rem;
 }
+
+.img-thumbnail {
+  width: 100%;
+  height: 100%;
+}
+
+textarea{
+  width: 100%;
+  border: 1px solid #d9e3e9;
+  border-radius: 4px;
+  max-width: 100%;
+  padding: .469rem .75rem;
+  font-size: 14px;
+  box-shadow: none;
+  transition: all 300ms linear;
+}

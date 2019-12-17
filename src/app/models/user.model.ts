@@ -10,7 +10,7 @@ export class UserModel {
     phone: string;
     userName: string;
     address: string;
-    dateOfBirth: Date;
+    dateOfBirth: string;
     linkedSite: string;
     uploadedFile: File;
     follower: number;

@@ -1068,6 +1068,16 @@ a:focus {
   width: 120px;
 }
 
+.thumb-xxl {
+  height: 175px;
+  width: 175px;
+}
+
+.thumb-xxxl {
+  height: 200px;
+  width: 200px;
+}
+
 .slimScrollDiv {
   height: auto !important;
 }

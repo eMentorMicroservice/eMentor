@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { DropdownModel } from 'src/app/models/dropdown.model';
 import { HardcodeService } from 'src/app/services/hardcode.service';
+import { DatetimeUtils } from 'src/app/utils/dateutil';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-user-profile-update',
@@ -25,6 +27,7 @@ export class UserProfileUpdateComponent implements OnInit {
   imageInfo = '';
   gender: DropdownModel[] = [];
   bsConfig: Partial<BsDatepickerConfig>;
+  dateOfBirth: string;
   constructor(private userService: UserService,
               private router: Router,
               private spinner: NgxSpinnerService,
@@ -39,7 +42,6 @@ export class UserProfileUpdateComponent implements OnInit {
     this.userName = LocalService.getUserName();
     this.hardCodeService.getHardcode(HardCodeConst.gender).subscribe(data => {
       this.gender = data;
-      console.log(data);
     });
     this.getUserProfile();
   }
@@ -65,6 +67,7 @@ export class UserProfileUpdateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.model.dateOfBirth = DatetimeUtils.toShortDateFormat(this.model.dateOfBirth);
     this.spinner.show();
     this.userService.editProfile(this.model).subscribe(data => {
         this.spinner.hide();
