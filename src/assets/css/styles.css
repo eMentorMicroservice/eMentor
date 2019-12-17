@@ -843,7 +843,7 @@ body {
   overflow-x: hidden;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
-  background-color: #d1e0e0;
+  background-color: #f3f6f8;
 }
 
 html {
@@ -1459,7 +1459,6 @@ code {
 .pagination-split li {
   margin-left: 5px;
   display: inline-block;
-  float: left;
 }
 
 .pagination-split li:first-child {
@@ -1560,7 +1559,6 @@ code {
   height: 2.5em;
   line-height: 2.5em;
   border-radius: 50%;
-  -webkit-mask-image: none;
 }
 
 .waves-input-wrapper {
@@ -3763,7 +3761,6 @@ code {
 
 .mail-list a {
   font-family: Arial,Helvetica,sans-serif;
-  vertical-align: middle;
   color: #797979;
   padding: 10px 15px;
   display: block;
@@ -4813,7 +4810,6 @@ table.dataTable > tbody > tr.child span.dtr-title {
 .footable-pagination li {
   margin-left: 5px;
   display: inline-block;
-  float: left;
 }
 
 .footable-pagination li a {

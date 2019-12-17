@@ -56,3 +56,18 @@ export const HardCodeConst = {
 };
 
 export const ADMIN_CONST = '1';
+
+export const jsFile = [
+  {
+    name: 'metisMenu',
+    src: '../assets/js/metisMenu.min.js'
+  },
+  {
+    name: 'jqueryApp',
+    src: '../assets/js/jquery.app.js'
+  },
+  {
+    name: 'jqueryCore',
+    src: '../assets/js/jquery.core.js'
+  }
+];
