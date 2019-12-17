@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        <form #form="ngForm" (submit)="uploadCourse(form)" autocomplete="on">
+          <div class="card-body">
+            <h4 class="card-title">{{title}}</h4>
+  
+            <div class="row">
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                <div class="form-group row d-flex justify-content-center align-items-center">
+  
+                  <div class="thumb-xxl member-thumb m-b-10">
+                    <img class="img-cover rounded-circle img-thumbnail no-border"
+                         *ngIf="!courseImage"
+                         src="{{model.courseImage | image}}" width="256" height="256" alt="image">
+                    <img class="img-cover rounded-circle img-thumbnail no-border"
+                         *ngIf="courseImage"
+                         [src]="courseImage | image" width="256" height="256" alt="image">
+                  </div>
+                </div>
+                <div class="form-group row d-flex justify-content-center align-items-center">
+                  <div class="vertical-center">
+                    <input type="file" class="img-cover file-upload-default" (change)="onChangeLogo($event)"
+                           name="uploadedFile" #logoImageUpload hidden>
+                    <div class="input-group">
+                      <input type="text" name="logoImageName" value="{{logoImageName}}"
+                             class="form-control file-upload-info img-cover" disabled placeholder="Tải ảnh lên">
+                      <span class="input-group-append">
+                        <button class="btn btn-info" type="button" (click)="logoImageUpload.click()">
+                          Tải Lên
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+  
+  
+              </div>
+              <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6">
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <app-text-box class="app-text" title="Course Name" type="text" name="name"
+                                  [(ngModel)]="model.name" required="true">
+                      <div invalidmessage="name">
+                        <p *invalidType="'required'">Please input your course name!!!</p>
+                      </div>
+                    </app-text-box>
+                  </div>
+                </div>
+  
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <app-text-box class="app-text" title="Available Time" type="text" name="availableTime"
+                                  [(ngModel)]="model.availableTime" required="true">
+                      <div invalidmessage="availableTime">
+                        <p *invalidType="'required'">Please choose an available hour!!!</p>
+                      </div>
+                    </app-text-box>
+                  </div>
+                </div>
+  
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <app-dropdown-list class="app-text" defaultValue="2" name="categories" title="Course Category" [data]="categories"
+                                       [(ngModel)]="model.courseCategory">
+                    </app-dropdown-list>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-md-12">
+                <label for="descripton">Course Description</label>
+                <textarea class="form-group col-md-12 textArea" name="jobDescription"
+                          [(ngModel)]="model.description" rows="15">
+                    </textarea>
+              </div>
+            </div>
+  
+            <div class="row" style="float:right">
+  
+              <div class="col-xs-12">
+  
+                <div class="btn-group" role="group" aria-label="add project button">
+  
+                  <button class="btn btn-lg btn-icon waves-effect waves-light btn-danger mr-2" style="overflow:inherit!important" routerLink="/list-project">
+                    <i class="fa fa-remove"></i>   Cancel
+                  </button>
+  
+                  <button class="btn btn-lg btn-info submit-btn btn-block waves-effect waves-light">
+                    <i class="fa fa-wrench"></i>   Confirm Save
+                  </button>
+  
+                </div>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           if (data.role === UserRole.Student) {
             this.router.navigate(['/']);
           } else {
-            this.router.navigate(['/home-teacher']);
+            this.router.navigate(['/mentor-home']);
           }
           this.spinner.hide();
         }
