@@ -1,0 +1,13 @@
+<label class="label" *ngIf="title">{{title}}<span *ngIf="required" class="required">*</span></label>
+<div class="input-group">
+  <input autocomplete="off" type="text" class="form-control" [bsConfig]="bsConfig" #dp="bsDatepicker"
+         bsDatepicker placeholder="{{placeholder}}" [disabled]="disabled" [type]="type" [(ngModel)]="value"
+         (ngModelChange)="updateChanges()" [class.parsley-error]="invalid()" (bsValueChange)="onValueChange($event)"
+         readonly="readonly">
+  <div class="input-group-prepend bg-primary border-primary" (click)="dp.toggle()"
+       [attr.aria-expanded]="dp.isOpen" style="height: 35px;">
+    <span class="input-group-text">
+      <i class="mdi mdi mdi-calendar-text"></i>
+    </span>
+  </div>
+</div>

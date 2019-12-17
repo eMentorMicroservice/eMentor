@@ -5,28 +5,20 @@ import { GlobalService } from './global.service';
 import { HttpClient } from '@angular/common/http';
 import { RegisterModel } from '../models/register.model';
 import { API_ENDPOINT } from '../app.constants';
-import { ChangePasscode } from '../models/changepasscode.model';
-import { UserModel } from '../models/user.model';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserService extends BaseService {
-  editProfile(data: UserModel) {
-    return this.postFormData(API_ENDPOINT.editProfile, data, true);
-  }
-  getUserProfile() {
-    return this.get(API_ENDPOINT.getUserProfile, null, false);
-  }
+export class HardcodeService extends BaseService {
     constructor(protected http: HttpClient,
         protected errorHandler: ErrorService,
         protected globalService: GlobalService) {
         super(http, errorHandler, globalService);
+
     }
-    registerAccount(model: RegisterModel) {
-        return this.post(API_ENDPOINT.registerAccount, model, false);
-    }
-    changePasscode(data: ChangePasscode) {
-        return this.post(API_ENDPOINT.changePassword, data);
+
+ getHardcode(hardCodeParent: string): Observable<any> {
+    return this.get(`${API_ENDPOINT.getHardCode}?hardCodeParent=${hardCodeParent}`, null, true);
     }
 }

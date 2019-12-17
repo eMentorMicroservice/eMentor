@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -28,6 +28,18 @@ import { AppNumberPipe } from './pipes/number.pipe';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
 import { UserProfileViewComponent } from './components/user-profile-view/user-profile-view.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AppRoutingModule } from './app.routing.module';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { AppDatePickerComponent } from './controls/date-picker/date-picker.component';
+import { AppDropdownListComponent } from './controls/dropdown-list/dropdown-list.component';
+import { DatepickerModule, BsDatepickerModule, TimepickerModule, BsModalRef, ModalModule } from 'ngx-bootstrap';
+import { LoginAccessGuard } from './guards/login.guard';
+import { AdminAccessGuard } from './guards/admin.guard.';
+import { ErrorService } from './services/common/error.service';
+import { GlobalService } from './services/global.service';
+import { SearchBoxComponent } from './controls/search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -51,36 +63,46 @@ import { UserProfileViewComponent } from './components/user-profile-view/user-pr
     MinDateValidator,
 
     // tslint:disable-next-line: comment-format
+    //custom components
+    AppTextBoxComponent,
+    AppDatePickerComponent,
+    AppDropdownListComponent,
+    SearchBoxComponent,
+
+
+    // tslint:disable-next-line: comment-format
     //components
     AppComponent,
     ClassroomComponent,
     DashboardStudentComponent,
     RegisterComponent,
     LoginComponent,
-    AppTextBoxComponent,
     DashboardTeacherComponent,
     ChangePasswordComponent,
     UserProfileUpdateComponent,
-    UserProfileViewComponent
+    UserProfileViewComponent,
+    NotFoundComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    NgxSpinnerModule,
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: 'classroom', component: ClassroomComponent, pathMatch: 'full' },
-      { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full' },
-      { path: 'home-student', component: DashboardStudentComponent, pathMatch: 'full' },
-      { path: 'home-teacher', component: DashboardTeacherComponent, pathMatch: 'full' },
-      { path: 'register', component: RegisterComponent, pathMatch: 'full' },
-      { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
-      { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'}
     ])
   ],
-  providers: [ActionCableService],
+  providers: [
+        LoginAccessGuard,
+        AdminAccessGuard,
+        ErrorService,
+        GlobalService,
+        BsModalRef,
+        ActionCableService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
