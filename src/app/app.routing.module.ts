@@ -18,9 +18,9 @@ const routes: Routes = [
         path: '',
         component: MainLayoutComponent,
         children: [
-            { path: '', component: DashboardStudentComponent},
-            { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full'},
-            { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full'},
+            { path: '', component: DashboardStudentComponent, outlet: 'student'},
+            { path: 'view-profile', component: UserProfileViewComponent, pathMatch: 'full', outlet: 'student'},
+            { path: 'edit-profile', component: UserProfileUpdateComponent, pathMatch: 'full', outlet: 'student'},
         ]
     },
     {
@@ -35,17 +35,19 @@ const routes: Routes = [
             {
                 path: 'mentor-home',
                 component: DashboardTeacherComponent,
-                pathMatch: 'full',
+                outlet: 'mentor'
             },
             {
                 path: 'view-course',
                 component: UploadCourseViewComponent,
                 pathMatch: 'full',
+                outlet: 'mentor'
             },
             {
                 path: 'upload-course',
                 component: UploadCourseComponent,
                 pathMatch: 'full',
+                outlet: 'mentor'
             }
         ]
     },
