@@ -10,6 +10,7 @@ import { UserProfileViewComponent } from './components/user-profile-view/user-pr
 import { UserProfileUpdateComponent } from './components/user-profile-update/user-profile-update.component';
 import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ClassroomComponent } from './components/classroom/classroom.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,8 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
     },
+    { path: 'classroom', component: ClassroomComponent, pathMatch: 'full' },
+
     {
         path: 'home-teacher',
         component: DashboardTeacherComponent,

@@ -91,9 +91,12 @@ import { SearchBoxComponent } from './controls/search-box/search-box.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot([
-      { path: 'classroom', component: ClassroomComponent, pathMatch: 'full' },
-    ])
+    AppRoutingModule,
+    ModalModule.forRoot(),
+    DatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
         LoginAccessGuard,
