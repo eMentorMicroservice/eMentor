@@ -13,6 +13,9 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class UserService extends BaseService {
+  getAllUsers(): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
   editProfile(data: UserModel) {
     return this.postFormData(API_ENDPOINT.editProfile, data, true);
   }

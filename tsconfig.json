@@ -4,11 +4,13 @@
     "baseUrl": "./",
     "module": "esnext",
     "outDir": "./dist/out-tsc",
+    "types": ["jquery","bootstrap","signalr"],
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"

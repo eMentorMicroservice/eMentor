@@ -35,10 +35,12 @@
               "src/assets/css/styles.css",
               "src/plugins/bootstrap-fileupload/bootstrap-fileupload.css",
               "src/plugins/dropzone/dropzone.css",
-              "src/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css"
+              "src/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css",
+              "src/plugins/datatables/dataTables.bootstrap4.min.css",
+              "src/plugins/datatables/responsive.bootstrap4.min.css"
             ],
             "scripts": [
-               "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/js/modernizr.min.js",
               "src/assets/js/metisMenu.min.js",
@@ -47,7 +49,10 @@
               "src/assets/js/waves.js",
               "src/plugins/bootstrap-fileupload/bootstrap-fileupload.js",
               "src/plugins/dropzone/dropzone.js",
-              "src/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"
+              "src/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js",
+              "src/plugins/datatables/jquery.dataTables.min.js",
+              "src/plugins/datatables/dataTables.bootstrap4.min.js",
+              "src/plugins/datatables/dataTables.responsive.min.js"
             ]
           },
           "configurations": {

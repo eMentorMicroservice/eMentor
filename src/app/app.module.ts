@@ -38,7 +38,7 @@ import { UserProfileViewComponent } from './components/commonComponents/user-pro
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import { ActionCableService } from 'angular2-actioncable';
 import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
-
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -81,7 +81,8 @@ import { DashboardComponent } from './components/commonComponents/dashboard/dash
     MainLayoutComponent,
     UploadCourseComponent,
     UploadCourseViewComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserAnimationsModule,

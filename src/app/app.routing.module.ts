@@ -11,6 +11,7 @@ import { UserProfileViewComponent } from './components/commonComponents/user-pro
 import { UserProfileUpdateComponent } from './components/commonComponents/user-profile-update/user-profile-update.component';
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
     {
@@ -47,7 +48,10 @@ const routes: Routes = [
         component: LoginComponent,
         pathMatch: 'full',
     },
-
+    {
+        path: 'admin',
+        component: AdminDashboardComponent
+    },
     {
         path: 'register',
         component: RegisterComponent,
