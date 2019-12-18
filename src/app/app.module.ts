@@ -39,6 +39,7 @@ import { ClassroomComponent } from './components/classroom/classroom.component';
 import { ActionCableService } from 'angular2-actioncable';
 import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -82,7 +83,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     UploadCourseComponent,
     UploadCourseViewComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    BecomeTutorComponent
   ],
   imports: [
     BrowserAnimationsModule,

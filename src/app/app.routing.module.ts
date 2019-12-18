@@ -12,6 +12,7 @@ import { UserProfileUpdateComponent } from './components/commonComponents/user-p
 import { ClassroomComponent } from './components/classroom/classroom.component';
 import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
 
 const routes: Routes = [
     {
@@ -40,6 +41,10 @@ const routes: Routes = [
                 path: 'classroom',
                 component: ClassroomComponent,
                 pathMatch: 'full'
+            },
+            {
+                path: 'become-tutor',
+                component: BecomeTutorComponent
             }
         ]
     },

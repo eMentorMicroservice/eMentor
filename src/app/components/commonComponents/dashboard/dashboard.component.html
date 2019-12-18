@@ -7,16 +7,13 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active"
-          style="background-image: url('/assets/images/slider1.jpg')">
+        <div class="carousel-item active" style="background-image: url('/assets/images/slider1.jpg')">
         </div>
-        <div class="carousel-item"
-          style="background-image: url('/assets/images/slider2.jfif')">
+        <div class="carousel-item" style="background-image: url('/assets/images/slider2.jfif')">
           <div class="carousel-caption d-none d-md-block">
           </div>
         </div>
-        <div class="carousel-item"
-          style="background-image: url('/assets/images/slider3.jpg')">
+        <div class="carousel-item" style="background-image: url('/assets/images/slider3.jpg')">
           <div class="carousel-caption d-none d-md-block">
           </div>
         </div>
@@ -32,6 +29,16 @@
     </div>
 
   </header>
+  <div class="row mt-5">
+    <div class="col-xs-6" style="position: sticky; left: 3%;">
+      <app-search-box placeholder="Search course" [delayTimeSpan]=500 (searchTextInvoke)='searchCourse($event)'>
+      </app-search-box>
+    </div>
+    <div class="col-xs-6">
+      <button class="btn btn-custom waves-effect waves-light d-flex float-right"
+        style="position: absolute; right:3%;" routerLink="/become-tutor">Become a Tutor</button>
+    </div>
+  </div>
   <div class="mt-5">
     <div *ngIf="courses" class="row">
       <div *ngFor="let course of courses" class="col-xl-4">

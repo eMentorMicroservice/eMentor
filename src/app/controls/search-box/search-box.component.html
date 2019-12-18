@@ -1,4 +1,10 @@
-<form [formGroup]="searchForm">
+<!-- <form [formGroup]="searchForm">
   <input type="text" class="form-control"  formControlName="searchContent" #searchBox id="search-box"
     placeholder="{{placeholder}}">
+</form> -->
+<form [formGroup]="searchForm">
+  <div class="hide-phone app-search">
+    <input type="text" class="form-control" placeholder="{{placeholder}}" formControlName="searchContent" #searchBox id="search-box">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
 </form>

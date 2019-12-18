@@ -4,6 +4,7 @@ import { LocalService } from 'src/app/services/common/local.service';
 import { CourseModel } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DashboardComponent implements OnInit {
   userName: any;
   courses: CourseModel[] = [];
+  originCoursesList: any;
   isTeacher: boolean;
   constructor(private courseService: CourseService,
      private spinner: NgxSpinnerService) { }
@@ -27,6 +29,17 @@ export class DashboardComponent implements OnInit {
   getAllCourses() {
     this.courseService.getAllCourses().subscribe(data => {
       this.courses = data;
+      this.originCoursesList = this.courses;
     });
+  }
+
+  searchCourse(term: string) {
+    if (!term) {
+      this.courses = this.originCoursesList;
+    }
+    // tslint:disable-next-line: no-trailing-whitespace
+    this.courses = this.originCoursesList.filter(course => 
+                course.name.toLowerCase().indexOf(term.toLowerCase()) !== -1
+             || course.owner.fullName.toLowerCase().indexOf(term.toLowerCase()) !== -1);
   }
 }

@@ -10,38 +10,37 @@ declare var $: any;
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+
   users: UserModel[] = [];
+
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getUsers();
   }
+
   getUsers(): void {
     this.userService.getUserProfile()
       .subscribe(apiUsers => {
-        console.log(apiUsers);
         if (apiUsers) {
           this.users = apiUsers.data;
-         // this.users = this.users.filter((emp: { role: number; }) => emp.role !== 1);
           setTimeout(() => {
             $('#datatable').dataTable();
-            console.log($('#datatable'));
           });
         }
       });
-
   }
   logOut() {
     try {
-            LocalService.logout();
-            this.router.navigate(['login']);
+      LocalService.logout();
+      this.router.navigate(['login']);
     } catch {
       this.router.navigate(['login']);
     }
   }
 }
 
-export const jsDatatableFile =  [
+export const jsDatatableFile = [
   {
     name: 'dataTables',
     src: 'src/plugins/datatables/jquery.dataTables.min.js'
