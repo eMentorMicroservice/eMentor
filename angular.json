@@ -32,7 +32,9 @@
               "src/assets/iconfonts/mdi/css/materialdesignicons.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css",
-              "src/assets/css/styles.css"
+              "src/assets/css/styles.css",
+              "src/plugins/bootstrap-fileupload/bootstrap-fileupload.css",
+              "src/plugins/dropzone/dropzone.css"
             ],
             "scripts": [
                "node_modules/jquery/dist/jquery.min.js",
@@ -41,7 +43,9 @@
               "src/assets/js/metisMenu.min.js",
               "src/assets/js/jquery.slimscroll.js",
               "src/assets/js/jquery.sweet-alert.init.js",
-              "src/assets/js/waves.js"
+              "src/assets/js/waves.js",
+              "src/plugins/bootstrap-fileupload/bootstrap-fileupload.js",
+              "src/plugins/dropzone/dropzone.js"
             ]
           },
           "configurations": {
