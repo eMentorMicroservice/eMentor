@@ -34,7 +34,8 @@
               "src/styles.css",
               "src/assets/css/styles.css",
               "src/plugins/bootstrap-fileupload/bootstrap-fileupload.css",
-              "src/plugins/dropzone/dropzone.css"
+              "src/plugins/dropzone/dropzone.css",
+              "src/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css"
             ],
             "scripts": [
                "node_modules/jquery/dist/jquery.min.js",
@@ -45,7 +46,8 @@
               "src/assets/js/jquery.sweet-alert.init.js",
               "src/assets/js/waves.js",
               "src/plugins/bootstrap-fileupload/bootstrap-fileupload.js",
-              "src/plugins/dropzone/dropzone.js"
+              "src/plugins/dropzone/dropzone.js",
+              "src/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"
             ]
           },
           "configurations": {
