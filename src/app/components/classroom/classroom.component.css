@@ -20,3 +20,18 @@
 .chat-box {
   background-color: white;
 }
+
+.my-custom-scrollbar {
+  position: relative;
+  width: 100%;
+  height: 848px;
+  overflow: auto;
+}
+
+.sticky-bottom{
+  position: sticky;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  background: white;
+}
