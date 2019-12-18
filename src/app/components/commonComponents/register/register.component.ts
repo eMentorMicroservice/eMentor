@@ -13,7 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class RegisterComponent implements OnInit {
 
   model = new RegisterModel();
-  backgroundImage = 'assets/images/subg.jpg';
+  backgroundImage = 'assets/images/coach-menntor.jpg';
   constructor(
     private userService: UserService,
     private router: Router,

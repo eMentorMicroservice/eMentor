@@ -7,6 +7,7 @@ import { RegisterModel } from '../models/register.model';
 import { API_ENDPOINT } from '../app.constants';
 import { ChangePasscode } from '../models/changepasscode.model';
 import { UserModel } from '../models/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +24,7 @@ export class UserService extends BaseService {
         protected globalService: GlobalService) {
         super(http, errorHandler, globalService);
     }
-    registerAccount(model: RegisterModel) {
+    registerAccount(model: RegisterModel): Observable<any> {
         return this.post(API_ENDPOINT.registerAccount, model, false);
     }
     changePasscode(data: ChangePasscode) {
