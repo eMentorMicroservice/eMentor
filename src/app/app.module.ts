@@ -41,6 +41,9 @@ import { DashboardComponent } from './components/commonComponents/dashboard/dash
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
 import { LogoutComponent } from './components/commonComponents/logout/logout.component';
+import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
+import { WithdrawViewComponent } from './components/withdraw-view/withdraw-view.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -86,7 +89,10 @@ import { LogoutComponent } from './components/commonComponents/logout/logout.com
     DashboardComponent,
     AdminDashboardComponent,
     BecomeTutorComponent,
-    LogoutComponent
+    LogoutComponent,
+    AccountBalanceComponent,
+    WithdrawViewComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserAnimationsModule,
