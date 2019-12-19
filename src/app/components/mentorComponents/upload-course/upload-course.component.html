@@ -49,16 +49,20 @@
                 </div>
   
                 <div class="form-group row">
-                  <label class="col-sm-12" for="availableTime">Available From</label>
-                  <div class="col-sm-12">
+                  <label class="col-sm-6" for="availableTime">Available From</label>
+                  <div class="col-sm-6">
                     <timepicker [(ngModel)]="model.availableFrom" [showSpinners]="false" [ngModelOptions]="{standalone: true}"></timepicker>
+                  </div>
+                  <label class="col-sm-6" for="availableTime">Available To</label>
+                  <div class="col-sm-6">
+                    <timepicker [(ngModel)]="model.availableTo" [showSpinners]="false" [ngModelOptions]="{standalone: true}"></timepicker>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-12" for="availableTime">Available To</label>
                   <div class="col-sm-12">
-                    <timepicker [(ngModel)]="model.availableTo" [showSpinners]="false" [ngModelOptions]="{standalone: true}"></timepicker>
+                  <app-text-box class="app-text" type="number" title = "Course Fee ($)" name = "courseFee"
+                  [(ngModel)]="model.courseFee"></app-text-box>
                   </div>
                 </div>
   

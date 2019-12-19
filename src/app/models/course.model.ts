@@ -16,6 +16,7 @@ export class CourseModel {
     courseCategory: string;
     courseImage: string;
     categoryModel: DropdownModel;
+    courseFee: number;
 }
 export class UploadCourseModel {
     constructor() {
@@ -30,4 +31,5 @@ export class UploadCourseModel {
     availableTo: string;
     categoryModel: DropdownModel;
     id: number;
+    courseFee: number;
 }

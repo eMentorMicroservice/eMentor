@@ -15,14 +15,15 @@
           "options": {
             "progress": true,
             "extractCss": true,
-            "outputPath": "dist",
+            "outputPath": "src",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.png",
-              "src/assets"
+              "src/assets",
+              "src/assets/image"
             ],
             "styles": [
               "src/assets/css/icons.css",

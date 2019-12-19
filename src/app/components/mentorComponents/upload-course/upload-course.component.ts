@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DropdownModel } from 'src/app/models/dropdown.model';
 import { HardcodeService } from 'src/app/services/hardcode.service';
 import { HardCodeConst } from 'src/app/app.constants';
@@ -9,6 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThrowStmt } from '@angular/compiler';
 import { DatetimeUtils } from 'src/app/utils/dateutil';
+import { BaseService } from 'src/app/services/common/base.service';
 
 @Component({
   selector: 'app-upload-course',
@@ -27,13 +28,13 @@ export class UploadCourseComponent implements OnInit {
     private courseService: CourseService,
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     this.spinner.show();
     this.model = new UploadCourseModel();
-
     this.hardcodeService.getHardcode(HardCodeConst.courseCategories)
       .subscribe(data => {
         this.categories = data;
@@ -70,14 +71,16 @@ export class UploadCourseComponent implements OnInit {
     if (this.courseId === 0) {
       this.courseService.uploadCourse(this.model).subscribe(data => {
         if (!data) { return; }
-        this.router.navigate(['/view-course']);
       });
     } else {
       this.courseService.editCourse(this.model).subscribe(data => {
         if (!data) { return; }
-        this.router.navigate(['/view-course']);
       });
     }
+    setTimeout(() => {
+      this.cd.detectChanges();
+      this.router.navigate(['/view-course']);
+      });
     this.spinner.hide();
   }
 }
