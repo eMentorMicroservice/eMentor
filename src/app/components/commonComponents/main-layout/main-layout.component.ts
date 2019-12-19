@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user.model';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -20,17 +21,16 @@ export class MainLayoutComponent extends NavigationService implements OnInit, On
   elementLoading: boolean;
   loaderSubscribe: Subscription;
   user = new UserModel();
-  userName: any;
   active = false;
   title: any;
-  userAvatar: any;
 
 
   constructor(router: Router,
     private route: ActivatedRoute,
     @Inject(forwardRef(() => AppComponent)) private appComm: AppComponent,
     private globalService: GlobalService,
-    private cdref: ChangeDetectorRef) {
+    private cdref: ChangeDetectorRef,
+    private userService: UserService) {
     super(router);
     this.subscribeNavigationEnd();
   }
@@ -42,16 +42,22 @@ export class MainLayoutComponent extends NavigationService implements OnInit, On
       this.router.navigate(['login']);
     }
 
-    this.userAvatar = LocalService.getUserAvt();
-
-    this.userName = LocalService.getUserName();
-
     this.loaderSubscribe = this.globalService.loader
       .subscribe(status => {
         this.elementLoading = status;
         this.cdref.detectChanges();
       });
+    this.screenReload();
 
+  }
+
+  screenReload() {
+    this.userService.getUserProfile()
+      .subscribe((res) => {
+        if (res) {
+          this.user = res;
+        }
+      });
   }
 
   subscribeNavigationEnd() {

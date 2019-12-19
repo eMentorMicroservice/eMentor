@@ -12,6 +12,7 @@ import { DropdownModel } from 'src/app/models/dropdown.model';
 import { HardcodeService } from 'src/app/services/hardcode.service';
 import { DatetimeUtils } from 'src/app/utils/dateutil';
 import { stringify } from 'querystring';
+import { MainLayoutComponent } from '../main-layout/main-layout.component';
 
 @Component({
   selector: 'app-user-profile-update',
@@ -31,7 +32,8 @@ export class UserProfileUpdateComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private spinner: NgxSpinnerService,
-              private hardCodeService: HardcodeService) { }
+              private hardCodeService: HardcodeService,
+              private mainLayout: MainLayoutComponent) { }
 
   ngOnInit() {
     this.bsConfig = Object.assign({}, {
@@ -72,6 +74,7 @@ export class UserProfileUpdateComponent implements OnInit {
     this.userService.editProfile(this.model).subscribe(data => {
         this.spinner.hide();
         this.router.navigate(['/view-profile']);
+        this.mainLayout.screenReload();
       },
       error => {
         this.spinner.hide();
