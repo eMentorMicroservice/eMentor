@@ -24,7 +24,6 @@ export class ImageService extends BaseService {
       getPictureUrl(url: string): SafeStyle {
         const style = `url('${url}')`;
         const result = this.sanitizer.bypassSecurityTrustStyle(style);
-        console.log(result);
         return result;
       }
 }

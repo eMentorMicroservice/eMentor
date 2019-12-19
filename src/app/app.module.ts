@@ -40,6 +40,7 @@ import { ActionCableService } from 'angular2-actioncable';
 import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
+import { LogoutComponent } from './components/commonComponents/logout/logout.component';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -84,7 +85,8 @@ import { BecomeTutorComponent } from './components/commonComponents/become-tutor
     UploadCourseViewComponent,
     DashboardComponent,
     AdminDashboardComponent,
-    BecomeTutorComponent
+    BecomeTutorComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserAnimationsModule,

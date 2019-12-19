@@ -160,13 +160,13 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <label class="text-uppercase bold-label-lg"> {{userName}} 's Profile </label>
+                <label class="text-uppercase bold-label-lg"> {{user.fullName}} 's Profile </label>
                 <button class="btn btn-lg btn-outline-primary text-right mr-3 btn-edit-profile"
                     routerLink="/edit-profile">
                     Edit Profile
                 </button>
                 <div class="row mt-3">
-                    <div class="col-xs-6 col-lg-6 col-md-6 thumb-lg member-thumb mr-15 m-b-10 d-inline-block">
+                    <div class="col-xs-6 col-lg-6 col-md-6 member-thumb mr-15 m-b-10 d-inline-block">
                         <img class="img-cover img-thumbnail no-border display-avt" width="250" height="250" src="{{ avatar ? avatar : user.avatar | image}}"
                                 alt="image">
                     </div>

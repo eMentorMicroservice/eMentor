@@ -13,6 +13,7 @@ import { ClassroomComponent } from './components/classroom/classroom.component';
 import { DashboardComponent } from './components/commonComponents/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
+import { LogoutComponent } from './components/commonComponents/logout/logout.component';
 
 const routes: Routes = [
     {
@@ -51,6 +52,11 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+        pathMatch: 'full',
+    },
+    {
+        path: 'logout',
+        component: LogoutComponent,
         pathMatch: 'full',
     },
     {
