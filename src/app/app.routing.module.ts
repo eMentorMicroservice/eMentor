@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/commonComponents/login/login.component';
 import { ChangePasswordComponent } from './components/commonComponents/change-password/change-password.component';
@@ -14,6 +14,8 @@ import { DashboardComponent } from './components/commonComponents/dashboard/dash
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
 import { LogoutComponent } from './components/commonComponents/logout/logout.component';
+import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
     {
@@ -46,6 +48,14 @@ const routes: Routes = [
             {
                 path: 'become-tutor',
                 component: BecomeTutorComponent
+            },
+            {
+                path: 'account-balance',
+                component: AccountBalanceComponent,
+            },
+            {
+                path: 'checkout',
+                component: CheckoutComponent
             }
         ]
     },
