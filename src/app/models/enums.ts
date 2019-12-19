@@ -30,11 +30,20 @@ enum CourseCategories {
 
 }
 
+enum DialogStyles {
+    None,
+    Message,
+    Input,
+    ThreeOptions,
+    Confirm
+}
+
 export {
     UserRole,
     Gender,
     OnlineState,
     NotifyType,
     ServerErrorModel,
-    CourseCategories
+    CourseCategories,
+    DialogStyles
 };

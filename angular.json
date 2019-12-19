@@ -38,7 +38,8 @@
               "src/plugins/dropzone/dropzone.css",
               "src/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css",
               "src/plugins/datatables/dataTables.bootstrap4.min.css",
-              "src/plugins/datatables/responsive.bootstrap4.min.css"
+              "src/plugins/datatables/responsive.bootstrap4.min.css",
+              "src/assets/css/sweetalert2.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -46,6 +47,7 @@
               "src/assets/js/modernizr.min.js",
               "src/assets/js/metisMenu.min.js",
               "src/assets/js/jquery.slimscroll.js",
+              "src/assets/js/sweetalert2.min.js",
               "src/assets/js/jquery.sweet-alert.init.js",
               "src/assets/js/waves.js",
               "src/plugins/bootstrap-fileupload/bootstrap-fileupload.js",

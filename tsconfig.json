@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "module": "esnext",
     "outDir": "./dist/out-tsc",
-    "types": ["jquery","bootstrap","signalr"],
+    "types": ["jquery","bootstrap","signalr", "node"],
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",

@@ -10,6 +10,7 @@ import { UserModel } from 'src/app/models/user.model';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
 import { UserService } from 'src/app/services/user.service';
+import { jsFile } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-main-layout',
@@ -86,7 +87,17 @@ logOut() {
   }
 
 }
-
+ngAfterViewInit() {
+  jsFile.forEach((item) => {
+    if (document.getElementById(item.name)) {
+      document.getElementById(item.name).remove();
+    }
+    const script = document.createElement('script');
+    script.setAttribute('id', item.name);
+    script.setAttribute('src', item.src);
+    document.body.appendChild(script);
+  });
+}
   ngOnDestroy() {
     this.loaderSubscribe.unsubscribe();
   }

@@ -5,6 +5,7 @@ import { CourseModel } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { stringify } from 'querystring';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
   originCoursesList: any;
   isTeacher: boolean;
   constructor(private courseService: CourseService,
-     private spinner: NgxSpinnerService) { }
+     private spinner: NgxSpinnerService,
+     private dialog: DialogService) { }
 
   ngOnInit() {
     this.spinner.show();
@@ -80,5 +82,11 @@ export class DashboardComponent implements OnInit {
         break;
 
     }
+  }
+
+  regisCourse(courseId: number, courseFee: number) {
+    this.dialog.confirm('Confirm', 'You must pay atleast ' + courseFee + '$ to attend this course', () => {
+      alert('yeah');
+  });
   }
 }

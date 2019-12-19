@@ -41,6 +41,7 @@ import { DashboardComponent } from './components/commonComponents/dashboard/dash
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { BecomeTutorComponent } from './components/commonComponents/become-tutor/become-tutor.component';
 import { LogoutComponent } from './components/commonComponents/logout/logout.component';
+const swal = require('sweetalert2');
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format

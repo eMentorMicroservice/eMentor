@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">{{model.title}}</h5>
+  <button type="button" class="close" data-dismiss="modal" (click)="bsModalRef.hide()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form #form="ngForm" (submit)="submit(form)" autocomplete="off">
+  <div class="modal-body">
+    <app-text-box type="{{model.typeOfInput}}" (textChangeInvoke)='textChanged($event)' title="" name="model.Content"
+      placeholder="{{model.hint}}" required="true" [(ngModel)]="model.content">
+      <div invalidmessage="{{model.content}}">
+        <p *invalidType="'required'">Bạn vui lòng nhập nội dung</p>
+      </div>
+    </app-text-box>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success btn-fw" type="submit">
+      <i class="mdi mdi-checkbox-marked-circle">{{model.mainActionButtonText}}</i></button>
+    <button class="btn btn-danger btn-fw" type="button" (click)="noBtnClicked()">
+      <i class="mdi mdi-close-circle">{{model.subActionButtonText}}</i></button>
+  </div>
+</form>
