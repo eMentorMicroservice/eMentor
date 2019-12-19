@@ -26,7 +26,14 @@ export class CourseService extends BaseService {
     getAllCourses() {
         return this.get(API_ENDPOINT.getAllCourses, null, false);
     }
+    getCurrentMentorCourses() {
+      return this.get(API_ENDPOINT.getCoursesByMentorId, null, false);
+    }
+
     getCourseById(id: number): Observable<any> {
         return this.get(`${API_ENDPOINT.getAllCourses}?id=${id}`);
+    }
+    deleteCourse(id: number) {
+      return this.post(`${API_ENDPOINT.deleteCourse}?courseId=${id}`);
     }
 }

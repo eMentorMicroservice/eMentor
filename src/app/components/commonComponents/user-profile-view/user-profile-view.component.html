@@ -166,8 +166,9 @@
                     Edit Profile
                 </button>
                 <div class="row mt-3">
-                    <div class="col-xs-6 col-lg-6 col-md-6">
-                        <img src=" {{user.avatar | image}}" alt="image" height="250" width="250" class="rounded">
+                    <div class="col-xs-6 col-lg-6 col-md-6 thumb-lg member-thumb mr-15 m-b-10 d-inline-block">
+                        <img class="img-cover img-thumbnail no-border display-avt" width="250" height="250" src="{{ avatar ? avatar : user.avatar | image}}"
+                                alt="image">
                     </div>
                     <div class="col-xs-6 col-lg-6 col-md-6">
                             <h4 class="user-name text-uppercase">{{userName}}</h4>

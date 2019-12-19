@@ -42,4 +42,43 @@ export class DashboardComponent implements OnInit {
                 course.name.toLowerCase().indexOf(term.toLowerCase()) !== -1
              || course.owner.fullName.toLowerCase().indexOf(term.toLowerCase()) !== -1);
   }
+
+  getCourseByCourseCategory(category: string) {
+    if (!this.originCoursesList) { return; }
+    switch (category.toString()) {
+      case '0':
+          this.courses = this.originCoursesList;
+        break;
+      default:
+          this.courses = this.originCoursesList.filter(p => p.courseCategory.toString() === category);
+        break;
+    }
+  }
+
+  sortListCourses(sortMethod: string) {
+    switch (sortMethod) {
+      case 'CourseCategory':
+        this.courses = this.courses.sort((a, b) => {
+          if (a.categoryModel.Name.toLowerCase() > b.categoryModel.Name.toLowerCase()) { return 1; }
+          if (a.categoryModel.Name.toLowerCase() < b.categoryModel.Name.toLowerCase()) { return -1; }
+          return 0;
+        });
+        break;
+      case 'Price':
+        this.courses = this.courses.sort((a, b) => {
+          if (a.courseFee > b.courseFee) { return 1; }
+          if (a.courseFee < b.courseFee) { return -1; }
+          return 0;
+        });
+        break;
+      default:
+        this.courses = this.courses.sort((a, b) => {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+          if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+          return 0;
+        });
+        break;
+
+    }
+  }
 }

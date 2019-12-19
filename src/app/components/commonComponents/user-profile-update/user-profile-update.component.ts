@@ -67,7 +67,7 @@ export class UserProfileUpdateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.model.dateOfBirth = DatetimeUtils.toShortDateFormat(this.model.dateOfBirth);
+    this.model.dateOfBirth = DatetimeUtils.toShortDateTimeFormat(this.model.dateOfBirth);
     this.spinner.show();
     this.userService.editProfile(this.model).subscribe(data => {
         this.spinner.hide();

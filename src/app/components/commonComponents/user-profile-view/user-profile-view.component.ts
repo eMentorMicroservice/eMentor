@@ -5,6 +5,7 @@ import { UserRole } from 'src/app/models/enums';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/models/user.model';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-user-profile-view',
@@ -15,7 +16,9 @@ export class UserProfileViewComponent implements OnInit {
   isTeacher = false;
   userName: any;
   user: UserModel;
+  avatar: any;
   constructor(private spinner: NgxSpinnerService,
+    private imgService: ImageService,
     private userService: UserService) { }
 
   ngOnInit() {
@@ -29,6 +32,10 @@ export class UserProfileViewComponent implements OnInit {
   getUserProfile() {
     this.userService.getUserProfile().subscribe(data => {
         this.user = data;
+        setTimeout(() => {
+          this.imgService.getPictureUrl(this.user.avatar);
+          this.avatar =this.user.avatar;
+        }, 500);
       });
   }
 }

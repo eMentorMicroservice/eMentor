@@ -46,7 +46,9 @@ export const API_ENDPOINT = {
   getHardCode: '/Home/GetHardCodes',
   uploadCourse: '/Course/UploadCourse',
   editCourse: '/Course/EditCourse',
-  getCourses: '/Course/GetCourses'
+  getCourses: '/Course/GetCourses',
+  getCoursesByMentorId: '/Course/GetCourseByMentor',
+  deleteCourse: '/Course/RemoveCourse'
 };
 
 export const HardCodeConst = {

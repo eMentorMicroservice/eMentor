@@ -27,7 +27,7 @@
                             (change)="sortListCourses($event.target.value)">
                             <option value="CourseName">Name</option>
                             <option value="CourseCategory">Category</option>
-                            <option value="AvailableTime">Available Time</option>
+                            <option value="Price">Course Fee</option>
                         </select>
                     </div>
                 </form>
@@ -74,7 +74,7 @@
 
             <p class="project-hide-overflow">
                 <span class="thumb-lg member-thumb mr-15 m-b-10 d-inline-block">
-                    <img src="{{course.courseImage ? course.courseImage : image}}" height="48" width="48" class="rounded-circle img-thumbnail"
+                    <img src="{{course.courseImage | image}}" height="48" width="48" class="img-cover rounded-circle img-thumbnail no-border"
                         title="{{course.name}}" alt="image" />
                 </span>
                 <span class="text-dark mb-0 font-15 ml-3"><b>{{course.name}}</b></span>
@@ -87,3 +87,4 @@
         </div>
     </div>
 </div>
+<ngx-spinner></ngx-spinner>
