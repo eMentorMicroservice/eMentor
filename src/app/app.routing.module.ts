@@ -40,11 +40,7 @@ const routes: Routes = [
                 component: UploadCourseComponent,
                 pathMatch: 'full',
             },
-            {
-                path: 'classroom',
-                component: ClassroomComponent,
-                pathMatch: 'full'
-            },
+
             {
                 path: 'become-tutor',
                 component: BecomeTutorComponent
@@ -58,6 +54,11 @@ const routes: Routes = [
                 component: CheckoutComponent
             }
         ]
+    },
+    {
+        path: 'classroom',
+        component: ClassroomComponent,
+        pathMatch: 'full'
     },
     {
         path: 'login',

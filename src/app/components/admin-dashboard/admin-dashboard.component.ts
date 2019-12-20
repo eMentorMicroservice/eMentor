@@ -12,7 +12,6 @@ declare var $: any;
 export class AdminDashboardComponent implements OnInit {
 
   users: UserModel[] = [];
-
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
