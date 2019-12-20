@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService extends BaseService {
   getAllUsers(): Observable<any> {
-    throw new Error('Method not implemented.');
+    return this.get(API_ENDPOINT.getAllUsers, null, false);
   }
   editProfile(data: UserModel) {
     return this.postFormData(API_ENDPOINT.editProfile, data, true);
@@ -32,5 +32,11 @@ export class UserService extends BaseService {
     }
     changePasscode(data: ChangePasscode) {
         return this.post(API_ENDPOINT.changePassword, data);
+    }
+    deleteUser(id: number) {
+      return this.post(`${API_ENDPOINT.deleteUser}?userId=${id}`);
+    }
+    upGradeUser(id: number) {
+      return this.post(`${API_ENDPOINT.upgradeUser}?userId=${id}`);
     }
 }

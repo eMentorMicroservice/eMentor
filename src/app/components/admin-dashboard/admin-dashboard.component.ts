@@ -20,23 +20,25 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUserProfile()
+    this.userService.getAllUsers()
       .subscribe(apiUsers => {
         if (apiUsers) {
-          this.users = apiUsers.data;
+          this.users = apiUsers;
           setTimeout(() => {
             $('#datatable').dataTable();
           });
         }
       });
   }
-  logOut() {
-    try {
-      LocalService.logout();
-      this.router.navigate(['login']);
-    } catch {
-      this.router.navigate(['login']);
-    }
+  upgrade(id: number) {
+    this.userService.upGradeUser(id).subscribe(() => {
+      this.getUsers();
+    });
+  }
+  remove(id: number) {
+    this.userService.deleteUser(id).subscribe(() => {
+      this.getUsers();
+    });
   }
 }
 
