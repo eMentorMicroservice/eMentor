@@ -44,6 +44,7 @@ import { LogoutComponent } from './components/commonComponents/logout/logout.com
 import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
 import { WithdrawViewComponent } from './components/withdraw-view/withdraw-view.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CanvasWhiteboardModule } from 'ng2-canvas-whiteboard';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -107,7 +108,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     DatepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CanvasWhiteboardModule,
   ],
   providers: [
         LoginAccessGuard,

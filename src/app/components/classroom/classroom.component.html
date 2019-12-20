@@ -1,4 +1,4 @@
-<div class="row mt-5">
+<div class="row pt-60">
     <div class="col-8">
         <div class="row mb-4">
 
@@ -7,6 +7,33 @@
                     <a class="navbar-brand" (click)="isShowWhiteBoard=false">Upload File</a>
                 </nav>
         </div>
+        <div *ngIf="isShowWhiteBoard" class="row">
+            <div class="col-12 whiteboard">
+                
+                <canvas-whiteboard #canvasWhiteboard
+                    [drawButtonClass]="'drawButtonClass'"
+                    [drawButtonText]="'Draw'"
+                    [clearButtonClass]="'clearButtonClass'"
+                    [clearButtonText]="'Clear'"
+                    [undoButtonText]="'Undo'"
+                    [undoButtonEnabled]="true"
+                    [redoButtonText]="'Redo'"
+                    [redoButtonEnabled]="true"
+                    [colorPickerEnabled]="true"
+                    [saveDataButtonEnabled]="true"
+                    [saveDataButtonText]="'Save'"
+                    [lineWidth]="5"
+                    [strokeColor]="'rgb(0,0,0)'"
+                    [shouldDownloadDrawing]="true"
+                    (onBatchUpdate)="sendBatchUpdate($event)"
+                    (onClear)="onCanvasClear()"
+                    (onUndo)="onCanvasUndo($event)"
+                    (onRedo)="onCanvasRedo($event)">
+                </canvas-whiteboard>
+               
+            </div>
+        </div>
+        
         <div *ngIf="!isShowWhiteBoard" class="row">
             <div class="col-12">
                 <div class="card-box">

@@ -9,12 +9,14 @@ import { shareReplay, timeout, catchError } from 'rxjs/operators';
 import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
 import { ErrorService } from 'src/app/services/common/error.service';
 import 'webrtc-adapter';
+import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
 
 const JOIN_ROOM = 'JOIN_ROOM';
 const EXCHANGE = 'EXCHANGE';
 const REMOVE_USER = 'REMOVE_USER';
 @Component({
   selector: 'app-classroom',
+  viewProviders: [CanvasWhiteboardComponent],
   templateUrl: './classroom.component.html',
   styleUrls: ['./classroom.component.css']
 })
