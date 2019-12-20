@@ -31,6 +31,11 @@ const routes: Routes = [
                 pathMatch: 'full',
             },
             {
+                path: 'view-profile/:id',
+                component: UserProfileViewComponent,
+                pathMatch: 'full',
+            },
+            {
                 path: 'edit-course/:id',
                 component: UploadCourseComponent,
                 pathMatch: 'full',

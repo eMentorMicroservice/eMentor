@@ -78,9 +78,10 @@ export class UploadCourseComponent implements OnInit {
       });
     }
     setTimeout(() => {
-      this.cd.detectChanges();
       this.router.navigate(['/view-course']);
-      });
+      this.cd.detectChanges();
+
+      },2000);
     this.spinner.hide();
   }
 }

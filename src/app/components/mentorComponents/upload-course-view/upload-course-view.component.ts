@@ -18,7 +18,10 @@ export class UploadCourseViewComponent implements OnInit {
               private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.getCourses();
+    this.cd.detectChanges();
+    setTimeout(() => {
+      this.getCourses();
+    });
   }
 
   getCourseByCourseCategory(category: string) {
