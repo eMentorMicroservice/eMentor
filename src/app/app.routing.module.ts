@@ -52,15 +52,14 @@ const routes: Routes = [
             {
                 path: 'checkout',
                 component: CheckoutComponent
-            },
-            {
-                path: 'classroom',
-                component: ClassroomComponent,
-                pathMatch: 'full'
             }
         ]
     },
-   
+    {
+        path: 'classroom',
+        component: ClassroomComponent,
+        pathMatch: 'full'
+    },
     {
         path: 'login',
         component: LoginComponent,

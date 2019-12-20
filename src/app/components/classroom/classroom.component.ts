@@ -35,8 +35,8 @@ export class ClassroomComponent implements OnInit {
   remoteStream: MediaStream;
   pcPeers = {};
   isShowWhiteBoard = true;
-
-
+  avatar: any;
+  fullName: any;
   currentUser: number;
   room: number;
 
@@ -59,6 +59,8 @@ export class ClassroomComponent implements OnInit {
       this.remoteStream = new MediaStream();
       this.startConnection();
     });
+    this.avatar = LocalService.getUserAvt();
+    this.fullName = LocalService.getUserName();
   }
 
   getRoom(id: number) {
