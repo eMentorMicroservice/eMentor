@@ -65,6 +65,12 @@ export class ClassroomComponent implements OnInit {
       this.remoteStream = new MediaStream();
       this.startConnection();
     });
+    this.userService.getUserProfile().subscribe(data => {
+      console.log('current user data', data);
+      this.avatar = data.avatar;
+      this.fullName = data.fullName;
+      this.users[this.currentUser] = {avatar: this.avatar, name: this.fullName};
+    })
     this.avatar = LocalService.getUserAvt();
     this.fullName = LocalService.getUserName();
     this.users[LocalService.getUserId()] = {avatar: LocalService.getUserAvt(), name: LocalService.getUserName()};
