@@ -82,5 +82,4 @@ export class UserProfileUpdateComponent implements OnInit {
       }
     );
   }
-
 }
