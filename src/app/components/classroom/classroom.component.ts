@@ -13,7 +13,7 @@ import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
 
 const JOIN_ROOM = 'JOIN_ROOM';
 const EXCHANGE = 'EXCHANGE';
-const REMOVE_USER = 'REMOVE_USER';
+
 @Component({
   selector: 'app-classroom',
   viewProviders: [CanvasWhiteboardComponent],
@@ -39,6 +39,8 @@ export class ClassroomComponent implements OnInit {
   fullName: any;
   currentUser: number;
   room: number;
+  messages = [];
+  user_message: string;
 
 
   constructor(
@@ -61,6 +63,7 @@ export class ClassroomComponent implements OnInit {
     });
     this.avatar = LocalService.getUserAvt();
     this.fullName = LocalService.getUserName();
+    
   }
 
   getRoom(id: number) {
@@ -88,14 +91,15 @@ export class ClassroomComponent implements OnInit {
       const data = resp.data;
       // tslint:disable-next-line: triple-equals
       if (resp.type == 'INFO') {
-        this.handelStreamInfo(data);
-      } else {
-        this.handelMessage(data);
+        this.handleStreamInfo(data);
+      } else if(resp.type == 'MESSAGE') {
+        this.handleMessage(data);
       }
     });
   }
-  handelStreamInfo = (data: any) => {
-    // tslint:disable-next-line: triple-equals
+
+  //WebRTC
+  handleStreamInfo = (data: any) => {
     if (data.from != this.currentUser) {
       switch (data.type) {
         case JOIN_ROOM:
@@ -109,9 +113,34 @@ export class ClassroomComponent implements OnInit {
     }
   }
 
-  handelMessage = (data: any) => {
-    console.log(data);
+  private prepareData(data: Object): string {
+    let preData: Object = { user_id: this.currentUser, room_id: this.room, data: data}
+    return JSON.stringify(preData);
   }
+
+  sendMessage() {
+    console.log('user_message', this.user_message)
+    let data = JSON.stringify({user_id: this.currentUser, room_id: this.room, message: this.user_message})  
+    this.http.post('http://localhost:3000/rooms/send_message', data, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).subscribe(() => {
+      this.user_message = "";
+    });
+  }
+
+  handleMessage = (data: any) => {
+    let message = JSON.parse(data);
+    this.messages.push(message);
+    console.log('message', this.messages)
+    // this.messages[data.id] = {user_id: data.user_id, content: data.content};
+    // console.log('message', this.messages);
+  }
+
+  
+
+
 
   broadcastData = (data: Object) => {
     const localData = {room_id: this.room, type: 'INFO', info: data};
@@ -121,7 +150,9 @@ export class ClassroomComponent implements OnInit {
       })
     }).subscribe();
   }
-
+  
+  
+  
   createPC = (userId, isOffer) => {
     const pc = new RTCPeerConnection({
       iceServers: [
