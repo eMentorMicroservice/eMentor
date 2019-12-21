@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.spinner.show();
     this.authService.login(this.model)
       .subscribe(data => {
+        console.log(data);
         if (data && data.token) {
           LocalService.setAccessToken(data.token);
           LocalService.setLogStatus(true);

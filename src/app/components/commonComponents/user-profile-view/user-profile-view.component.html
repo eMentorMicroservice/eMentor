@@ -184,7 +184,9 @@
                                 <br />
                                 <i *ngIf = "user.linkedSite" class="mdi mdi-earth"></i><a href="https://{{user.linkedSite}}">{{user.linkedSite}}</a>
                                 <br />
-                                <i *ngIf = "user.dateOfBirth" class="mdi mdi-gift"></i>{{user.dateOfBirth | date: 'mm/DD/yyyy'}}
+                                <i *ngIf = "user.dateOfBirth" class="mdi mdi-gift"></i>{{user.dateOfBirth | date: 'dd/MM/yyyy'}}
+                                <br />
+                                <i *ngIf = "user.phone" class="mdi mdi-phone"> </i> {{user.phone}}
                             </p>
                     </div>
                 </div>

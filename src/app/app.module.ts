@@ -45,6 +45,7 @@ import { AccountBalanceComponent } from './components/account-balance/account-ba
 import { WithdrawViewComponent } from './components/withdraw-view/withdraw-view.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CanvasWhiteboardModule } from 'ng2-canvas-whiteboard';
+import {InputEditorModule, SelectEditorModule} from 'angular-inline-editors';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -108,6 +109,8 @@ import { CanvasWhiteboardModule } from 'ng2-canvas-whiteboard';
     DatepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
+    InputEditorModule.forRoot(),
+    SelectEditorModule.forRoot(),
     ReactiveFormsModule,
     CanvasWhiteboardModule,
   ],

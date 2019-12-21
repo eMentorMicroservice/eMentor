@@ -39,4 +39,7 @@ export class UserService extends BaseService {
     upGradeUser(id: number) {
       return this.post(`${API_ENDPOINT.upgradeUser}?userId=${id}`);
     }
+    getUserById(id: number) {
+      return this.get(API_ENDPOINT.getUserProfileById, {id: id}, false, false, false);
+    }
 }

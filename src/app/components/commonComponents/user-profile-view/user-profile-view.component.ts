@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/models/user.model';
 import { ImageService } from 'src/app/services/image.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-view',
@@ -17,9 +18,11 @@ export class UserProfileViewComponent implements OnInit {
   userName: any;
   user: UserModel;
   avatar: any;
+  mentorId: any;
   constructor(private spinner: NgxSpinnerService,
     private imgService: ImageService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.spinner.show();
@@ -27,6 +30,13 @@ export class UserProfileViewComponent implements OnInit {
     this.isTeacher = LocalService.getItem(LOCAL_STORAGE_VARIABLE.user_role) === UserRole.Teacher.toString() ? true : false;
     this.userName = LocalService.getUserName();
     this.getUserProfile();
+    this.route.params.subscribe(params => {
+      if (!params['id']) {
+      } else {
+        this.mentorId = +params['id'];
+        this.isTeacher = true;
+      }
+    });
     this.spinner.hide();
   }
   getUserProfile() {

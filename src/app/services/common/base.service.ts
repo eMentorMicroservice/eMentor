@@ -132,6 +132,9 @@ export class BaseService {
           this.globalService.loaded();
         });
     } else {
+      console.log('URL:', fullUrl);
+      console.log('Params:', params);
+      console.log('Headers:', this.headers);
       return this.http.post(fullUrl, params, { headers: this.headers })
         .pipe(timeout(REQUEST_TIMEOUT))
         .catch(error => this.errorHandler.handleError(error));
