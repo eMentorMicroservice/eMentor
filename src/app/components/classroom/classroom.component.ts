@@ -10,6 +10,8 @@ import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
 import { ErrorService } from 'src/app/services/common/error.service';
 import 'webrtc-adapter';
 import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
+import { UserService } from 'src/app/services/user.service';
+import { UserModel } from 'src/app/models/user.model';
 
 const JOIN_ROOM = 'JOIN_ROOM';
 const EXCHANGE = 'EXCHANGE';
@@ -41,6 +43,7 @@ export class ClassroomComponent implements OnInit {
   room: number;
   messages = [];
   user_message: string;
+  users = {};
 
 
   constructor(
@@ -48,6 +51,7 @@ export class ClassroomComponent implements OnInit {
     private cableService: ActionCableService,
     private http: HttpClient,
     protected errorHandler: ErrorService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -63,6 +67,7 @@ export class ClassroomComponent implements OnInit {
     });
     this.avatar = LocalService.getUserAvt();
     this.fullName = LocalService.getUserName();
+    this.users[LocalService.getUserId()] = {avatar: LocalService.getUserAvt(), name: LocalService.getUserName()};
     
   }
 
@@ -103,6 +108,7 @@ export class ClassroomComponent implements OnInit {
     if (data.from != this.currentUser) {
       switch (data.type) {
         case JOIN_ROOM:
+          this.addUser(data.from);
           return this.createPC(data.from, true);
         case EXCHANGE:
           if (data.to !== this.currentUser) { return; }
@@ -111,6 +117,15 @@ export class ClassroomComponent implements OnInit {
           return;
       }
     }
+  }
+
+  private addUser(user_id: number){
+    console.log('other', user_id)
+    
+    this.userService.getUserById(user_id).subscribe(data => {
+      console.log('test add', data)
+      this.users[data.userId] = {avatar: data.avatar, name: data.fullName};
+    })
   }
 
   private prepareData(data: Object): string {
@@ -131,9 +146,12 @@ export class ClassroomComponent implements OnInit {
   }
 
   handleMessage = (data: any) => {
+
     let message = JSON.parse(data);
+    if (!this.users[message.user_id]) {
+      this.addUser(message.user_id);
+    }
     this.messages.push(message);
-    console.log('message', this.messages)
     // this.messages[data.id] = {user_id: data.user_id, content: data.content};
     // console.log('message', this.messages);
   }
@@ -165,7 +183,6 @@ export class ClassroomComponent implements OnInit {
       pc.addTrack(track);
     });
 
-    // tslint:disable-next-line: no-unused-expression
     isOffer &&
       pc.createOffer().then(offer => {
         pc.setLocalDescription(offer).then(() => {

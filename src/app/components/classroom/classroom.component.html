@@ -92,10 +92,10 @@
                 <div class="media m-b-20" *ngFor="let mess of messages">
                     <div class="d-flex mr-3">
                         <a href="#"> <img class="media-object rounded-circle thumb-sm" alt="64x64"
-                                src="assets/images/users/avatar-1.jpg"> </a>
+                                src="{{ users[mess.user_id].avatar | image }}"> </a>
                     </div>
                     <div class="media-body">
-                        <h5 class="mt-0">User: {{ mess.user_id }}</h5>
+                        <h5 class="mt-0">{{ users[mess.user_id].name }}</h5>
                         <p class="font-13 text-muted mb-0">
                             {{ mess.content }}
                         </p>
