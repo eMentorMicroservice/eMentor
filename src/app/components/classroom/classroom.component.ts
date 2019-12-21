@@ -10,10 +10,12 @@ import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
 import { ErrorService } from 'src/app/services/common/error.service';
 import 'webrtc-adapter';
 import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
+import { UserService } from 'src/app/services/user.service';
+import { UserModel } from 'src/app/models/user.model';
 
 const JOIN_ROOM = 'JOIN_ROOM';
 const EXCHANGE = 'EXCHANGE';
-const REMOVE_USER = 'REMOVE_USER';
+
 @Component({
   selector: 'app-classroom',
   viewProviders: [CanvasWhiteboardComponent],
@@ -39,6 +41,9 @@ export class ClassroomComponent implements OnInit {
   fullName: any;
   currentUser: number;
   room: number;
+  messages = [];
+  user_message: string;
+  users = {};
 
 
   constructor(
@@ -46,6 +51,7 @@ export class ClassroomComponent implements OnInit {
     private cableService: ActionCableService,
     private http: HttpClient,
     protected errorHandler: ErrorService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
@@ -59,8 +65,16 @@ export class ClassroomComponent implements OnInit {
       this.remoteStream = new MediaStream();
       this.startConnection();
     });
+    this.userService.getUserProfile().subscribe(data => {
+      console.log('current user data', data);
+      this.avatar = data.avatar;
+      this.fullName = data.fullName;
+      this.users[this.currentUser] = {avatar: this.avatar, name: this.fullName};
+    })
     this.avatar = LocalService.getUserAvt();
     this.fullName = LocalService.getUserName();
+    this.users[LocalService.getUserId()] = {avatar: LocalService.getUserAvt(), name: LocalService.getUserName()};
+    
   }
 
   getRoom(id: number) {
@@ -88,17 +102,19 @@ export class ClassroomComponent implements OnInit {
       const data = resp.data;
       // tslint:disable-next-line: triple-equals
       if (resp.type == 'INFO') {
-        this.handelStreamInfo(data);
-      } else {
-        this.handelMessage(data);
+        this.handleStreamInfo(data);
+      } else if(resp.type == 'MESSAGE') {
+        this.handleMessage(data);
       }
     });
   }
-  handelStreamInfo = (data: any) => {
-    // tslint:disable-next-line: triple-equals
+
+  //WebRTC
+  handleStreamInfo = (data: any) => {
     if (data.from != this.currentUser) {
       switch (data.type) {
         case JOIN_ROOM:
+          this.addUser(data.from);
           return this.createPC(data.from, true);
         case EXCHANGE:
           if (data.to !== this.currentUser) { return; }
@@ -109,9 +125,46 @@ export class ClassroomComponent implements OnInit {
     }
   }
 
-  handelMessage = (data: any) => {
-    console.log(data);
+  private addUser(user_id: number){
+    console.log('other', user_id)
+    
+    this.userService.getUserById(user_id).subscribe(data => {
+      console.log('test add', data)
+      this.users[data.userId] = {avatar: data.avatar, name: data.fullName};
+    })
   }
+
+  private prepareData(data: Object): string {
+    let preData: Object = { user_id: this.currentUser, room_id: this.room, data: data}
+    return JSON.stringify(preData);
+  }
+
+  sendMessage() {
+    console.log('user_message', this.user_message)
+    let data = JSON.stringify({user_id: this.currentUser, room_id: this.room, message: this.user_message})  
+    this.http.post('http://localhost:3000/rooms/send_message', data, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).subscribe(() => {
+      this.user_message = "";
+    });
+  }
+
+  handleMessage = (data: any) => {
+
+    let message = JSON.parse(data);
+    if (!this.users[message.user_id]) {
+      this.addUser(message.user_id);
+    }
+    this.messages.push(message);
+    // this.messages[data.id] = {user_id: data.user_id, content: data.content};
+    // console.log('message', this.messages);
+  }
+
+  
+
+
 
   broadcastData = (data: Object) => {
     const localData = {room_id: this.room, type: 'INFO', info: data};
@@ -121,7 +174,9 @@ export class ClassroomComponent implements OnInit {
       })
     }).subscribe();
   }
-
+  
+  
+  
   createPC = (userId, isOffer) => {
     const pc = new RTCPeerConnection({
       iceServers: [
@@ -134,7 +189,6 @@ export class ClassroomComponent implements OnInit {
       pc.addTrack(track);
     });
 
-    // tslint:disable-next-line: no-unused-expression
     isOffer &&
       pc.createOffer().then(offer => {
         pc.setLocalDescription(offer).then(() => {
