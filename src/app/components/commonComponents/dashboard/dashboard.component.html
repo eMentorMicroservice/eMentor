@@ -114,10 +114,7 @@
           <p class="text-muted font-13 project-hide-overflow">
             {{course.description}}
           </p>
-
-          <p class="course-fee">
-            ${{course.courseFee}}/h
-        </p>
+          <button class="course-fee btn btn-confirm" (click)="regisCourse(course.Id, course.courseFee)">${{course.courseFee}}/h</button>
         </div>
       </div>
     </div>
