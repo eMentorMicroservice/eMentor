@@ -114,7 +114,9 @@
           <p class="text-muted font-13 project-hide-overflow">
             {{course.description}}
           </p>
-          <button class="course-fee btn btn-confirm" (click)="regisCourse(course.Id, course.courseFee)">${{course.courseFee}}/h</button>
+          <div class="cheat-button">
+            <button class="course-fee btn btn-block btn-custom waves-effect waves-light" (click)="regisCourse(course.Id, course.courseFee)">${{course.courseFee}}/h</button>
+          </div>
         </div>
       </div>
     </div>
