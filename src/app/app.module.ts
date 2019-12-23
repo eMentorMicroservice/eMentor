@@ -46,6 +46,7 @@ import { WithdrawViewComponent } from './components/withdraw-view/withdraw-view.
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CanvasWhiteboardModule } from 'ng2-canvas-whiteboard';
 import {InputEditorModule, SelectEditorModule} from 'angular-inline-editors';
+import { MentorProfileEditComponent } from './components/mentorComponents/mentor-profile-edit/mentor-profile-edit.component';
 @NgModule({
   declarations: [
     // tslint:disable-next-line: comment-format
@@ -94,7 +95,8 @@ import {InputEditorModule, SelectEditorModule} from 'angular-inline-editors';
     LogoutComponent,
     AccountBalanceComponent,
     WithdrawViewComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MentorProfileEditComponent
   ],
   imports: [
     BrowserAnimationsModule,

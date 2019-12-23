@@ -1,0 +1,12 @@
+.btn-div{
+    text-align: left;
+    }
+    .btn-div .ss{
+    color: #fff;
+    background: blue;
+    padding: 6px 6px;
+    border-radius: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    display:inline-block;
+    }

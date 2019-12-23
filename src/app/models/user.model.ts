@@ -14,4 +14,8 @@ export class UserModel {
     linkedSite: string;
     uploadedFile: File;
     follower: number;
+    bio: string;
+    location: string;
+    strength: string;
+    languages: string;
 }

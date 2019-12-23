@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from 'src/app/models/user.model';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ImageService } from 'src/app/services/image.service';
+import { UserService } from 'src/app/services/user.service';
 import { LocalService } from 'src/app/services/common/local.service';
 import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
 import { UserRole } from 'src/app/models/enums';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { UserService } from 'src/app/services/user.service';
-import { UserModel } from 'src/app/models/user.model';
-import { ImageService } from 'src/app/services/image.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-user-profile-view',
-  templateUrl: './user-profile-view.component.html',
-  styleUrls: ['./user-profile-view.component.css']
+  selector: 'app-mentor-profile-edit',
+  templateUrl: './mentor-profile-edit.component.html',
+  styleUrls: ['./mentor-profile-edit.component.css']
 })
-export class UserProfileViewComponent implements OnInit {
+export class MentorProfileEditComponent implements OnInit {
+
   isTeacher = false;
   userName: any;
   user: UserModel;
@@ -21,10 +21,12 @@ export class UserProfileViewComponent implements OnInit {
   mentorId: any;
   isEdit = false;
   imageInfo = '';
+  tmpo: any;
+  count = 0;
+  arrayOfObj = [];
   constructor(private spinner: NgxSpinnerService,
     private imgService: ImageService,
-    private userService: UserService,
-    private route: ActivatedRoute) { }
+    private userService: UserService) { }
 
   ngOnInit() {
     this.spinner.show();
@@ -32,15 +34,15 @@ export class UserProfileViewComponent implements OnInit {
     this.isTeacher = LocalService.getItem(LOCAL_STORAGE_VARIABLE.user_role) === UserRole.Teacher.toString() ? true : false;
     this.userName = LocalService.getUserName();
     this.getUserProfile();
-    this.route.params.subscribe(params => {
-      if (!params['id']) {
-      } else {
-        this.mentorId = +params['id'];
-        this.isTeacher = true;
-      }
-    });
+
     this.spinner.hide();
   }
+
+  onAddRow() {
+    this.tmpo = 1;
+    this.count ++;
+    this.arrayOfObj.push(this.count);
+    }
 
   onChange(event) {
     if (event.target.files && event.target.files[0]) {
@@ -58,7 +60,6 @@ export class UserProfileViewComponent implements OnInit {
         this.user = data;
         setTimeout(() => {
           this.imgService.getPictureUrl(this.user.avatar);
-          this.avatar = this.user.avatar;
         }, 500);
       });
   }

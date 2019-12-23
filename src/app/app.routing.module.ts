@@ -16,6 +16,7 @@ import { BecomeTutorComponent } from './components/commonComponents/become-tutor
 import { LogoutComponent } from './components/commonComponents/logout/logout.component';
 import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MentorProfileEditComponent } from './components/mentorComponents/mentor-profile-edit/mentor-profile-edit.component';
 
 const routes: Routes = [
     {
@@ -57,6 +58,10 @@ const routes: Routes = [
             {
                 path: 'checkout',
                 component: CheckoutComponent
+            },
+            {
+                path: 'mentor-profile-edit',
+                component: MentorProfileEditComponent
             }
         ]
     },

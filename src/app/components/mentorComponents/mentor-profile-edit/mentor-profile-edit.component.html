@@ -1,0 +1,169 @@
+
+<form #form="ngForm" (submit)="uploadCourse(form)" autocomplete="on">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="profile-user-box card-box bg-custom">
+                <div class="row">
+                    <div class="col-sm-5 col-xs-5" style="align-items: center;
+                                    display: flex;">
+                        <span class="mr-3 text-center"><img src="{{user.avatar | image}}" alt=""
+                                class="thumb-lg rounded-circle mb-4"></span>
+                        <input type="file" class="file-upload-default" (change)="onChange($event)" #imageUpload hidden>
+                        <div class="input-group">
+                            <input type="text" value="{{imageInfo}}" class="form-control file-upload-info" disabled
+                                placeholder="Upload here">
+                            <span class="input-group-append">
+                                <button class="btn btn-info" type="button" (click)="imageUpload.click()">Upload</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-xs-5">
+                        <div class="media-body text-black">
+
+                            <p class="text-black font-13"><strong>User Name :</strong>
+                                <app-text-box class="app-text">
+
+                                </app-text-box>
+                            </p>
+
+                            <p class="text-black font-13"><strong>Strength :</strong>
+                                <app-text-box class="app-text">
+
+                                </app-text-box>
+                            </p>
+
+                            <p class="text-black font-13"><strong>Address :</strong>
+                                <app-text-box class="app-text">
+
+                                </app-text-box>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-2" style="align-items:center">
+                        <div class="text-right">
+                            <button type="button" class="btn btn-light btn-custom waves-effect">
+                                <i class="mdi mdi-account-settings-variant mr-1"></i> Confirm Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="card-box">
+                <h4 class="header-title mt-0 m-b-20">Personal Information</h4>
+                <div class="panel-body">
+                    <textarea class="form-group col-md-12 textArea" name="jobDescription" rows="8"
+                        style="border-radius: 1rem;">
+                                </textarea>
+
+                    <hr />
+
+                    <div class="text-left">
+                        <p class="text-muted font-13"><strong>Full Name :</strong>
+                            <app-text-box class="app-text">
+
+                            </app-text-box>
+                        </p>
+
+                        <p class="text-muted font-13"><strong>Mobile :</strong>
+                            <app-text-box class="app-text">
+
+                            </app-text-box>
+                        </p>
+
+                        <p class="text-muted font-13"><strong>Email :</strong>
+                            <app-text-box class="app-text">
+
+                            </app-text-box>
+                        </p>
+
+                        <p class="text-muted font-13"><strong>Location :</strong>
+                            <app-text-box class="app-text">
+
+                            </app-text-box>
+                        </p>
+
+                        <p class="text-muted font-13"><strong>Languages :</strong>
+                            <app-text-box class="app-text">
+
+                            </app-text-box>
+                        </p>
+
+                    </div>
+
+                    <ul class="social-links list-inline m-t-20 m-b-0">
+                        <li class="list-inline-item">
+                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
+                                data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
+                                data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href=""
+                                data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-xl-8">
+            <div class="card-box">
+                <h4 class="header-title mt-0 mb-3">Experience</h4>
+                <div class="btn-div">
+                    <div class="ss" (click)="onAddRow()" *ngIf="tmpo!=1;else temp">Add an experience</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+<ng-template #temp>
+    <div *ngFor="let a of arrayOfObj">
+        <p class="text-muted font-13"><strong>Job Title :</strong>
+            <app-text-box class="app-text">
+
+            </app-text-box>
+        </p>
+
+        <p class="text-muted font-13"><strong>Company Site :</strong>
+            <app-text-box class="app-text">
+
+            </app-text-box>
+        </p>
+
+        <p class="text-muted font-13"><strong>Time :</strong>
+            <app-text-box class="app-text">
+
+            </app-text-box>
+        </p>
+
+        <p class="text-muted font-13"><strong>Description :</strong>
+            <textarea class="form-group col-md-12 textArea" name="description" rows="5" style="border-radius: 1rem;">
+       </textarea>
+        </p>
+        <hr />
+        <div class="col-md-12">
+            <div class="btn-div">
+                <div class="ss" (click)="onAddRow()" *ngIf="tmpo!=2;else tempo">Add other experience</div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #tempo>
+    <input class="form-control" id="usr" placeholder="Enter text...">
+</ng-template>
