@@ -9,9 +9,10 @@ import { shareReplay, timeout, catchError } from 'rxjs/operators';
 import { API_HOST, API_URL_PREFIX, REQUEST_TIMEOUT } from '../../app.constants';
 import { ErrorService } from 'src/app/services/common/error.service';
 import 'webrtc-adapter';
-import { CanvasWhiteboardComponent } from 'ng2-canvas-whiteboard';
+import { CanvasWhiteboardComponent, CanvasWhiteboardService, CanvasWhiteboardUpdate } from 'ng2-canvas-whiteboard';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/models/user.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 const JOIN_ROOM = 'JOIN_ROOM';
 const EXCHANGE = 'EXCHANGE';
@@ -52,6 +53,7 @@ export class ClassroomComponent implements OnInit {
     private http: HttpClient,
     protected errorHandler: ErrorService,
     private userService: UserService,
+    private canvasService: CanvasWhiteboardService,
   ) { }
 
   ngOnInit() {
@@ -101,12 +103,67 @@ export class ClassroomComponent implements OnInit {
     this.channel.received().subscribe(resp => {
       const data = resp.data;
       // tslint:disable-next-line: triple-equals
-      if (resp.type == 'INFO') {
-        this.handleStreamInfo(data);
-      } else if(resp.type == 'MESSAGE') {
-        this.handleMessage(data);
+      switch (resp.type) {
+        case 'INFO':
+          this.handleStreamInfo(data);
+          break;
+        case 'MESSAGE':
+          this.handleMessage(data);
+          break;
+        case 'DRAW':
+          this.handleDraw(data);
+          break;
       }
     });
+  }
+
+  //Canvas whiteboard
+  handleDraw(data: any) {
+    switch (data.type) {
+      case 'UPDATE':
+        let pre_updates = JSON.parse(data.updates);
+        let updates = pre_updates.map(updateJSON => CanvasWhiteboardUpdate.deserializeJson(JSON.stringify(updateJSON)));
+        this.canvasService.drawCanvas(updates);
+        break;
+      case 'CLEAR':
+        this.canvasService.clearCanvas();
+        break;
+      case 'UNDO':
+        //console.log('undo', data.uuid)
+        this.canvasService.undoCanvas(data.uuid.toString());
+        break;
+      case 'REDO':
+        this.canvasService.redoCanvas(data.uuid.toString());
+        break;
+    }
+  }
+
+  broadcastDraw(data) {
+    const localData = {room_id: this.room, data: data};
+    this.http.post('http://localhost:3000/rooms/send_draw', JSON.stringify(localData), {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).subscribe();
+  }
+
+
+  sendBatchUpdate(updates: CanvasWhiteboardUpdate[]) {
+    // console.log('update', JSON.stringify(updates))
+    let data = {type: 'UPDATE', updates: JSON.stringify(updates)};
+    this.broadcastDraw(data);
+  }
+  onCanvasClear() {
+    let data = {type: 'CLEAR'};
+    this.broadcastDraw(data);
+  }
+  onCanvasUndo(updateUUID: string) {
+    let data = {type: 'UNDO', uuid: updateUUID};
+    this.broadcastDraw(data);
+  }
+  onCanvasRedo(updateUUID: string) {
+    let data = {type: 'REDO', uuid: updateUUID};
+    this.broadcastDraw(data);
   }
 
   //WebRTC
