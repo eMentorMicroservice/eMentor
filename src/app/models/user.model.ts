@@ -18,4 +18,13 @@ export class UserModel {
     location: string;
     strength: string;
     languages: string;
+    exp: Experience[] = [];
+}
+
+export class Experience {
+    id = 0;
+    jobTitle = '';
+    companySite = '';
+    time = '';
+    description = '';
 }

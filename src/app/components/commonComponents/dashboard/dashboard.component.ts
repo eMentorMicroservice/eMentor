@@ -89,8 +89,8 @@ export class DashboardComponent implements OnInit {
 
   regisCourse(courseId: number, courseFee: number) {
     this.dialog.confirm('Confirm', 'You must pay atleast ' + courseFee + '$ to attend this course', () => {
-      this.router.navigate(['/classroom'])
+      this.router.navigate(['/classroom']);
   });
   }
 }
-  
+

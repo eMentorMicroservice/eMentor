@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from 'src/app/models/user.model';
+import { UserModel, Experience } from 'src/app/models/user.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageService } from 'src/app/services/image.service';
 import { UserService } from 'src/app/services/user.service';
 import { LocalService } from 'src/app/services/common/local.service';
 import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
 import { UserRole } from 'src/app/models/enums';
+import { NgForm } from '@angular/forms';
+import { threadId } from 'worker_threads';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mentor-profile-edit',
@@ -26,7 +29,8 @@ export class MentorProfileEditComponent implements OnInit {
   arrayOfObj = [];
   constructor(private spinner: NgxSpinnerService,
     private imgService: ImageService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private router: Router) { }
 
   ngOnInit() {
     this.spinner.show();
@@ -58,9 +62,21 @@ export class MentorProfileEditComponent implements OnInit {
   getUserProfile() {
     this.userService.getUserProfile().subscribe(data => {
         this.user = data;
+        console.log(data);
+        console.log(this.user.exp);
         setTimeout(() => {
           this.imgService.getPictureUrl(this.user.avatar);
         }, 500);
+        this.tmpo = this.user.exp.length;
+        this.count = this.tmpo - 1;
+        this.arrayOfObj.push(this.count);
       });
+  }
+
+  editMentorProfile(form: NgForm) {
+    if (form.invalid) { return; }
+    this.userService.editProfile(this.user).subscribe(() => {
+      this.router.navigate(['/view-profile']);
+    });
   }
 }
