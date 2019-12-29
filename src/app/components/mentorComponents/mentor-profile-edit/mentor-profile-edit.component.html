@@ -1,5 +1,5 @@
 
-<form #form="ngForm" (submit)="uploadCourse(form)" autocomplete="on">
+<form #form="ngForm" (submit)="editMentorProfile(form)" autocomplete="on">
     <div class="row">
         <div class="col-sm-12">
 
@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-sm-5 col-xs-5" style="align-items: center;
                                     display: flex;">
-                        <span class="mr-3 text-center"><img src="{{user.avatar | image}}" alt=""
+                        <span class="mr-3 text-center"><img src="{{avatar ? avatar : user.avatar | image}}" alt=""
                                 class="thumb-lg rounded-circle mb-4"></span>
                         <input type="file" class="file-upload-default" (change)="onChange($event)" #imageUpload hidden>
                         <div class="input-group">
@@ -22,19 +22,19 @@
                         <div class="media-body text-black">
 
                             <p class="text-black font-13"><strong>User Name :</strong>
-                                <app-text-box class="app-text">
+                                <app-text-box class="app-text" type="text" name="userName" [(ngModel)]="user.userName">
 
                                 </app-text-box>
                             </p>
 
                             <p class="text-black font-13"><strong>Strength :</strong>
-                                <app-text-box class="app-text">
+                                <app-text-box class="app-text" type="text" name="strength" [(ngModel)]="user.strength">
 
                                 </app-text-box>
                             </p>
 
                             <p class="text-black font-13"><strong>Address :</strong>
-                                <app-text-box class="app-text">
+                                <app-text-box class="app-text" type="text" name="address" [(ngModel)]="user.address">
 
                                 </app-text-box>
                             </p>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-sm-2 col-xs-2" style="align-items:center">
                         <div class="text-right">
-                            <button type="button" class="btn btn-light btn-custom waves-effect">
+                            <button type="button" class="btn btn-light btn-light waves-effect" (click)="editMentorProfile(form)">
                                 <i class="mdi mdi-account-settings-variant mr-1"></i> Confirm Save
                             </button>
                         </div>
@@ -57,39 +57,39 @@
             <div class="card-box">
                 <h4 class="header-title mt-0 m-b-20">Personal Information</h4>
                 <div class="panel-body">
-                    <textarea class="form-group col-md-12 textArea" name="jobDescription" rows="8"
-                        style="border-radius: 1rem;">
+                    <textarea class="form-group col-md-12 textArea" rows="8"
+                        style="border-radius: 1rem;" type="text" name="bio" [(ngModel)]="user.bio">
                                 </textarea>
 
                     <hr />
 
                     <div class="text-left">
                         <p class="text-muted font-13"><strong>Full Name :</strong>
-                            <app-text-box class="app-text">
+                            <app-text-box class="app-text" type="text" name="fullName" [(ngModel)]="user.fullName">
 
                             </app-text-box>
                         </p>
 
                         <p class="text-muted font-13"><strong>Mobile :</strong>
-                            <app-text-box class="app-text">
+                            <app-text-box class="app-text" type="text" name="phone" [(ngModel)]="user.phone">
 
                             </app-text-box>
                         </p>
 
                         <p class="text-muted font-13"><strong>Email :</strong>
-                            <app-text-box class="app-text">
+                            <app-text-box class="app-text" type="text" name="email" [(ngModel)]="user.email">
 
                             </app-text-box>
                         </p>
 
                         <p class="text-muted font-13"><strong>Location :</strong>
-                            <app-text-box class="app-text">
+                            <app-text-box class="app-text" type="text" name="location" [(ngModel)]="user.location">
 
                             </app-text-box>
                         </p>
 
                         <p class="text-muted font-13"><strong>Languages :</strong>
-                            <app-text-box class="app-text">
+                            <app-text-box class="app-text" type="text" name="languages" [(ngModel)]="user.languages">
 
                             </app-text-box>
                         </p>
@@ -131,27 +131,28 @@
 
 
 <ng-template #temp>
-    <div *ngFor="let a of arrayOfObj">
+    <div *ngFor="let a of arrayOfObj; let i = index">
         <p class="text-muted font-13"><strong>Job Title :</strong>
-            <app-text-box class="app-text">
+            <app-text-box class="app-text" type="text" name="expJobTitle{{a}}" [(ngModel)]="userExp[i].jobTitle">
 
             </app-text-box>
         </p>
 
         <p class="text-muted font-13"><strong>Company Site :</strong>
-            <app-text-box class="app-text">
+            <app-text-box class="app-text" type="text" name="expCompanySite{{a}}" [(ngModel)]="userExp[i].companySite">
 
             </app-text-box>
         </p>
 
         <p class="text-muted font-13"><strong>Time :</strong>
-            <app-text-box class="app-text">
+            <app-text-box class="app-text" type="text" name="expTime{{a}}" [(ngModel)]="userExp[i].time">
 
             </app-text-box>
         </p>
 
         <p class="text-muted font-13"><strong>Description :</strong>
-            <textarea class="form-group col-md-12 textArea" name="description" rows="5" style="border-radius: 1rem;">
+            <textarea class="form-group col-md-12 textArea" name="description{{a}}" rows="5" style="border-radius: 1rem;"
+            type="text" [(ngModel)]="userExp[i].description">
        </textarea>
         </p>
         <hr />

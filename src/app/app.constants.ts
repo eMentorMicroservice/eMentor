@@ -52,7 +52,8 @@ export const API_ENDPOINT = {
   deleteUser: '/User/RemoveUser',
   upgradeUser: '/User/UpgradeUser',
   getAllUsers: '/User/GetAllUser',
-  getUserProfileById: '/User/GetProfileById'
+  getUserProfileById: '/User/GetProfileById',
+  addOrUpdateUserExp: '/User/AddOrEditUserExperiment'
 };
 
 export const HardCodeConst = {

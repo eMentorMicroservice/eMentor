@@ -230,7 +230,7 @@ export class BaseService {
     } else {
       fullUrl = this.createAPIURLRUBY(url);
     }
-
+    console.log(body);
     if (loader) {
       this.globalService.loading();
       return this.http.post(fullUrl, body, { headers: this.headers })
