@@ -33,20 +33,22 @@
             <div class="col-12 grid-margin">
                 <div class="card" style="margin-top: 100px;">
                     <div class="card-body">
+                        <h4 class="card-title">Class activity</h4>
+                        <div class="row">
+
+                        </div>
                         <table id="datatable"
                             class="table table-hover m-0 tickets-list table-actions-bar dt-responsive nowrap"
                             cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    <th>Menu</th>
+                                    <th>Student Name</th>
+                                    <th>Mentor Name</th>
+                                    <th width="200">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let user of users">
+                                <!-- <tr *ngFor="let user of users">
 
                                     <td>
                                         <img class="rounded-circle img-cover" src="{{user.avatar | image}}" height="48"
@@ -84,15 +86,33 @@
                                             </div>
                                         </div>
                                     </td>
+                                </tr> -->
+                                <tr>
+                                    <th>abc</th>
+                                    <th>bcd</th>
+                                    <th>
+                                        <div class="btn-group dropdown">
+                                            <a href="javascript: void(0);"
+                                                class="table-action-btn dropdown-toggle arrow-none btn btn-primary btn-md"
+                                                data-toggle="dropdown" aria-expanded="false"><i
+                                                    class="mdi mdi-settings"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item"><i
+                                                        class="mdi mdi-cancel"></i> Cancel</a>
+                                                <a class="dropdown-item"><i
+                                                        class="mdi mdi-eye-outline"></i> Review</a>
+                                                <a class="dropdown-item"><i
+                                                    class="mdi mdi-account-card-details"></i> Pay now</a>
+                                            </div>
+                                        </div>
+                                    </th>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Gender</th>
-                                    <th>Email</th>
-                                    <th>Menu</th>
+                                    <th>Student Name</th>
+                                    <th>Mentor Name</th>
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>

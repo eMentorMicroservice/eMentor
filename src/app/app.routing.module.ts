@@ -17,6 +17,7 @@ import { LogoutComponent } from './components/commonComponents/logout/logout.com
 import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MentorProfileEditComponent } from './components/mentorComponents/mentor-profile-edit/mentor-profile-edit.component';
+import { AdminViewProfileComponent } from './components/admin-view-profile/admin-view-profile.component';
 
 const routes: Routes = [
     {
@@ -83,6 +84,10 @@ const routes: Routes = [
     {
         path: 'admin',
         component: AdminDashboardComponent
+    },
+    {
+        path: 'admin-view-profile/:id',
+        component: AdminViewProfileComponent
     },
     {
         path: 'register',
