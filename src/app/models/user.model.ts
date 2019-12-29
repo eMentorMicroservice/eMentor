@@ -18,10 +18,15 @@ export class UserModel {
     location: string;
     strength: string;
     languages: string;
-    exp: Experience[] = [];
+    exp: UserExperienceModels;
 }
 
-export class Experience {
+export class UserExperienceModels {
+    userExperienceModel: UserExperienceModel[] = [];
+    counter: number;
+}
+
+export class UserExperienceModel {
     id = 0;
     jobTitle = '';
     companySite = '';

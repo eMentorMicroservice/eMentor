@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-sm-2 col-xs-2" style="align-items:center">
                         <div class="text-right">
-                            <button type="button" class="btn btn-light btn-custom waves-effect" (click)="editMentorProfile(form)">
+                            <button type="button" class="btn btn-light btn-light waves-effect" (click)="editMentorProfile(form)">
                                 <i class="mdi mdi-account-settings-variant mr-1"></i> Confirm Save
                             </button>
                         </div>
@@ -131,28 +131,28 @@
 
 
 <ng-template #temp>
-    <div *ngFor="let a of arrayOfObj; let uExp of user.exp">
+    <div *ngFor="let a of arrayOfObj; let i = index">
         <p class="text-muted font-13"><strong>Job Title :</strong>
-            <app-text-box class="app-text" type="text" name="expJobTitle" [(ngModel)]="uExp.jobTitle">
+            <app-text-box class="app-text" type="text" name="expJobTitle{{a}}" [(ngModel)]="userExp[i].jobTitle">
 
             </app-text-box>
         </p>
 
         <p class="text-muted font-13"><strong>Company Site :</strong>
-            <app-text-box class="app-text" type="text" name="expCompanySite" [(ngModel)]="uExp.companySite">
+            <app-text-box class="app-text" type="text" name="expCompanySite{{a}}" [(ngModel)]="userExp[i].companySite">
 
             </app-text-box>
         </p>
 
         <p class="text-muted font-13"><strong>Time :</strong>
-            <app-text-box class="app-text" type="text" name="expTime" [(ngModel)]="uExp.time">
+            <app-text-box class="app-text" type="text" name="expTime{{a}}" [(ngModel)]="userExp[i].time">
 
             </app-text-box>
         </p>
 
         <p class="text-muted font-13"><strong>Description :</strong>
-            <textarea class="form-group col-md-12 textArea" name="description" rows="5" style="border-radius: 1rem;"
-            type="text" [(ngModel)]="uExp.description">
+            <textarea class="form-group col-md-12 textArea" name="description{{a}}" rows="5" style="border-radius: 1rem;"
+            type="text" [(ngModel)]="userExp[i].description">
        </textarea>
         </p>
         <hr />

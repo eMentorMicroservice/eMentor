@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel, Experience } from 'src/app/models/user.model';
+import { UserModel, UserExperienceModel, UserExperienceModels } from 'src/app/models/user.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ImageService } from 'src/app/services/image.service';
 import { UserService } from 'src/app/services/user.service';
@@ -7,7 +7,6 @@ import { LocalService } from 'src/app/services/common/local.service';
 import { LOCAL_STORAGE_VARIABLE } from 'src/app/app.constants';
 import { UserRole } from 'src/app/models/enums';
 import { NgForm } from '@angular/forms';
-import { threadId } from 'worker_threads';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,9 +23,11 @@ export class MentorProfileEditComponent implements OnInit {
   mentorId: any;
   isEdit = false;
   imageInfo = '';
+  userExp: UserExperienceModel[] = [];
   tmpo: any;
   count = 0;
   arrayOfObj = [];
+  UserExperienceModels: UserExperienceModels;
   constructor(private spinner: NgxSpinnerService,
     private imgService: ImageService,
     private userService: UserService,
@@ -35,10 +36,13 @@ export class MentorProfileEditComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.user = new UserModel();
+    this.UserExperienceModels = new UserExperienceModels();
     this.isTeacher = LocalService.getItem(LOCAL_STORAGE_VARIABLE.user_role) === UserRole.Teacher.toString() ? true : false;
     this.userName = LocalService.getUserName();
     this.getUserProfile();
-
+    for (let i = 0; i < 10; i++) {
+      this.userExp[i] = new UserExperienceModel();
+    }
     this.spinner.hide();
   }
 
@@ -46,6 +50,7 @@ export class MentorProfileEditComponent implements OnInit {
     this.tmpo = 1;
     this.count ++;
     this.arrayOfObj.push(this.count);
+    this.userExp[this.count] = new UserExperienceModel();
     }
 
   onChange(event) {
@@ -62,21 +67,27 @@ export class MentorProfileEditComponent implements OnInit {
   getUserProfile() {
     this.userService.getUserProfile().subscribe(data => {
         this.user = data;
-        console.log(data);
         console.log(this.user.exp);
+        console.log(this.user.exp.counter);
         setTimeout(() => {
           this.imgService.getPictureUrl(this.user.avatar);
         }, 500);
-        this.tmpo = this.user.exp.length;
+        this.tmpo = this.user.exp.counter;
         this.count = this.tmpo - 1;
         this.arrayOfObj.push(this.count);
+        this.userExp = this.user.exp.userExperienceModel;
+        console.log(this.userExp);
       });
   }
 
   editMentorProfile(form: NgForm) {
     if (form.invalid) { return; }
+    this.UserExperienceModels.userExperienceModel = this.userExp;
+    this.UserExperienceModels.counter = this.count;
     this.userService.editProfile(this.user).subscribe(() => {
-      this.router.navigate(['/view-profile']);
+      this.userService.editExperiment(this.UserExperienceModels).subscribe(() => {
+        this.router.navigate(['/view-profile']);
+      });
     });
   }
 }

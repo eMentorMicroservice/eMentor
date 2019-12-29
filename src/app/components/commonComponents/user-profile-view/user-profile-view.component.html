@@ -5,11 +5,11 @@
             <div class="profile-user-box card-box bg-custom">
                 <div class="row">
                     <div class="col-sm-6">
-                        <span class="float-left mr-3"><img src="assets/images/users/avatar-1.jpg" alt="" class="thumb-lg rounded-circle"></span>
+                        <span class="float-left mr-3"><img src="{{ user.avatar | image}}" alt="" class="thumb-lg rounded-circle"></span>
                         <div class="media-body text-white">
-                            <h4 class="mt-1 mb-1 font-18">Michael A. Franklin</h4>
-                            <p class="font-13 text-light"> User Experience Specialist</p>
-                            <p class="text-light mb-0">California, United States</p>
+                            <h4 class="mt-1 mb-1 font-18"> {{ user.userName}}</h4>
+                            <p class="font-13 text-light"> {{ user.strength}}</p>
+                            <p class="text-light mb-0"> {{user.address}} </p>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -31,37 +31,21 @@
                 <h4 class="header-title mt-0 m-b-20">Personal Information</h4>
                 <div class="panel-body">
                     <p class="text-muted font-13">
-                        Hye, I’m Johnathan Doe residing in this beautiful world. I create websites and mobile apps with great UX and UI design. I have done work with big companies like Nokia, Google and Yahoo. Meet me or Contact me for any queries. One Extra line for filling space. Fill as many you want.
+                        {{user.bio}}
                     </p>
 
                     <hr/>
 
                     <div class="text-left">
-                        <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">Johnathan Deo</span></p>
+                        <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">{{user.fullName}}</span></p>
 
-                        <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">(+12) 123 1234 567</span></p>
+                        <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">{{user.phone}}</span></p>
 
-                        <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">coderthemes@gmail.com</span></p>
+                        <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">{{user.email}}</span></p>
 
-                        <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">USA</span></p>
+                        <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">{{user.location}}</span></p>
 
-                        <p class="text-muted font-13"><strong>Languages :</strong>
-                            <span class="m-l-5">
-                                <span class="flag-icon flag-icon-us mr-2" title="us"></span>
-                                <span>English</span>
-                            </span>
-                            <span class="m-l-5">
-                                <span class="flag-icon flag-icon-de mr-2" title="de"></span>
-                                <span>German</span>
-                            </span>
-                            <span class="m-l-5">
-                                <span class="flag-icon flag-icon-es mr-2" title="es"></span>
-                                <span>Spanish</span>
-                            </span>
-                            <span class="m-l-5">
-                                <span class="flag-icon flag-icon-fr mr-2" title="fr"></span>
-                                <span>French</span>
-                            </span>
+                        <p class="text-muted font-13"><strong>Languages :</strong> <span class="m-l-5">{{user.language}} </span>
                         </p>
 
                     </div>
@@ -84,38 +68,20 @@
         </div>
 
 
-        <div class="col-xl-8">
-            <div class="card-box">
+        <div class="col-xl-8" *ngIf ="user.exp">
+            <div class="card-box" >
                 <h4 class="header-title mt-0 mb-3">Experience</h4>
-                <div class="">
+                <div class="" *ngFor="let userExp of user.exp.userExperienceModel" >
                     <div class="">
-                        <h5 class="text-custom m-b-5">Lead designer / Developer</h5>
-                        <p class="m-b-0">websitename.com</p>
-                        <p><b>2010-2015</b></p>
+                        <h5 class="text-custom m-b-5">{{userExp.jobTitle}}</h5>
+                        <p class="m-b-0">{{userExp.companySite}}</p>
+                        <p><b>{{userExp.time}}</b></p>
 
-                        <p class="text-muted font-13 m-b-0">Lorem Ipsum is simply dummy text
-                            of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
+                        <p class="text-muted font-13 m-b-0">{{userExp.description}}
                         </p>
                     </div>
 
                     <hr>
-
-                    <div class="">
-                        <h5 class="text-custom m-b-5">Senior Graphic Designer</h5>
-                        <p class="m-b-0">coderthemes.com</p>
-                        <p><b>2007-2009</b></p>
-
-                        <p class="text-muted font-13">Lorem Ipsum is simply dummy text
-                            of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book.
-                        </p>
-                    </div>
-
                 </div>
             </div>
 
