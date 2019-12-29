@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   userName: any;
+  userId: any;
   courses: CourseModel[] = [];
   originCoursesList: any;
   isTeacher: boolean;
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
     this.spinner.show();
     this.isTeacher = AuthService.isTeacher();
     this.userName = LocalService.getUserName();
+    this.userId = LocalService.getUserId();
     this.getAllCourses();
     this.spinner.hide();
   }
@@ -87,9 +89,9 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  regisCourse(courseId: number, courseFee: number) {
+  regisCourse(teacher_id: number,  courseFee: number) {
     this.dialog.confirm('Confirm', 'You must pay atleast ' + courseFee + '$ to attend this course', () => {
-      this.router.navigate(['/classroom']);
+      this.router.navigate(['/classroom'], {queryParams: {teacher_id: teacher_id}});
   });
   }
 }

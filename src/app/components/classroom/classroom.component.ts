@@ -12,7 +12,7 @@ import 'webrtc-adapter';
 import { CanvasWhiteboardComponent, CanvasWhiteboardService, CanvasWhiteboardUpdate } from 'ng2-canvas-whiteboard';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from 'src/app/models/user.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {ActivatedRoute} from '@angular/router';
 
 const JOIN_ROOM = 'JOIN_ROOM';
 const EXCHANGE = 'EXCHANGE';
@@ -54,11 +54,12 @@ export class ClassroomComponent implements OnInit {
     protected errorHandler: ErrorService,
     private userService: UserService,
     private canvasService: CanvasWhiteboardService,
+    private router: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.currentUser = LocalService.getUserId();
-    this.getRoom(this.currentUser);
+    this.handleQuery();
     this.remoteVideo = <HTMLVideoElement>document.querySelector('#remote-video');
     this.localVideo = <HTMLVideoElement>document.querySelector('#local-video');
     this.capture.video().then(stream => {
@@ -68,7 +69,6 @@ export class ClassroomComponent implements OnInit {
       this.startConnection();
     });
     this.userService.getUserProfile().subscribe(data => {
-      console.log('current user data', data);
       this.avatar = data.avatar;
       this.fullName = data.fullName;
       this.users[this.currentUser] = {avatar: this.avatar, name: this.fullName};
@@ -77,6 +77,26 @@ export class ClassroomComponent implements OnInit {
     this.fullName = LocalService.getUserName();
     this.users[LocalService.getUserId()] = {avatar: LocalService.getUserAvt(), name: LocalService.getUserName()};
     
+  }
+
+  handleQuery() {
+    this.router.queryParams.subscribe(params => {
+      if (params['teacher_id']) {
+        this.http.post<any>('http://localhost:3000/rooms', 
+          {
+            user_id: this.currentUser, 
+            teacher_id: params['teacher_id']
+          }, {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json'
+            })
+          }).subscribe(data => {
+            this.room = data.room;
+          })
+      } else {
+        this.getRoom(this.currentUser);
+      }
+    })
   }
 
   getRoom(id: number) {
