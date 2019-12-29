@@ -95,7 +95,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
               <a class="dropdown-item" routerLink="/view-profile/{{course.ownerId}}">View Mentor Profile</a>
-              <a class="dropdown-item" (click)="regisCourse(course.Id, course.courseFee)">Attend Course</a>
+              <a class="dropdown-item" (click)="regisCourse(course.id, course.courseFee)">Attend Course</a>
             </div>
 
           </div>
@@ -115,7 +115,7 @@
             {{course.description}}
           </p>
           <div class="cheat-button">
-            <button class="course-fee btn btn-block btn-custom waves-effect waves-light" (click)="regisCourse(course.Id, course.courseFee)">${{course.courseFee}}/h</button>
+            <button class="course-fee btn btn-block btn-custom waves-effect waves-light" (click)="regisCourse(course.id, course.courseFee)">${{course.courseFee}}/h</button>
           </div>
         </div>
       </div>
