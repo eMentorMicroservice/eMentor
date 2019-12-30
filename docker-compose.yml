@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+    angular-service: 
+      container_name: eMentor 
+      build: .
+      volumes:
+        - '.:/ementor'
+        - '/ementor/node_modules' 
+      ports: 
+        - '20936:20936'
