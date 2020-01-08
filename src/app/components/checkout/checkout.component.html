@@ -1,7 +1,7 @@
-<div class="row">
-    <div class="col-75">
+<div class="row mt-head">
+    <div class="col-50">
         <div class="container">
-            <form action="/action_page.php">
+            <form #ccForm="ngForm" (ngSubmit)="onSubmit()">
 
                 <div class="row">
 
@@ -17,7 +17,7 @@
                         <label for="cname">Name on Card</label>
                         <input type="text" id="cname" name="cardname" placeholder="John More Doe">
                         <label for="ccnum">Credit card number</label>
-                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                        <input type="text" id="ccnum" name="cardnumber"  [(ngModel)]="ccard.number" placeholder="5274 5763 9425 9961">
                         <label for="expmonth">Exp Month</label>
                         <input type="text" id="expmonth" name="expmonth" placeholder="September">
 
@@ -35,10 +35,17 @@
 
                 </div>
                 <label>
-                    <input type="checkbox" checked="checked" name="sameadr"> Remember this card for fast checkout next time.
+                    <input type="checkbox" name="sameadr"> Remember this card for fast checkout next time.
                 </label>
                 <input type="submit" value="Continue to checkout" class="btn">
             </form>
         </div>
     </div>
+    <div class="col-50">
+        
+    </div>
 </div>
+
+<ngx-spinner>
+    <p style="font-size: 20px; color: white"> {{ spinner_mes }} </p>
+</ngx-spinner>

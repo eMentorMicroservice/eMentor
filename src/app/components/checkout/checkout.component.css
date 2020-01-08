@@ -5,6 +5,11 @@
     flex-wrap: wrap;
     margin: 0 -16px;
   }
+
+  .mt-head {
+    margin-top: 80px;
+    margin-bottom: 50px;
+  }
   
   .col-25 {
     -ms-flex: 25%; /* IE10 */
