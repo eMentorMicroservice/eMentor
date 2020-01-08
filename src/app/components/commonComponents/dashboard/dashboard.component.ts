@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.isTeacher = AuthService.isTeacher();
-    
+    this.getAllCourses();
     this.userName = LocalService.getUserName();
     this.userId = LocalService.getUserId();
     if (this.isTeacher) {
@@ -126,9 +126,17 @@ export class DashboardComponent implements OnInit {
   }
 
   regisCourse(teacher_id: number,  courseFee: number) {
-    this.dialog.confirm('Confirm', 'You must pay atleast ' + courseFee + '$ to attend this course', () => {
-      this.router.navigate(['/checkout'], {queryParams: {teacher_id: teacher_id, course_fee: courseFee}});
-    });
+    this.dialog.input(
+      'Select duration',
+      "Please enter your course's duration",
+      "Price: " + courseFee + '$ per hours',
+      "text",
+      () => {
+        this.router.navigate(['/checkout'], {queryParams: {teacher_id: teacher_id, course_fee: courseFee}});
+      })
+    // this.dialog.confirm('Confirm', 'You must pay atleast ' + courseFee + '$ to attend this course', () => {
+    //   this.router.navigate(['/checkout'], {queryParams: {teacher_id: teacher_id, course_fee: courseFee}});
+    // });
   }
 }
 
